@@ -20,7 +20,7 @@ CSC301, Winter 2017, team project.
 ### Why would your users choose your product? What are they using today to solve their problem/need?
 
 (Why would user choose your product)
-  The crypto-currency trading market is rapdily growing and evolving which presents a large number of arbitrage opportunities, our application looks to exploit these market irregularities.  
+  The crypto-currency trading market is rapdily growing and evolving which presents a large number of arbitrage opportunities, our application looks to exploit these market inefficiencies.  The crypto-currency industry is still within its infancy and only a small set of investors are making profit trading crypto-currencies.  Our team is striving to open the market up to larger set of investors who want to enter the market but are potentially overwhelemed by the complexities of the current market environment.  Additionally, we are the only robotic-investment platform that is currently engaged in crypto-currency trading (all other 'robo-advisors' only deal with well established equitites, typically ETFs).
   
 (what are they using today to solve their problems)
   Currently, traders are constantly scouring the internet in search of blog reviews and cross-referencing that data with historical data trends in attempt to find arbitrage opportunities.  Our platform seeks to simplify this process, condense all of that information into one place and use it to create money making opportunities.  Total coin supply, technical details, future development plans, mission statement, and community speculation are just a sample of the factors that we will investigate in order to build our investing system.
