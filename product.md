@@ -1,12 +1,15 @@
 # project-team-10
 CSC301, Winter 2017, team project.
 
+(CryptoVest, CryptoWealth, ... )
+
 
 ### What are you planning to build?
 
 "Automated advisory and investing service for trading crypto-currencies.” 
 
-  By tracking currency trends and using predictive analytics, our website platform will enable users to make intelligent decisions while navigating this new and exciting market.  Unique crypto-currency portfolios will be constructed for each investor based on the level of risk they are willing to accept, their ... and a variety of other paramters. 
+  By tracking currency trends and using predictive analytics, our website platform will enable users to make intelligent decisions while navigating this new and exciting market.  Unique crypto-currency portfolios will be constructed for each investor based on the level of risk they are willing to accept, their personal interests/preferences and a variety of other parameters.  Each portfolio will contain a set of crypto-currencies of differing weights.  A users portfolio (or portfolios) will be continuously reevaluated and adjusted in order to react to market fluctuations.  Our data analytics backend will be driven by algorithms that condense information from a variety of public sources around the web and output actionable buy/sell events.  Our portfolio generating system will analyze historical exchange data using API (), obtain data from crypto-currency community through parsing inportant articles on blogs and twitter, and consider input from a number of other sources.
+   
 
 ### Who are your target users?
 
