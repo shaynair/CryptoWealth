@@ -92,17 +92,16 @@ An explanation of this workflow can be found at the [Atlassian Gitflow Workflow 
 
 #### Goals and tasks
 
- Our goals for this iteration is define a clear vision for our product, this includes the core features and the overall user experience. We wanted to focus less on the technological details and instead focus on the software process. Defining our product and core feature early on will allow us to have a better understanding of what technology we need to achieve our vision. Focusing more on our software process right now will make us more efficient and organized during the later phases of this project.			
+ Our goals for this iteration is define a clear vision for our product, this includes the core features and the overall user experience. Defining our product and core feature early on will allow us to have a better understanding of what technology we need to achieve our vision.
 
- * Define workflow.
- * Decide on tools to be used for our software process.
- * Define core feature for our product.
- * Create user stories.
+ * Decide on tech stack to use.
+ * Research data analysis algortihms.
+ * Define core features for our product.
+ * Create user personas.
+ * Delegate roles for each member of the team.
 
 #### Artifacts
 
-List/describe the artifacts you will produce in order to present your project idea.
-
  * Rough sketch - a high level overview of the data flow for our product. This sketch will allow us to determine the core features we need to implement.
-
-![Product Sketch](https://puu.sh/tWg3y/a7718561ad.png).
+ 
+ * Xtensio -an easy to use platform to create, collaborate, share and present user personas.
