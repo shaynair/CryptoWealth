@@ -43,5 +43,11 @@ Personas: https://app.xtensio.com/edit/i9ssxw11
   
 ### Highlights
 
-  - Considered creating an investment platform that was targeted towards milennials 
+- Most members couldn’t attend an in-person team meeting on Feb. 5, since many of us commute. This was, however, a last-minute change in plan as we initially planned to have everyone in attendance. A preferable meeting medium is online via Discord, Google Docs, and Slack, where everyone can attend from wherever they are. And next time, this can be planned in advance through an online collaborate calendar that serves as a scheduler and reminder system.
+- We talk a lot when we meet, so we found that it is most efficient to agree upon task delegation, internal deadlines, and meeting dates in-person instead of working on deliverables. Deliverables writing/coding can be done individually in our own time so that our individual thought processes and concentration are not distracted by group communication. Group meetings are good for already-committed work review and collaborative writing of documents that reflect upon our team process, e.g. iteration review.
+- Approaching our product from the perspective of a user was really helpful and enlightening, such that it forces a change in perspective and encourages questions that you otherwise might not have asked. Questions such as:
+  How do I make this simpler than existing products/services for the user?
+  Why would a user use this?
+  How do we differentiate ourselves (in terms of features, UI) from similar products for traditional equity and debt securities investing?
+
 
