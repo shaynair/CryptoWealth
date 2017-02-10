@@ -1,7 +1,4 @@
-# project-team-10
-CSC301, Winter 2017, team project.
-
-(CryptoVest, CryptoWealth, ... )
+# CryptoVest
 
 
 ### What are you planning to build?
@@ -35,7 +32,7 @@ Personas: https://app.xtensio.com/edit/i9ssxw11
 
 ### Why would your users choose your product? What are they using today to solve their problem/need?
 
-  The crypto-currency trading market is rapdily growing and evolving which presents a large number of arbitrage opportunities, our application looks to exploit these market inefficiencies.  The crypto-currency industry is still within its infancy and only a small set of investors are turning a profit trading crypto-currencies. There are currently a number of crypto-currency platforms available for traders to execute their algorithmic trading strategies. However, this requires in-depth knowledge of the crypto market, making it very difficult for new commers to become profitable.  Our team is striving to open the market up to a larger set of investors who want to enter the market but are overwhelemed by the complexities of the current market environment.  Additionally, we are the only robotic-investment platform that is currently engaged in crypto-currency trading (all other 'robo-advisors' only deal with well established equitites, typically ETFs).
+  The crypto-currency trading market is rapdily growing and evolving which presents a large number of arbitrage opportunities, our application looks to exploit these market inefficiencies.  The crypto-currency industry is still within its infancy and only a small set of investors are turning a profit trading crypto-currencies. There are currently a number of crypto-currency platforms available for traders to execute their algorithmic trading strategies. However, this requires in-depth knowledge of the crypto market, making it very difficult for new commers to become profitable.  Our team is striving to open the market up to a larger set of investors who want to enter the market but are overwhelemed by the complexities of the current market environment.  With todays markets becoming increasingly interdependent, many investors are wary that events out of their control (Brexit, Greece default, etc..) can have severe negative impacts on their investments.  That is part of the reason why decentralized currencies seem more attractive that traditional markets.  Crypto-currencies do not experience market fluctuations caused by government actions in the same way as established investments do.  An investor concerned about these potential risks would see our applciation as suitable alternative.
   
   Currently, traders are continuously scouring the internet in search of blog reviews and possibly cross-referencing that data with historical trends in an attempt to find arbitrage opportunities.  Users that are currently playing the market (and having success doing so) are unlikely to switch over completely to our platform.  Instead, as stated previously; we are looking to open the market up to new traders who are not currently using any software to fulfill their needs.
   
