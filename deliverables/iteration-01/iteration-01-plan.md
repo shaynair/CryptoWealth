@@ -98,11 +98,10 @@ An explanation of this workflow can be found at the [Atlassian Gitflow Workflow 
  * Decide on tools to be used for our software process.
  * Define core feature for our product.
  * Create user stories.
+ * Delegate roles for each member of the team
 
 #### Artifacts
 
 List/describe the artifacts you will produce in order to present your project idea.
 
  * Rough sketch - a high level overview of the data flow for our product. This sketch will allow us to determine the core features we need to implement.
-
-![Product Sketch](https://puu.sh/tWg3y/a7718561ad.png).
