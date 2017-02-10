@@ -97,7 +97,7 @@ An explanation of this workflow can be found at the [Atlassian Gitflow Workflow 
  * Define workflow.
  * Decide on tools to be used for our software process.
  * Define core feature for our product.
- * Create user stories.
+ * Create user personas.
  * Delegate roles for each member of the team
 
 #### Artifacts
