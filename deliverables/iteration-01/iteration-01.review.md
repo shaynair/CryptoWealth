@@ -51,7 +51,6 @@ We plan to use a group collaborative calendar as a meeting scheduler that the wh
 
 #### Goals and/or tasks that were planned but not met/completed:
 
-
 1. We did not start to come up with any data analysis algorithms for the main core of our project. We still have a long way to go in terms of research (into the existing space for robo-advisors’ algorithms and into cryptocurrency markets) to start on this, so we will leave it for a future iteration.
 
 2. We did not decide on a tech stack to use. We felt that it was too early to commit to languages or frameworks that members were either not familiar with or could possibly be substituted by something more appropriate, given that we had not started coding quite yet.
