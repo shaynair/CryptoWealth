@@ -94,14 +94,18 @@ An explanation of this workflow can be found at the [Atlassian Gitflow Workflow 
 
  Our goals for this iteration is define a clear vision for our product, this includes the core features and the overall user experience. Defining our product and core feature early on will allow us to have a better understanding of what technology we need to achieve our vision.
 
- * Decide on tech stack to use.
- * Research data analysis algortihms.
- * Define core features for our product.
- * Create user personas.
- * Delegate roles for each member of the team.
+1. Define core features for our product. This should essentially be what an Minimum Viable Prototype would have. We will likely draw out our application's basic flow with a sketch and decide our key user stories and/or core features from there.
+
+2. Delegate clear and meaningful roles for each member of the team. Each member of the team should know what they are responsible for, and should be willing to do it. We will likely have a planning session where we are able to decide these roles.
+
+3. Create user personas for our application. This will allow us to tailor our application's user interface and overall look and feel to our user base. This will allow us to get started on the high-level interface sketches and basic prototyping. We will likely be using a tool such as Xtensio for this.
+
+4. Research algorithms, tools and datasets for the core of our data analysis. If there are any libraries that simplify our task, we should find them right away to minimize our development costs. We should look into whether analyzing the crypto-currency market has been attempted by any other open source projects or public blogs or articles as well. Seeing as this will get the data analysis component of our application started, this should be a priority. We will likely use search engines to gather info and compile it into a central document. 
+
+5. Decide on a tech stack to use. We should consider the pros and cons of various languages and frameworks while also weighing in on which team members are proficient in each of these languages and frameworks, respectively. Deciding on a tech stack as soon as possible will allow us to start development sooner. We will look at similar projects and see what technologies were used in those projects, and we will have a review meeting where we will survey each group member as to his proficiencies.
 
 #### Artifacts
 
- * Rough sketch - a high level overview of the data flow for our product. This sketch will allow us to determine the core features we need to implement.
+ * Rough sketch - a high level overview of the flow for our product. This sketch should only describe "what" the application does. This sketch will allow us to determine the core features we need to implement.
  
- * Xtensio -an easy to use platform to create, collaborate, share and present user personas.
+ * Xtensio - an easy to use platform to create, collaborate, share and present user personas.
