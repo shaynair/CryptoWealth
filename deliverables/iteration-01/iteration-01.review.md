@@ -12,8 +12,7 @@ Although our team found it very difficult to agree on various meeting times, we 
 
 #### Decisions that turned out well
 
-
-1. We were able to decide and execute an efficient workflow and communication channel quite early into our project. We splitting up tasks in person and set an internal deadline of four days. Right after this deadline, we had an online meeting on Discord where we reviewed each other’s work afterwards. Then, we had our review meeting right afterwards over Google Docs. Using collaborative tools, we were able to come up with effective delegation of roles and effective planning, allowing us to move forward with our project efficiently.
+1. We were able to decide and execute an efficient communication channel quite early into our project. We split up tasks in person and set an internal deadline of three days. Right after this deadline, we had an online meeting on Discord where we reviewed each other’s work afterwards. Then, we had our review meeting right afterwards over Google Docs. Using collaborative tools, we were able to come up with effective delegation of roles and effective planning, allowing us to move forward with our project efficiently.
 
 ![Delegation of roles](https://puu.sh/tWfgL/5fef0529fe.png)
 
@@ -21,33 +20,35 @@ Although our team found it very difficult to agree on various meeting times, we 
 
 #### Decisions that did not turn out as well as we hoped
 
-
-1. Our first iteration was slightly rushed as we took a long time (an entire week) solidifying our product idea. The gap between the planning and review meetings was only three days. This happened as not everyone attended our first planned meeting. Due to this, we were not able to establish and finish clear goals related to the product. We hope to establish a clear structure and pattern of planning and review meetings in the future, using what we have learned from this first iteration.
+1. Our first iteration was slightly rushed as we took a long time (an entire week) solidifying our product idea. The gap between the planning and review meetings was only three days. This happened as not everyone attended our first planned meeting. Due to this, we were not able to establish and finish clear goals related to the product, and we had to adopt a tribal workflow temporarily. We hope to establish a clear structure and pattern of planning and review meetings in the future, using what we have learned from this first iteration.
 
 2. We learned that not everything is suitable to be completed on Google Docs.  Google Docs isn’t the most efficient platform when each member of the group is working on individual sections of a shared document (such as a Markdown document that is better suited for GitHub).
 
 3. Discord’s sound quality turned out to be poor after having our first extended live chat meeting. There were intermittent breaks in reception. We will try Skype next time.
 
-
 #### Planned changes
-
 
 We plan to use a group collaborative calendar as a meeting scheduler that the whole team constantly has access to. We will create Google Calendar events that provide us with email notifications (which we all check daily, anyways), so that our team doesn’t have to check another separate resource to get information, which would decrease our efficiency.
 
 ![Calendar](https://puu.sh/tWg9v/be340b157f.png)
 
+We also plan to use a loose version of Scrum for our [future workflow](workflow.md).
+
 ## Product - Review
 
 #### Goals and/or tasks that were met/completed:
 
-
-1. Delegated meaningful roles for each member of the team so everybody has a clear idea of what they are responsible for.
-
-2. Clearly defined the direction of the product by creating [user personas](https://app.xtensio.com/folio/i9ssxw11).
-
-3. We loosely defined a Minimum Viable Product in this iteration, as seen below in the sketch.
+1. We loosely defined a Minimum Viable Product in this iteration, as seen below in the sketch.
 
 ![Product Sketch](https://puu.sh/tWg3y/a7718561ad.png).
+
+2. We delegated meaningful roles for each member of the team so everybody has a clear idea of what they are responsible for.
+
+3. We agreed on a loose version of Scrum for development as well as the Gitflow workflow for our coordination strategy over GitHub. This allows us to maintain administrative control over the repository while gaining the benefits of a distributed version control system. We also decided on using ZenHub for our artifact generation and task management tool.
+
+Our roles and workflow details can be seen [here.](workflow.md)
+
+4. We clearly defined the direction of the product by creating [user personas](https://app.xtensio.com/folio/i9ssxw11).
 
 #### Goals and/or tasks that were planned but not met/completed:
 
