@@ -67,15 +67,11 @@ Tasks will be assigned to teammates on GitHub through the web interface. This wo
 
 We can also prioritize tasks by labelling them as "High-priority". This would be done whenever an issue blocks some other part of the project from being developed, and/or when an issue impedes the progress of the sprint. The development team is expected to solve these issues first before any others. If there are multiple issues that are high-priority, the development team will work on them in a logical order that reflects the overall significance of the issue to the project.
 
-Finally, we will also create data visualization artifacts such as burndown graphs by making use of tools like Ollert. We will be analysing these in our sprint retrospective meetings in order to comment on our development process.
+Finally, we will also create data visualization artifacts such as burndown graphs by making use of ZenHub's analysis tools. We will be analysing these in our sprint retrospective meetings in order to comment on our development process.
 
-A sample data visualization artifact can be seen below. This is a graph that tracks issues per category and member.
+A sample data visualization artifact can be seen below. This is an interactive burndown graph.
 
-![Ollert](https://d13yacurqjgara.cloudfront.net/users/24735/screenshots/1466813/ollert-dribbble-screenshot-preview.png) 
-
-More sample data visualization artifacts can be seen below. These are graphs that can approximate burn-up graphs, and bar charts that can allow us to comment on the number of issues per label (i.e. similar to a Kanban workflow)
-
-![Burndown](https://ollertapp.com/img/landing-visualize.png)
+![Chart](https://cristinasantamarina.files.wordpress.com/2015/06/zenhub-burndown-chart.png) 
 
 #### Workflow
 
