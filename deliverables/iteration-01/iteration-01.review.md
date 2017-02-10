@@ -71,7 +71,5 @@ Add the resulting tasks and issues onto our job board on Github (ZenHub).
 
 Start working on the data analysis algorithm required to come up with profitable portfolios for potential client. This would be the core of our project so it is better if we start working on this as soon as possible. We expect this part of our project to go through many iterations and will be updated constantly up until the project deadline.
 
-
-
-
+It is interesting to note that we all collaborated on iteration-review.md in Google Docs but only 1 team member submits that file to Github. The Google Docs revision history shows who contributed to writing the document.
 
