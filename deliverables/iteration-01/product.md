@@ -7,8 +7,6 @@
 
   By tracking currency trends and using predictive analytics, our __website platform__ will enable users to make intelligent decisions while navigating this new and exciting market.  Unique crypto-currency portfolios will be constructed for each investor based on the level of risk they are willing to accept, their personal interests/preferences and a variety of other parameters.  Each portfolio will contain a set of crypto-currencies of differing weights.  A user's portfolio (or portfolios) will be continuously reevaluated and adjusted in order to react to market fluctuations.  Our data analytics backend will be driven by algorithms that condense information from a variety of public sources around the web and output actionable buy/sell events.  We will analyze historical trading data (using sources such as [BTER](https://bter.com/), [Crypto-Currency Market Capitalization](https://coinmarketcap.com/) and [TradeBlock](https://tradeblock.com/)), obtain data from the crypto-currency community by parsing articles on blogs and twitter, and consider input from a variety of other sources.  Our platform can be thought of as a combination between traditional robo-advisors (WealthSimple, Betterment, etc..) and crypto-currencies (BitCoin, Ethereum, LiteCoin, etc..).  Our aim is to provide a clear path to new investors wishing to enter the crypto-currency marketplace.
    
-   
- EXTRA (Total coin supply, technical details, future development plans, mission statement, and community speculation are just a sample of the factors that we will investigate in order to build our investing system.)
 
 ### Who are your target users?
 
