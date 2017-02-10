@@ -41,17 +41,20 @@ Specifically, our users can include those who:
   
   Currently, traders are continuously scouring the internet in search of blog reviews and possibly cross-referencing that data with historical trends in an attempt to find arbitrage opportunities.  Users that are currently playing the market (and having success doing so) are unlikely to switch over completely to our platform.  Instead, we are only looking to open the market up to new traders who are not currently using any software to fulfill their needs.
   
-  
+----
   
 ### Highlights
 
-- We were considering applications that directly solved a major problem for a niche group of people. Some ideas we initially had include:
+- We were considering applications that directly solved a major problem for a niche group of people. However, we did not personally connect with these ideas, and it was difficult to get the entire group to agree on one idea. Instead, we found that some of us were interested in crypto-currency trading already, and we decided to turn the question of "who would use this product?" on its head by including us in the target group. We were able to come to a consensus very easily once we planned out the intricacies and challenges associated with our current project plan. Some ideas we initially had include:
     - A mobile application that helps blind people detect what was in front of themselves
-    - 
-  However, we did not personally connect with these ideas, and it was difficult to get the entire group to agree on one idea. Instead, we found that some of us were interested in crypto-currency trading already, and we decided to turn the question of "who would use this product?" on its head by including us in the target group. We were able to come to a consensus very easily once we planned out the intricacies and challenges associated with our current project plan.
+    - An augmented reality that corrected colours so that colour-blind people could see clearly
 
-- Approaching our product from the perspective of a user was really helpful and enlightening, such that it forces a change in perspective and encourages questions that you otherwise might not have asked. Questions such as:
-    - How do I make this simpler than existing products/services for the user?
+- Our group was also excited by the prospect of creating a product that did not have any exact parallels available in the market. As we researched the tools currently available in the crypto-currency space, we found tools that only fit in one of two categories: market analysis tools and coin exchanges. Our idea was novel, yet usable by an increasing number of people who fit into our user categories.
+
+- We also wanted to produce a product that was a suitable challenge, and combined all the aspects of software development that we were knowledgeable about, in addition to many concepts that we have yet to learn about. As we got together to consider the scope of our project, what kinds of features our product would have and what challenges they posed, we became more motivated and willing to take on a project of such a large scope.
+
+- Approaching our product from the perspective of a user was really helpful and enlightening, such that it forced a change in perspective and encouraged questions that we otherwise might not have asked. As our group members were included in the target market, we were able to answer these easily. We answered questions such as:
+    - How do we make this simpler than existing products/services for the user?
     - Why would a user use this?
     - How do we differentiate ourselves (in terms of features, UI) from similar products for traditional equity and debt securities investing?
   
