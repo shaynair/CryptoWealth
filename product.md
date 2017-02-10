@@ -27,7 +27,10 @@ Specifically, our users can include those who:
 - engage in questionable of illicit activities;
 - are tech savvy and looking to invest;
 - are looking to diversify their investment portfolio(s);
-- are simply interested in cryptocurrencies, or not interested in mainstream equity and debt securities.
+- are simply interested in cryptocurrencies, or not interested in mainstream equity and debt securities, and lack the time and/or knowledge to invest independently;
+- have any combination of the above characteristics.
+
+Personas: https://app.xtensio.com/edit/i9ssxw11
 
 
 ### Why would your users choose your product? What are they using today to solve their problem/need?
