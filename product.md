@@ -15,8 +15,19 @@ CSC301, Winter 2017, team project.
 
 ### Who are your target users?
 
-- Individuals that believe in decentralized currency systems but are overwhelemed by the complexities of the current market
-(basically goal simplify the process of entering the market)
+Our target users can range from vulnerable security-conscious individuals lacking trust in mainstream centralized establishments to simply those who are interested in investing in cryptocurrencies, a more novel investment vehicle.
+
+Specifically, our users can include those who:
+- are politically, socially, and economically vulnerable, such as activists, journalists, protesters, and rebels;
+- are digital security-conscious;
+- believe in or require anonymity;
+- lack trust in centralized systems and institutions, such as the government and banks;
+- are anti-authoritarian/establishment;
+- are financially unreliable or “risky” investors, according to traditional metrics (e.g. credit history, income)
+- engage in questionable of illicit activities;
+- are tech savvy and looking to invest;
+- are looking to diversify their investment portfolio(s);
+- are simply interested in cryptocurrencies, or not interested in mainstream equity and debt securities.
 
 
 ### Why would your users choose your product? What are they using today to solve their problem/need?
