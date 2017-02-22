@@ -38,15 +38,11 @@ We also plan to use a loose version of Scrum for our [future workflow](workflow.
 
 #### Goals and/or tasks that were met/completed:
 
-1. We loosely defined a Minimum Viable Product in this iteration, as seen below in the sketch.
-
-![Product Sketch](https://puu.sh/tWg3y/a7718561ad.png).
+1. We loosely defined a Minimum Viable Product in this iteration, as seen below in the sketch. ![Product Sketch](https://puu.sh/tWg3y/a7718561ad.png).
 
 2. We delegated meaningful roles for each member of the team so everybody has a clear idea of what they are responsible for.
 
-3. We agreed on a loose version of Scrum for development as well as the Gitflow workflow for our coordination strategy over GitHub. This allows us to maintain administrative control over the repository while gaining the benefits of a distributed version control system. We also decided on using ZenHub for our artifact generation and task management tool.
-
-Our roles and workflow details can be seen [here.](workflow.md)
+3. We agreed on a loose version of Scrum for development as well as the Gitflow workflow for our coordination strategy over GitHub. This allows us to maintain administrative control over the repository while gaining the benefits of a distributed version control system. We also decided on using ZenHub for our artifact generation and task management tool. Our roles and workflow details can be seen [here.](workflow.md)
 
 4. We clearly defined the direction of the product by creating [user personas](https://app.xtensio.com/folio/i9ssxw11).
 
@@ -67,7 +63,7 @@ Going into the next iteration, our main insights are:
 3. We should start working on the data analysis algorithm required to come up with profitable portfolios for potential client. This would be the core of our project so it is better if we start working on this as soon as possible. We expect this part of our project to go through many iterations and will be updated constantly up until the project deadline.
 
 
-It is interesting to note that we all collaborated on iteration-review.md in Google Docs but only 1 team member submits that file to Github. The Google Docs revision history shows who contributed to writing the document.
+It is interesting to note that we all collaborated on iteration-review.md in Google Docs but only 1 team member submitted that file to Github. The Google Docs revision history shows who contributed to writing the document.
 
 ![Revision History](https://puu.sh/tWiQG/b0a6818645.png)
 
