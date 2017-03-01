@@ -1,4 +1,4 @@
-# CryptoVest
+# CryptoWealth
 
 
 ### What are you planning to build?
