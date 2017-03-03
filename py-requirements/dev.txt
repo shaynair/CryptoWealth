@@ -1,0 +1,6 @@
+-r base.txt
+
+prospector==0.12.3
+bandit==1.1.0
+
+ptpython==0.35
