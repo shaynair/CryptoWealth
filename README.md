@@ -14,11 +14,21 @@
 
 ## Setup
 
-### Main Project
+### Dependencies
 
-**Note** that this project requires [Python 3.5](https://www.python.org/downloads/) or higher, [Node 6.x](https://nodejs.org/en/download/current/) or higher, [PostgreSQL](https://www.postgresql.org/download/), [Docker](https://www.docker.com/products/overview) and [Docker Compose](https://docs.docker.com/compose/install/).
+* [Python 3.5](https://www.python.org/downloads/) or higher
 
-__(On Windows you will also need Visual Studio 2015 with C++ or higher, and Visual C++ Redistributables from Microsoft)__
+* [Node 6.x](https://nodejs.org/en/download/current/) or higher
+
+* [PostgreSQL 9.4](https://www.postgresql.org/download/) or higher (on Mac, use `brew` to install PostgreSQL instead)
+
+You should also install:
+- (Linux) [Docker](https://www.docker.com/products/overview) and [Docker Compose](https://docs.docker.com/compose/install/)
+- (Windows/Mac) [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (_If you have VirtualBox already installed, uninstall it first_)
+
+On Windows you will also need Visual Studio 2015 with C++ or higher, and Visual C++ Redistributables from Microsoft.
+
+### Instructions
 
 * Clone the repository and change directory to it.
 
@@ -26,21 +36,16 @@ __(On Windows you will also need Visual Studio 2015 with C++ or higher, and Visu
 
 ```bash
 py -3 -m pip install virtualenv
-virtualenv env
-source env/bin/activate  # On Windows use env\Scripts\activate
+py -3 -m virtualenv env
+source env/bin/activate  # On Windows use env\Scripts\activate, on Windows+Docker use source env/Scripts/activate
 py -3 -m pip install -r py-requirements/dev.txt
 ```
 
-* Set up Django migrations.
-
-```bash
-py -3 src/manage.py makemigrations
-py -3 src/manage.py migrate
-```
+* Set up Django migrations: `py -3 src/manage.py migrate`
 
 * Set up front-end dependencies: `npm install`
 
-* Set up Docker: `docker-compose build`
+* Set up Docker: Run a Docker terminal and do `docker-compose build`
 
 
 ## How to run
@@ -49,11 +54,11 @@ First, make sure you are in Python virtual environment: `source env/bin/activate
 
 ### Using Docker
 
-Run Docker development server
+Run Docker development server:
 
 * `$ docker-compose up`
 
-You can access shell in a container
+You can access shell in a container:
 
 * `$ docker ps  # get the name from the list of running containers`
 * `$ docker exec -i -t <CONTAINER_NAME_OR_ID> /bin/bash`
@@ -64,10 +69,9 @@ The database can be accessed @localhost:5433
 
 * `$ psql -h localhost -p 5433 -U crypto crypto_dev`
 
-
 ## Contributing
 
-### Testing
+### Analysis
 
 To make sure the code respects all coding guidelines you should run the static analysis before pushing any code.
 
@@ -89,13 +93,17 @@ You must run `npm i --save <package>` whenever you add a new NPM package.
 
 ### Git Respository Best Practices
 
+_(Note: These may not be the best practices overall, but are necessary due to [contribution graphs](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/))_
+
+* Always work in your own fork of the repository.
+
 * Create a different branch for the issue you are working on off your master branch like `git checkout -b feature-name`.
 
 * Whenever you begin work, be sure to `git pull --rebase upstream master`.
 
-* When you have completed, `git push origin feature-name` and issue a PR to the repository.
+* When you have completed, `git push origin feature-name` and issue a PR to the **`master` branch on the central repository**. (If you issue a PR to another branch, your contributions may not be counted!)
 
-* In case you have a PR pending on this branch, `checkout` to your local `master` branch, `checkout` another `feature` branch and work there. Needless to say, `git pull --rebase upstream master` is always important.
+* In case you have a PR pending on this branch, `checkout` to your local `master` branch, `checkout` another `feature` branch and work there.
 
 ## Directory Structure
 

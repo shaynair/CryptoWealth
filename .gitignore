@@ -11,6 +11,7 @@
 
 virtualenv/
 env/
+dockerenv/
 htmlcov/
 src/static_dist/
 src/static_root/
