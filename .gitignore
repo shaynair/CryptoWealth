@@ -10,6 +10,7 @@
 \#*
 
 virtualenv/
+env/
 htmlcov/
 src/static_dist/
 src/static_root/

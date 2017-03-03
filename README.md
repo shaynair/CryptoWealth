@@ -16,11 +16,9 @@
 
 ### Main Project
 
-**Note** that this project requires python v3.5+, node v6.x or higher and npm v3.x or higher. You must have these installed.
+**Note** that this project requires [Python 3.5](https://www.python.org/downloads/) or higher, [Node 6.x](https://nodejs.org/en/download/current/) or higher, [PostgreSQL](https://www.postgresql.org/download/), [Docker](https://www.docker.com/products/overview) and [Docker Compose](https://docs.docker.com/compose/install/).
 
 __(On Windows you will also need Visual Studio 2015 with C++ or higher, and Visual C++ Redistributables from Microsoft)__
-
-* Install [Docker](https://www.docker.com/products/overview) and [Docker Compose](https://docs.docker.com/compose/install/).
 
 * Clone the repository and change directory to it.
 
@@ -36,8 +34,8 @@ py -3 -m pip install -r py-requirements/dev.txt
 * Set up Django migrations.
 
 ```bash
-py -3 crypto/manage.py makemigrations
-py -3 crypto/manage.py migrate
+py -3 src/manage.py makemigrations
+py -3 src/manage.py migrate
 ```
 
 * Set up front-end dependencies: `npm install`
@@ -83,7 +81,9 @@ Backend (django/python analysis)
 
 ### Adding libraries
 
-You must run `python crypto/manage.py migrate` whenever you make or edit a Django model.
+You must run `python src/manage.py migrate` whenever you make or edit a Django model.
+
+You must add to `py-requirements` whenever adding a new Python package.
 
 You must run `npm i --save <package>` whenever you add a new NPM package.
 
