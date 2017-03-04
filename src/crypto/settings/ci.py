@@ -1,4 +1,4 @@
-from crypto.settings.staging import *  # NOQA (ignore all errors on this line)
+from .prod import *  # NOQA (ignore all errors on this line)
 
 DATABASES = {
     'default': {
