@@ -98,7 +98,7 @@ _(Note: These are necessary due to quirks of [contribution graphs](https://help.
 ├── package.json                                     <- Package info for NPM. Contains front-end libraries (JS/JSX) and convenient scripts.
 ├── .babelrc, .bootstraprc, .eslintrc, .gitignore    <- Configuration settings for Babel (JS/ES6 transpiler), Bootstrap (front-end library), ESLint (JS code analyzer) and Git respectively
 ├── .prospector.yml, .sass-lint.yml, .travis.yml     <- Configuration settings for Prospector (Python code analyzer), SASS Lint (CSS/SASS analyzer) and Travis CI (automated test runner) respectively
-├── Procfile, runtime.txt, .buildpacks               <- Configuration settings for Heroku (hosting platform)
+├── Procfile, runtime.txt                            <- Configuration settings for Heroku (hosting platform)
 ├── base-requirements.txt                            <- Base environment packages for Python (Django back-end).
 ├── dev-requirements.txt                             <- Development environment packages for Python (Django back-end).
 ├── requirements.txt                                 <- Production environment packages for Python (Django back-end).
