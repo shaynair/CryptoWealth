@@ -22,12 +22,6 @@
 
 * [PostgreSQL 9.4](https://www.postgresql.org/download/) or higher (on Mac, follow [these instructions](https://launchschool.com/blog/how-to-install-postgresql-on-a-mac) instead)
 
-Additionally:
-
-- (Linux) [Docker](https://www.docker.com/products/overview), [Docker Compose](https://docs.docker.com/compose/install/), [VirtualBox](https://www.virtualbox.org/)
-- (Mac) [VirtualBox](https://www.virtualbox.org/) and [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (run the Quickstart Terminal to execute a docker command)
-- (Windows) [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (run the Quickstart Terminal to execute a docker command) (_If you have VirtualBox installed, uninstall it first_), [Visual Studio with C++](https://www.visualstudio.com/downloads/) or higher, and [Visual C++ Redistributables](https://www.microsoft.com/en-ca/download/details.aspx?id=48145) from Microsoft.
-
 ### Instructions
 
 * Clone the repository and change directory to it.
@@ -41,11 +35,9 @@ python3 -m virtualenv env
 
 ## How to run
 
-**First, make sure you are in Python virtual environment: (Linux/Mac) `source env/bin/activate` (Windows) `env\Scripts\activate`**
-
-Now, you can either run on your own computer (dev environment) or Docker.
-
 ### Running on your own environment
+
+**At all times, make sure you are in Python virtual environment: (Linux/Mac) `source env/bin/activate` (Windows) `env\Scripts\activate`**
 
 **Do the following only once:**
 
@@ -53,34 +45,15 @@ Now, you can either run on your own computer (dev environment) or Docker.
 
 * Set up front-end dependencies: `npm install`
 
-* Set up database: (Mac/Linux: do `createdb -h localhost && ./docker/postgres/init-user-db.sh`, Windows: do the steps in `init-user-db.sh` manually)
-
-* Set up Django migrations: `python3 src/manage.py migrate`
+* Set up database: (Mac/Linux: do `createdb -h localhost && ./init-user-db.sh`, Windows: do the steps in `init-user-db.sh` manually)
 
 **To run, you need two terminals.**
 
 1. `npm run dev`
 
-2. `./docker/django/django-entrypoint.sh`
+2. `./run-django.sh`
 
 Server will be visible, by default, on [port 8000 on localhost](http://localhost:8000). It will auto-refresh whenever you change a relevant file.
-
-### Using Docker
-
-**Do the following whenever dependencies change, or when first time running:**
-
-* Set up Docker: Run a Docker terminal and do `docker-compose build`
-
-**To run, open a Quickstart Terminal:** (You might have to fix the permissions in the `docker` folder)
-
-* `docker-compose up`
-
-You can access shell in a container:
-
-```bash
-docker ps  # get the name from the list of running containers`
-docker exec -i -t <CONTAINER_NAME_OR_ID> /bin/bash
-```
 
 ### Accessing the database
 
@@ -100,9 +73,7 @@ Backend (django/python analysis): `npm run analyze`
 
 ### Adding libraries
 
-You must run `python3 src/manage.py migrate` whenever you make or edit a Django model.
-
-You must add to `py-requirements` whenever adding a new Python package.
+You must add to `base-requirements.txt` whenever adding a new Python package.
 
 You must run `npm i --save <package>` whenever you add a new NPM package.
 
@@ -125,19 +96,19 @@ _(Note: These are necessary due to quirks of [contribution graphs](https://help.
 ```
 .
 ├── package.json                                     <- Package info for NPM. Contains front-end libraries (JS/JSX) and convenient scripts.
-├── .babelrc, .bootstraprc, .eslintrc                <- Configuration settings for Babel (JS/ES6 transpiler), Bootstrap (front-end library) and ESLint (JS code analyzer) respectively
+├── .babelrc, .bootstraprc, .eslintrc, .gitignore    <- Configuration settings for Babel (JS/ES6 transpiler), Bootstrap (front-end library), ESLint (JS code analyzer) and Git respectively
 ├── .prospector.yml, .sass-lint.yml, .travis.yml     <- Configuration settings for Prospector (Python code analyzer), SASS Lint (CSS/SASS analyzer) and Travis CI (automated test runner) respectively
-├── docker-compose.yml, docker.common.yml            <- Configuration settings for Docker (hosting platform)
-├── docker                                           <- Contains scripts for Docker to set up the project automatically.
-├── py-requirements
-│   ├── dev.txt                                      <- Development environment packages for Python (Django back-end).
-│   └── prod.txt                                     <- Production environment packages for Python (Django back-end).
+├── Procfile, runtime.txt                            <- Configuration settings for Heroku (hosting platform)
+├── base-requirements.txt                            <- Base environment packages for Python (Django back-end).
+├── dev-requirements.txt                             <- Development environment packages for Python (Django back-end).
+├── requirements.txt                                 <- Production environment packages for Python (Django back-end).
+├── init-user-db.sh                                  <- Initialization script for PostgreSQL.
+├── run-django.sh                                    <- Shell script to run Django back-end.
 ├── webpack
 │   ├── dev.config.js                                <- Development configuration for Webpack (bundles and pre-processes front-end files).
 │   └── prod.config.js                               <- Production configuration for Webpack.
 └── src
     ├── manage.py                                    <- Runs important Django commands such as setting up database and running server.
-    ├── fixtures.json                                <- Database constants for testing.
     ├── crypto                                       <- Main project folder for back-end.
     │   ├── urls.py                                  <- **All routes performed from the back-end**
     │   ├── wsgi.py                                  <- Initialization script.
