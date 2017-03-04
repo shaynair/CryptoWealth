@@ -1,1 +1,1 @@
-web: npm run prod && python src/manage.py runserver 0.0.0.0:$PORT --settings=crypto.settings.dev
+web: python src/manage.py runserver 0.0.0.0:$PORT --settings=crypto.settings.dev && npm run prod
