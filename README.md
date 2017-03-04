@@ -41,13 +41,13 @@ python3 -m virtualenv env
 
 ## How to run
 
-First, make sure you are in Python virtual environment: `source env/bin/activate  # On Windows use env\Scripts\activate, on Windows+Docker use source env/Scripts/activate`
+**First, make sure you are in Python virtual environment: (Linux/Mac) `source env/bin/activate` (Windows) `env\Scripts\activate`**
 
 Now, you can either run on your own computer (dev environment) or Docker.
 
 ### Running on your own environment
 
-Do the following only once:
+**Do the following only once:**
 
 * Install back-end dependencies: `python3 -m pip install -r py-requirements/dev.txt`
 
@@ -57,7 +57,7 @@ Do the following only once:
 
 * Set up Django migrations: `python3 src/manage.py migrate`
 
-To run, you need two terminals.
+**To run, you need two terminals.**
 
 1. `npm run dev`
 
@@ -67,24 +67,26 @@ Server will be visible, by default, on [port 8000 on localhost](http://localhost
 
 ### Using Docker
 
-Do the following whenever dependencies change, or when first time running:
+**Do the following whenever dependencies change, or when first time running:**
 
 * Set up Docker: Run a Docker terminal and do `docker-compose build`
 
-To run, open a Quickstart Terminal (You might have to fix the permissions in the `docker` folder):
+**To run, open a Quickstart Terminal:** (You might have to fix the permissions in the `docker` folder)
 
 * `docker-compose up`
 
 You can access shell in a container:
 
-* `docker ps  # get the name from the list of running containers`
-* `docker exec -i -t <CONTAINER_NAME_OR_ID> /bin/bash`
+```bash
+docker ps  # get the name from the list of running containers`
+docker exec -i -t <CONTAINER_NAME_OR_ID> /bin/bash
+```
 
 ### Accessing the database
 
 The database can be accessed @localhost:5433
 
-* `$ psql -h localhost -p 5433 -U crypto crypto_dev`
+* `psql -h localhost -p 5433 -U crypto crypto_dev`
 
 ## Contributing
 
@@ -92,13 +94,9 @@ The database can be accessed @localhost:5433
 
 To make sure the code respects all coding guidelines you should run the static analysis before pushing any code.
 
-Frontend (javascript analysis)
+Frontend (javascript analysis): `npm run lint`
 
-* `$ npm run lint`
-
-Backend (django/python analysis)
-
-* `$ npm run analyze`
+Backend (django/python analysis): `npm run analyze`
 
 ### Adding libraries
 
@@ -110,7 +108,7 @@ You must run `npm i --save <package>` whenever you add a new NPM package.
 
 ### Git Respository Best Practices
 
-_(Note: These may not be the best practices overall, but are necessary due to [contribution graphs](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/))_
+_(Note: These are necessary due to quirks of [contribution graphs](https://help.github.com/articles/why-are-my-contributions-not-showing-up-on-my-profile/))_
 
 * Always work in your own fork of the repository.
 
