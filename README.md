@@ -47,6 +47,8 @@ Now, you can either run on your own computer (dev environment) or Docker.
 
 ### Running on your own environment
 
+Do the following only once:
+
 * Install back-end dependencies: `python3 -m pip install -r py-requirements/dev.txt`
 
 * Set up front-end dependencies: `npm install`
@@ -57,24 +59,26 @@ Now, you can either run on your own computer (dev environment) or Docker.
 
 To run, you need two terminals.
 
-1. Run `npm run dev`
+1. `npm run dev`
 
-2. Run `./docker/django/django-entrypoint.sh`.
+2. `./docker/django/django-entrypoint.sh`
 
-Server will be visible, by default, on [port 8000 on localhost](http://localhost:8000).
+Server will be visible, by default, on [port 8000 on localhost](http://localhost:8000). It will auto-refresh whenever you change a relevant file.
 
 ### Using Docker
 
+Do the following whenever dependencies change, or when first time running:
+
 * Set up Docker: Run a Docker terminal and do `docker-compose build`
 
-Run Docker development server (You might have to fix the permissions in the `docker` folder):
+To run, open a Quickstart Terminal (You might have to fix the permissions in the `docker` folder):
 
-* `$ docker-compose up`
+* `docker-compose up`
 
 You can access shell in a container:
 
-* `$ docker ps  # get the name from the list of running containers`
-* `$ docker exec -i -t <CONTAINER_NAME_OR_ID> /bin/bash`
+* `docker ps  # get the name from the list of running containers`
+* `docker exec -i -t <CONTAINER_NAME_OR_ID> /bin/bash`
 
 ### Accessing the database
 
