@@ -87,7 +87,9 @@ _(Note: These are necessary due to quirks of [contribution graphs](https://help.
 
 * Whenever you begin work, be sure to `git pull --rebase upstream master`.
 
-* When you have completed, `git push origin feature-name` and issue a PR to the **`master` branch on the central repository**. (If you issue a PR to another branch, your contributions may not be counted!)
+* When you have completed,  [squash your commits into a max of 3-5 commits](https://github.com/ginatrapani/todo.txt-android/wiki/Squash-All-Commits-Related-to-a-Single-Issue-into-a-Single-Commit) and `git push origin feature-name`.
+
+* Issue a PR to the **`master` branch on the central repository**. (If you issue a PR to another branch, your contributions may not be counted!)
 
 * In case you have a PR pending on this branch, `checkout` to your local `master` branch, `checkout` another `feature` branch and work there.
 
