@@ -1,1 +1,1 @@
-web: python src/manage.py runserver 0.0.0.0:$PORT --settings=crypto.settings.prod && npm run prod
+web: python src/manage.py migrate --settings=crypto.settings.prod && python src/manage.py runserver 0.0.0.0:$PORT --settings=crypto.settings.prod

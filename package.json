@@ -3,7 +3,9 @@
     "version": "0.0.1",
     "description": "A cryptocurrency investment platform.",
     "scripts": {
-        "preinstall": "npm install -g eslint sass-lint",
+        "global-install": "npm install -g eslint sass-lint webpack",
+        "heroku-postbuild": "npm run prod && python src/manage.py collectstatic --noinput --settings=crypto.settings.prod",
+
         "dev": "webpack --progress --display-error-details --config webpack/common.config.js --watch",
         "prod": "webpack --progress -p --config webpack/common.config.js",
 
@@ -21,8 +23,12 @@
         "type": "git",
         "url": "git+https://github.com/csc301-winter-2017/project-team-10.git"
     },
-    "author": "Luis Rodrigues <luis.rodrigues@seedstarslabs.com>",
-    "license": "MIT",
+    "engines": {
+        "node": "^7.0.0",
+        "npm": "^4.0.0"
+    },
+    "author": "Aaron, Akshay, Harold, Ian, Sakshaat",
+    "license": "GPL-3.0",
     "dependencies": {
         "autoprefixer": "6.5.4",
         "babel-core": "6.21.0",

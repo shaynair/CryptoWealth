@@ -43,7 +43,7 @@ python3 -m virtualenv env
 
 * Install back-end dependencies: `python3 -m pip install -r py-requirements/dev.txt`
 
-* Set up front-end dependencies: `npm install`
+* Set up front-end dependencies: `npm run global-install && npm install`
 
 * Set up database: (Mac/Linux: do `createdb -h localhost && ./init-user-db.sh`, Windows: do the steps in `init-user-db.sh` manually)
 
