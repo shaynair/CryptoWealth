@@ -49,11 +49,11 @@ Now, you can either run on your own computer (dev environment) or Docker.
 
 * Install back-end dependencies: `python3 -m pip install -r py-requirements/dev.txt`
 
-* Set up Django migrations: `python3 src/manage.py migrate`
-
 * Set up front-end dependencies: `npm install`
 
-* Set up database: `./docker/postgres/init-user-db.sh`.
+* Set up database: (Mac/Linux: do `createdb -h localhost && ./docker/postgres/init-user-db.sh`, Windows: do the steps in `init-user-db.sh` manually)
+
+* Set up Django migrations: `python3 src/manage.py migrate`
 
 To run, you need two terminals.
 
@@ -61,7 +61,7 @@ To run, you need two terminals.
 
 2. Run `./docker/django/django-entrypoint.sh`.
 
-Server will be visible, by default, on port 8000 on localhost.
+Server will be visible, by default, on [port 8000 on localhost](http://localhost:8000).
 
 ### Using Docker
 
