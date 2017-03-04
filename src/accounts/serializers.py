@@ -1,7 +1,7 @@
 from rest_framework import serializers
 
 from accounts.models import User
-from crypto.utils import validate_email as email_is_valid
+from .utils import validate_email as email_is_valid
 
 
 class UserSerializer(serializers.ModelSerializer):

@@ -11,7 +11,7 @@ from rest_framework.response import Response
 
 from accounts.models import User
 from accounts.serializers import UserRegistrationSerializer, UserSerializer
-from crypto.utils import AtomicMixin
+from .utils import AtomicMixin
 
 
 class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):

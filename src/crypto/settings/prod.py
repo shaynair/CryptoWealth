@@ -1,5 +1,5 @@
-from djangoreactredux.settings.base import *  # NOQA (ignore all errors on this line)
-
+import dj_database_url
+from .base import *  # NOQA (ignore all errors on this line)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
@@ -10,14 +10,7 @@ PAGE_CACHE_SECONDS = 60
 ALLOWED_HOSTS = ['*']
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'crypto_prod',
-        'USER': 'crypto',
-        'PASSWORD': 'password',
-        'HOST': 'postgres',
-        'PORT': 5432,
-    }
+    'default': dj_database_url.config()
 }
 
 REST_FRAMEWORK['EXCEPTION_HANDLER'] = 'django_rest_logger.handlers.rest_exception_handler'  # NOQA (ignore all errors on this line)

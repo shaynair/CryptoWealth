@@ -11,5 +11,4 @@ do
     sleep 2
 done
 
-python manage.py loaddata fixtures.json --settings=crypto.settings.dev
 python manage.py runserver 0.0.0.0:8000 --settings=crypto.settings.dev

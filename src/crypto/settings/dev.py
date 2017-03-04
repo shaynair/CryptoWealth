@@ -1,4 +1,4 @@
-from crypto.settings.base import *  # NOQA (ignore all errors on this line)
+from .base import *  # NOQA (ignore all errors on this line)
 
 
 DEBUG = True
