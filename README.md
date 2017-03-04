@@ -20,13 +20,13 @@
 
 * [Node 6.x](https://nodejs.org/en/download/current/) or higher
 
-* [PostgreSQL 9.4](https://www.postgresql.org/download/) or higher (on Mac, use `brew` to install PostgreSQL instead)
+* [PostgreSQL 9.4](https://www.postgresql.org/download/) or higher (on Mac, follow [these instructions](https://launchschool.com/blog/how-to-install-postgresql-on-a-mac) instead)
 
-You should also install:
-- (Linux) [Docker](https://www.docker.com/products/overview) and [Docker Compose](https://docs.docker.com/compose/install/)
-- (Windows/Mac) [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (_If you have VirtualBox already installed, uninstall it first_)
+Additionally:
 
-On Windows you will also need Visual Studio 2015 with C++ or higher, and Visual C++ Redistributables from Microsoft.
+- (Linux) [Docker](https://www.docker.com/products/overview), [Docker Compose](https://docs.docker.com/compose/install/), [VirtualBox](https://www.virtualbox.org/)
+- (Mac) [VirtualBox](https://www.virtualbox.org/) and [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (run the Quickstart Terminal to execute a docker command)
+- (Windows) [Docker Toolbox](https://www.docker.com/products/docker-toolbox) (run the Quickstart Terminal to execute a docker command) (_If you have VirtualBox installed, uninstall it first_), [Visual Studio with C++](https://www.visualstudio.com/downloads/) or higher, and [Visual C++ Redistributables](https://www.microsoft.com/en-ca/download/details.aspx?id=48145) from Microsoft.
 
 ### Instructions
 
@@ -35,13 +35,13 @@ On Windows you will also need Visual Studio 2015 with C++ or higher, and Visual 
 * Set up Python virtual environment. **Also make sure that your working directory has no spaces in it.**
 
 ```bash
-py -3 -m pip install virtualenv
-py -3 -m virtualenv env
+python3 -m pip install virtualenv
+python3 -m virtualenv env
 source env/bin/activate  # On Windows use env\Scripts\activate, on Windows+Docker use source env/Scripts/activate
-py -3 -m pip install -r py-requirements/dev.txt
+python3 -m pip install -r py-requirements/dev.txt
 ```
 
-* Set up Django migrations: `py -3 src/manage.py migrate`
+* Set up Django migrations: `python3 src/manage.py migrate`
 
 * Set up front-end dependencies: `npm install`
 
@@ -50,7 +50,7 @@ py -3 -m pip install -r py-requirements/dev.txt
 
 ## How to run
 
-First, make sure you are in Python virtual environment: `source env/bin/activate  # On Windows use env\Scripts\activate`
+First, make sure you are in Python virtual environment: `source env/bin/activate  # On Windows use env\Scripts\activate, on Windows+Docker use source env/Scripts/activate`
 
 ### Using Docker
 
@@ -85,7 +85,7 @@ Backend (django/python analysis)
 
 ### Adding libraries
 
-You must run `python src/manage.py migrate` whenever you make or edit a Django model.
+You must run `python3 src/manage.py migrate` whenever you make or edit a Django model.
 
 You must add to `py-requirements` whenever adding a new Python package.
 

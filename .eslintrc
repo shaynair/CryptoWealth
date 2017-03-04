@@ -1,0 +1,52 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  // support for ES7 decorators and static variables
+  "parser": "babel-eslint",
+  "settings":{
+    "import/ignore": [
+      "node_modules",
+      ".(scss|less|css|png|jpg|po|svg)$"
+    ]
+  },
+  "rules": {
+    // not sure why airbnb turned this on. gross!
+    "comma-dangle": 0,
+    "indent": [2, 4, {"SwitchCase": 1}],
+    // we prefer to be able to declara all parameters a function receives
+    "no-unused-vars": [2, {
+      "vars": "local",
+      "args": "none"
+    }],
+
+    // Properties quoting should be consistent (as in "consistent") but whenever all quotes are redundant a warning is raised
+    "quote-props": ["error", "consistent-as-needed", { "keywords": true }],
+    // set max line length to 120
+    "max-len": [2, 120, 4, {"ignoreUrls": true}],
+    //always force braces around arrow function body
+    "arrow-body-style": [2, "always"],
+    // allow assign values to props of parameters
+    "no-param-reassign": [2, {"props": false}],
+    "react/jsx-indent-props": 0,
+    // enforce consistent indentation style. The default style is 4 spaces
+    "react/jsx-indent": [2, 4],
+    // Ensure correct position of the first property.
+    "react/jsx-first-prop-new-line": [2, "never"],
+    // don't force break chaining into new lines because this this.props.actions.authLoginUser() is valid
+    "newline-per-chained-call": 0,
+    // don't check for default exports as current version does not support module.exports = ... as default
+    "import/default": 0,
+    // don't prefer prefer-stateless-function
+    "react/prefer-stateless-function": 0,
+    // allow jsx in .js files
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }]
+  },
+  "env": {
+    "browser": true,
+    "mocha": true,
+    "jquery": true
+  }
+}
