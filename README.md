@@ -41,7 +41,7 @@ python3 -m virtualenv env
 
 **Do the following only once:**
 
-* Install back-end dependencies: `python3 -m pip install -r py-requirements/dev.txt`
+* Install back-end dependencies: `python3 -m pip install -r dev-requirements.txt`
 
 * Set up front-end dependencies: `npm run global-install && npm install`
 
