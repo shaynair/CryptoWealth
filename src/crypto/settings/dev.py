@@ -11,7 +11,7 @@ DATABASES = {
         'NAME': 'crypto_dev',
         'USER': 'crypto',
         'PASSWORD': 'password',
-        'HOST': 'postgres',
+        'HOST': '127.0.0.1',
         'PORT': 5432,
     }
 }

@@ -37,24 +37,37 @@ Additionally:
 ```bash
 python3 -m pip install virtualenv
 python3 -m virtualenv env
-source env/bin/activate  # On Windows use env\Scripts\activate, on Windows+Docker use source env/Scripts/activate
-python3 -m pip install -r py-requirements/dev.txt
 ```
-
-* Set up Django migrations: `python3 src/manage.py migrate`
-
-* Set up front-end dependencies: `npm install`
-
-* Set up Docker: Run a Docker terminal and do `docker-compose build`
-
 
 ## How to run
 
 First, make sure you are in Python virtual environment: `source env/bin/activate  # On Windows use env\Scripts\activate, on Windows+Docker use source env/Scripts/activate`
 
+Now, you can either run on your own computer (dev environment) or Docker.
+
+### Running on your own environment
+
+* Install back-end dependencies: `python3 -m pip install -r py-requirements/dev.txt`
+
+* Set up Django migrations: `python3 src/manage.py migrate`
+
+* Set up front-end dependencies: `npm install`
+
+* Set up database: `./docker/postgres/init-user-db.sh`.
+
+To run, you need two terminals.
+
+1. Run `npm run dev`
+
+2. Run `./docker/django/django-entrypoint.sh`.
+
+Server will be visible, by default, on port 8000 on localhost.
+
 ### Using Docker
 
-Run Docker development server:
+* Set up Docker: Run a Docker terminal and do `docker-compose build`
+
+Run Docker development server (You might have to fix the permissions in the `docker` folder):
 
 * `$ docker-compose up`
 
