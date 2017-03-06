@@ -1,30 +1,70 @@
 import market_data
 import json
 
-''' List of currencies to be considered in any portfolio construction '''
-currencies = ['Bitcoin', 'Ethereum', 'Dash', 'Ripple', 'Monero', 'Litecoin', 'NEM']
-
+''' List of currencies to be considered in any portfolio construction (chosen arbitrarily, subject to change later) '''
+currencies = ['Bitcoin', 'Ethereum', 'Dash', 'Ripple', 'Monero', 'Litecoin', 'NEM', 'MaidSafeCoin', 'Augur', 'Zcash']
 
 class Portfolio(object):
 
-    ''' initalize empty portfolio '''
+    ''' Initialize empty portfolio, currency maps to current weight in portfolio { currency : value } '''
     portfolio = {}
+    ''' Risk level of portfolio (set by user) '''
+    risk_level = 0
+    '''' USD cash value of portfolio '''
+    value = 0
 
     ''' Create a new portfolio object '''
-    def __init__(self, risk_level):
+    def __init__(self, risk_level, cash_value):
+        self.risk_level = risk_level
+        self.construct_portfolio()
+
+    ''' Construct portfolio considering current market conditions '''
+    def construct_portfolio(self):
+
+        #data = self.get_relevant_market_data()
+
+        ''' This is where algorithm will be implemented to create a portfolio.
+            For first iteration algorithm will be simple,
+            if user risk level is < 5
+                construct equally weighted (10 units each) portfolio of: Litecoin, NEM, MaidSafeCoin, Augur, Zcash
+            if risk level >= 5
+                construct equally weighted (10 units each) portfolio of: Bitcoin, Ethereum, Dash, Ripple, Monero
+        '''
+        if self.risk_level < 5:
+            for currency in range(0, 5):
+                self.portfolio[currencies[currency]] = 10
+        else:
+            for currency in range(5, 10):
+                self.portfolio[currencies[currency]] = 10
+
+    ''' Construct portfolio considering current market conditions '''
+    def rebalance_portfolio(self):
+        #TODO (next iteration)
         return
 
-    ''' Rebalance portfolio considering new market conditions '''
-    def rebalance(self):
-        return
+
+    ''' Calculate current value of portfolio based on current crypto-currency market and holdings '''
+    def calculate_portfolio_value(self):
+
+        # Use market object to obtain latest market data
+        market = market_data.Market()
+
+        value = 0
+        # loop through elements in portfolio, get current price
+        for currency in self.portfolio:
+            crypto_price = float(json.loads(market.ticker(currency))[0].get('price_usd'))
+            value += (crypto_price * self.portfolio[currency])
+
+        self.value = value
 
 
-    ''' Send porfolio to front end for display '''
+
+    ''' Send portfolio to front end for display '''
     def send_portfolio(self):
         return
 
 
-    ''' return json object of crypto-currencies to consider for portfolio
+    ''' Return json object of crypto-currencies to consider for portfolio
         used in construction + re-balancing of portfolio object
     '''
     def get_relevant_market_data(self):
@@ -32,6 +72,7 @@ class Portfolio(object):
         # Create new market object to get information
         market = market_data.Market()
 
+        # Build json object of relevant currency data
         data = {}
         for currency in currencies:
             data[currency] = market.ticker(currency)
@@ -39,12 +80,13 @@ class Portfolio(object):
         return data
 
 
-# blah = market_data.Market()
-# obj = json.loads(blah.ticker('bitcoin'))[0]
 
-portfolio = Portfolio(1)
-print portfolio.get_relevant_market_data().get('Ripple')
-# print currencies
+if __name__ == '__main__':
 
+    print " running "
 
-# print obj
+    risk_level = 6
+    portfolio = Portfolio(risk_level)
+    print portfolio.portfolio
+    portfolio.calculate_portfolio_value()
+    print portfolio.value
