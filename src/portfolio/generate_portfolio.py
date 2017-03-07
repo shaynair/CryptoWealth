@@ -38,14 +38,12 @@ class Portfolio(object):
     ''' Construct portfolio considering current market conditions '''
     def construct_portfolio(self):
 
-        # data = self.get_relevant_market_data()
-
         ''' This is where algorithm will be implemented to create a portfolio.
             For first iteration algorithm will be simple,
             if user risk level is < 5
-                construct portfolio of: Bitcoin, Ethereum, Dash, Ripple, Monero (with varying weights)
+                construct portfolio of: Bitcoin, Ethereum, Dash, Ripple, Monero (with hard - coded varying weights)
             if risk level >= 5
-                construct portfolio of: Litecoin, NEM, MaidSafeCoin, Augur, Zcash (with varying weights)
+                construct portfolio of: Litecoin, NEM, MaidSafeCoin, Augur, Zcash (with hard - coded varying weights)
         '''
         if self.risk_level < 5:
             self.portfolio['Bitcoin'] = 4
@@ -125,4 +123,4 @@ if __name__ == '__main__':
     print portfolio.portfolio
     print portfolio.holdings_value
     print portfolio.cash_value
-    # print portfolio.get_total_portfolio_value()2
+    # print portfolio.get_total_portfolio_value()
