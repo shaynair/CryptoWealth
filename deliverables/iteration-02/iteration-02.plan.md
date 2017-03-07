@@ -4,11 +4,8 @@
 
  * Start date: February 22, 2017
  * End date: March 8, 2017
-
-## Process
-
-
-(Optional:) Quick introduction
+ 
+##Process
 
 #### Roles & responsibilities
 
@@ -58,6 +55,7 @@ ZenHub
 Outlined an MVP, placing all required tasks on the ZenHub board
    * How do tasks get assigned to team members?
 Each team member are in charge of a designated layer of our application.  That member is in charge of assigning tasks relating to their corresponding layer.
+
 #### Git / GitHub workflow
 
 Describe your Git / GitHub workflow.     
@@ -79,7 +77,6 @@ After the `develop` branch, we will maintain individual forks. The reasoning for
 Individual `develop` branches will be used for our development hosting environments. Each individual will also create `feature` branches on an ongoing basis, which will be merged back to `develop`, which will then be used to create a pull request to our central repository's `develop` branch.
 
 An explanation of this workflow can be found at the [Atlassian Gitflow Workflow page](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow) or the [GitHub workflow page](https://guides.github.com/introduction/flow/).
-
 
 
 
@@ -108,10 +105,10 @@ List/describe the artifacts you will produce in order to present your project id
 
 Code Architecture
 
-1st iteration
+[1st iteration](https://gyazo.com/2611c28f449791ab6b272e272d91a7d3)
 
 
-2nd iteration
+[2nd iteration](https://gyazo.com/bf8b349da188f0a74bdb8cdb0e74df41)
 
 
 
