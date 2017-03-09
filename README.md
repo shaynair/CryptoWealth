@@ -51,7 +51,7 @@ python3 -m virtualenv env
 
 1. `npm run dev`
 
-2. `./run-django.sh`
+2. (Make sure this one is in the virtual environment) `./run-django.sh`
 
 Server will be visible, by default, on [port 8000 on localhost](http://localhost:8000). It will auto-refresh whenever you change a relevant file.
 
