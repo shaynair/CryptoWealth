@@ -1,0 +1,4 @@
+-r base-requirements.txt
+
+gunicorn==19.6.0
+dj-database-url==0.4.2
