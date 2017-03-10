@@ -47,7 +47,7 @@ class HomeView extends React.Component {
                     }
                 </div>
                 <div className="">
-                    <Link className="btn btn-default btn-block" to="/questionnaire">
+                    <Link className="btn btn-default btn-block" onClick={this.go}>
                         Start Questionnaire
                     </Link>
 

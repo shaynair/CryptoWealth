@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { push } from 'react-router-redux';
+
 import * as actionCreators from '../../actions/questionnaire';
 import './style.scss';
 import Options from '../../components/Options';
@@ -73,6 +75,7 @@ class QuestionnaireView extends Component {
         }
         const risk = (this.props.riskLevel + + this.props.question.optionRisks[value - 1]) / this.props.totalQuestions;
         this.props.dispatch(this.props.actions.submitAnswer(risk));
+        this.props.dispatch(push('/portfolio'));
     };
 
     render() {
