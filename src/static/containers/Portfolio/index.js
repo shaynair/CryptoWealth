@@ -2,7 +2,7 @@ import React from 'react';
 // import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import { dataFetchProtectedData } from '../../actions/portfolio';
-import { PortfolioTable } from './PortfolioTable';
+import { PortfolioTable } from '../../components/PortfolioTable';
 
 
 class PortfolioView extends React.Component {
