@@ -11,8 +11,6 @@ Unique crypto-currency portfolios will be constructed for each investor based on
 
 Think of our application as a fusion between the traditional debt and equity securities robo-advisors, such as WealthSimple and Betterment, with crypto-currencies like BitCoin, Ethereum and LiteCoin.
 
-Our application is targeted towards a wide variety of individuals, from those who are wary of established government-regulated centralized currency systems, to those who see potential or are simply interested in the crypto-currency market but either lack knowledge or time to start investing.
-
 In our video we will demonstrate a couple of example user walk throughs, displaying how our application could be utilized by a variety of people. 
 
 
