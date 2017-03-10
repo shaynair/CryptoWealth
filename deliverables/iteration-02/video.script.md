@@ -18,7 +18,7 @@ In our video we will demonstrate a couple of example user walk throughs, display
 
 DEMO:  - 100 seconds
 
-User A - Conservative Portfolio
+
   The first user portfolio we will see is for a conservative investor.  Acting as if we are a new user navigating to the    website for the first time, we will input our user preferences through the questionnaire and generate a portfolio.
   (SELECT START QUESTIONNAIRE)
   
@@ -39,7 +39,6 @@ User A - Conservative Portfolio
 
   Upon submitting this user information we see that a customized portfolio has been generated for this user.  Viewers familiar with cryptocurrencies will acknowledge that the portfolio is comprised of well established, typically stable crypto-currencies for our conservative investor.
 
-User B - Aggressive Portfolio
   This next portfolio is will represent an investor who would like to take on more risk
     (SELECT CRYPTOWEALTH DEMO - TOP LEFT CORNER)
   
