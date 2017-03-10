@@ -1,7 +1,7 @@
 from django.conf.urls import url
 
-from base import views as base_views
+from .views import *
 
 urlpatterns = [
-    url(r'', base_views.ProtectedDataView.as_view(), name='protected_data'),
+    url(r'', ProtectedDataView.as_view(), name='protected_data'),
 ]

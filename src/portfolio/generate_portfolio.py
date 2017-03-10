@@ -1,5 +1,6 @@
-import market_data
+from .market_data import Market
 import json
+import codecs
 
 ''' List of currencies to be considered in any portfolio construction (chosen arbitrarily, subject to change later) '''
 currencies = ['Bitcoin', 'Ethereum', 'Dash', 'Ripple', 'Monero', 'Litecoin', 'NEM', 'MaidSafeCoin', 'Augur', 'Zcash']
@@ -94,7 +95,7 @@ class Portfolio(object):
     def get_relevant_market_data(self, start, end):
 
         # Create new market object to get information
-        market = market_data.Market()
+        market = Market()
 
         # Build json object of relevant currency data
         data = {}
@@ -107,20 +108,8 @@ class Portfolio(object):
     def get_price(self, currency):
 
         # Use market object to obtain latest market data
-        market = market_data.Market()
+        market = Market()
 
-        crypto_price = float(json.loads(market.ticker(currency))[0].get('price_usd'))
+        s = codecs.getreader('utf-8')(market.ticker(currency))
+        crypto_price = float(json.load(s)[0].get('price_usd'))
         return crypto_price
-
-
-if __name__ == '__main__':
-
-    print " running "
-
-    risk_level = 3
-    portfolio_value = 10000
-    portfolio = Portfolio(risk_level, portfolio_value)
-    print portfolio.portfolio
-    print portfolio.holdings_value
-    print portfolio.cash_value
-    # print portfolio.get_total_portfolio_value()

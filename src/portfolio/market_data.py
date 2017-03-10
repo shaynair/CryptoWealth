@@ -19,10 +19,10 @@ class Market(object):
 	def _get(self, api_call, query):
 		url = self._urljoin(self.base_url, api_call)
 		if query == None:
-			response = self.opener.open(url).read()
+			response = self.opener.open(url)
 		else:
 			response_url = self._urljoin(url, query)
-			response = self.opener.open(response_url).read()
+			response = self.opener.open(response_url)
 		return response
 
 	def ticker(self, param=None):
