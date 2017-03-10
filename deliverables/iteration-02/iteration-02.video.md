@@ -1,7 +1,8 @@
-CSC301 Iteration #2 Script
+# CryptoWealth
 
+## Script
 
-INTRO: (BASIC PRODUCT OVERVIEW/TARGET USERS + VIDEO INTRO) - 45 seconds
+### INTRO: (BASIC PRODUCT OVERVIEW/TARGET USERS + VIDEO INTRO) - 45 seconds
 
 Welcome to CryptoWealth, an automated crypto-currency advisory and investing web application.
 
@@ -13,8 +14,7 @@ Think of our application as a fusion between the traditional debt and equity sec
 
 In our video we will demonstrate a couple of example user walk throughs, displaying how our application could be utilized by a variety of people. 
 
-
-DEMO:  - 100 seconds
+### DEMO:  - 100 seconds
 
 
   The first user portfolio we will see is for a conservative investor.  Acting as if we are a new user navigating to the    website for the first time, we will input our user preferences through the questionnaire and generate a portfolio.
@@ -58,7 +58,11 @@ DEMO:  - 100 seconds
   Here we see a portfolio generated for our risky investor that is different than that of our conservative investor.  These crypto-currencies are less established and more volatile.
 
 
-DISCUSSION: -  30 second
+### DISCUSSION: -  30 seconds
 Here we have seen how unique portfolios will be constructed for individuals with differing financial backgrounds. Getting started is as simple as answering a few questions. We do all the computation and analysis, and provide you a mathematically-backed portfolio for you to begin investing.
 
 In our next steps we will be mainly focusing our efforts on enhancing the user-interface and generating a more reliable algorithm to construct crypto-currency portfolios.
+
+## Video
+
+Our finished video can be seen [here](https://youtu.be/oOgtHZG6Ktw).
