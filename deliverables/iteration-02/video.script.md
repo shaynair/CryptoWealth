@@ -5,11 +5,11 @@ INTRO: (BASIC PRODUCT OVERVIEW/TARGET USERS + VIDEO INTRO) - 45 seconds
 
 Welcome to CryptoWealth, an automated crypto-currency advisory and investing web application.
 
-Our online platform aims to facilitate user investment in crypto-currencies. By acquiring personal user data in a fluid and user-friendly manner, then matching it with actively-traded crypto-currencies via our proprietary algorithm that monitors and analyzes historical trends, we propose recommended portfolios to users so that they can easily make informed personal investment decisions.
+Our online platform aims to facilitate user investment in crypto-currencies. By tracking currency trends and using predictive analytics, our website platform will enable users to make intelligent decisions while navigating the crypto-currency market.
 
-These unique crypto-currency portfolios are constructed for each of our users based on their available capital, risk tolerance, personal interests and preferences, and various other parameters.
+Unique crypto-currency portfolios will be constructed for each investor based on the level of risk they are willing to accept, their personal interests, preferences and a variety of other parameters. 
 
-Think of our application as a fusion of the “traditional” debt and equity securities robo-advisors, such as WealthSimple and Betterment, with less mainstream investment vehicles, i.e. crypto-currencies like BitCoin, Ethereum and LiteCoin.
+Think of our application as a fusion of the “traditional” debt and equity securities robo-advisors, such as WealthSimple and Betterment, with crypto-currencies like BitCoin, Ethereum and LiteCoin.
 
 Our application is targeted towards a wide variety of individuals, from those who are wary of established government-regulated centralized currency systems, to those who see potential or are simply interested in the crypto-currency market but either lack knowledge or time to start investing.
 
@@ -37,7 +37,7 @@ User A - Conservative Portfolio
   And they make less than 60k a year
   (SELECT LESS THAN 60K, NEXT QUESTION)
 
-  Upon submitting this user information we see that a customized portfolio has been generated for this user.  Those with knowledge of cryptocurrencies will acknowledge that the portfolio is constructed of more well established, safer crypto-currencies for our conservative investor.
+  Upon submitting this user information we see that a customized portfolio has been generated for this user.  Viewers familiar with cryptocurrencies will acknowledge that the portfolio is comprised of well established, typically stable crypto-currencies for our conservative investor.
 
 User B - Aggressive Portfolio
   This next portfolio is will represent an investor who would like to take on more risk
@@ -62,6 +62,6 @@ User B - Aggressive Portfolio
 
 
 DISCUSSION: -  30 second
-Here we have seen how unique portfolios will be constructed for individuals with differing preferences, social perceptions, and financial backgrounds. As we have shown, getting started is as simple as answering a few simple questions. We do all the computation and analysis, and provide you a mathematically-backed portfolio for you to begin investing.
+Here we have seen how unique portfolios will be constructed for individuals with differing financial backgrounds. Getting started is as simple as answering a few questions. We do all the computation and analysis, and provide you a mathematically-backed portfolio for you to begin investing.
 
-In our next steps we will be mainly focusing our efforts on enhancing the user-interface, generating a more reliable algorithm to construct crypto-currency portfolios.
+In our next steps we will be mainly focusing our efforts on enhancing the user-interface and generating a more reliable algorithm to construct crypto-currency portfolios.
