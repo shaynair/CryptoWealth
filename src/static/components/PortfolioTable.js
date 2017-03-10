@@ -11,7 +11,7 @@ import React from 'react';
 
 class PortfolioTable extends React.Component {
   static propTypes = {
-    portfolio: React.PropTypes.array.isRequired
+    portfolio: React.PropTypes.array
   };
   render() {
     let portfolios = (< tr / >);
@@ -21,11 +21,14 @@ class PortfolioTable extends React.Component {
                     tr >
           <
                     td className="assetSymbol"
-          > { asset.symbol } < /td> <
+          >
+            { asset.symbol } < /td> <
                     td className="assetName"
-          > { asset.name } < /td> <
+            >
+              { asset.name } < /td> <
                     td className="assetSymbol"
-          > { asset.alloc } < /td> < /
+              >
+                { asset.alloc } < /td> < /
                     tr >
         );
       });
