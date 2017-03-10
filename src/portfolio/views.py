@@ -20,5 +20,5 @@ class BasicRiskView(GenericAPIView):
         """Retrieve basic risk info."""
         params = request.query_params.dict()
         p = Portfolio(int(params['risk']), int(params['cash']))
-
+        
         return Response(p.portfolio, status=status.HTTP_200_OK)

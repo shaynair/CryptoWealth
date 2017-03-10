@@ -8,7 +8,6 @@ currencies = ['Bitcoin', 'Ethereum', 'Dash', 'Ripple', 'Monero', 'Litecoin', 'NE
 class Portfolio(object):
 
     ''' Initialize empty portfolio, currency maps to current weight in portfolio { currency : value } '''
-    portfolio = {}
 
     ''' Risk level of portfolio (set by user) '''
     risk_level = 0
@@ -32,6 +31,7 @@ class Portfolio(object):
             raise ValueError("Portfolio value must be greater than 0")
         self.risk_level = risk_level
         self.cash_value = portfolio_value
+        self.portfolio = []
 
         # Generate portfolio holdings
         self.construct_portfolio()
@@ -47,23 +47,22 @@ class Portfolio(object):
                 construct portfolio of: Litecoin, NEM, MaidSafeCoin, Augur, Zcash (with hard - coded varying weights)
         '''
         if self.risk_level < 5:
-            self.portfolio['Bitcoin'] = 4
-            self.portfolio['Ethereum'] = 5
-            self.portfolio['Dash'] = 10
-            self.portfolio['Ripple'] = 10
-            self.portfolio['Monero'] = 5
+            self.portfolio.append({'name': 'Bitcoin', 'alloc': 4, 'symbol': 'BTC'})
+            self.portfolio.append({'name': 'Ethereum', 'alloc': 5, 'symbol': 'ETC'})
+            self.portfolio.append({'name': 'DASH', 'alloc': 10, 'symbol': 'DASH'})
+            self.portfolio.append({'name': 'Ripple', 'alloc': 10, 'symbol': 'RIP'})
+            self.portfolio.append({'name': 'Monero', 'alloc': 5, 'symbol': 'MON'})
             invested_value = ((4 * self.get_price('Bitcoin') + (5 * self.get_price('Ethereum')) + (10 * self.get_price('Dash')) +
                                                  (10 * self.get_price('Ripple')) + (5 * self.get_price('Monero'))))
             self.holdings_value = invested_value
             self.cash_value -= invested_value
 
         else:
-            self.portfolio['Bitcoin'] = 7
-            self.portfolio['Litecoin'] = 137
-            self.portfolio['NEM'] = 13
-            self.portfolio['MaidSafeCoin'] = 25
-            self.portfolio['Augur'] = 10
-            self.portfolio['Zcash'] = 12
+            self.portfolio.append({'name': 'Bitcoin', 'alloc': 7, 'symbol': 'BTC'})
+            self.portfolio.append({'name': 'Litecoin', 'alloc': 137, 'symbol': 'LTE'})
+            self.portfolio.append({'name': 'NEM', 'alloc': 13, 'symbol': 'NEM'})
+            self.portfolio.append({'name': 'MaidSafeCoin', 'alloc': 25, 'symbol': 'MSC'})
+            self.portfolio.append({'name': 'Augur', 'alloc': 12, 'symbol': 'AUG'})
             invested_value = ((7 * self.get_price('Bitcoin')) + (137 * self.get_price('Litecoin') +
                                 (13 * self.get_price('NEM')) + (25 * self.get_price('MaidSafeCoin'))
                                 + (10 * self.get_price('Augur')) + (12 * self.get_price('Zcash'))))

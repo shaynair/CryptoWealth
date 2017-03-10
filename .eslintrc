@@ -15,7 +15,6 @@
   "rules": {
     // not sure why airbnb turned this on. gross!
     "comma-dangle": 0,
-    "indent": [2, 4, {"SwitchCase": 1}],
     // we prefer to be able to declara all parameters a function receives
     "no-unused-vars": [2, {
       "vars": "local",
@@ -32,7 +31,6 @@
     "no-param-reassign": [2, {"props": false}],
     "react/jsx-indent-props": 0,
     // enforce consistent indentation style. The default style is 4 spaces
-    "react/jsx-indent": [2, 4],
     // Ensure correct position of the first property.
     "react/jsx-first-prop-new-line": [2, "never"],
     // don't force break chaining into new lines because this this.props.actions.authLoginUser() is valid
