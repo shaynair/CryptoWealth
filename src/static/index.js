@@ -7,6 +7,7 @@ import Root from './containers/Root/Root';
 import configureStore from './store/configureStore';
 import { authLoginUserSuccess } from './actions/auth';
 
+import * as questActions from './actions/questionnaire'
 
 const initialState = {};
 const target = document.getElementById('root');
@@ -29,5 +30,9 @@ try {
 if (token !== null) {
     store.dispatch(authLoginUserSuccess(token, user));
 }
+
+// store.dispatch(questActions.updateRiskLevel(10));
+// store.dispatch(questActions.addInvestment(1000));
+
 
 ReactDOM.render(node, target);

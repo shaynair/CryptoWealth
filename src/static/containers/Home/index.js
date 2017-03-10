@@ -8,6 +8,10 @@ import reduxLogo from './images/redux-logo.png';
 
 class HomeView extends React.Component {
 
+    constructor(props){
+        super(props);
+    }
+
     static propTypes = {
         statusText: React.PropTypes.string,
         userName: React.PropTypes.string
@@ -27,7 +31,7 @@ class HomeView extends React.Component {
                     />
                 </div>
                 <div className="text-center">
-                    <h1>Django React Redux Demo</h1>
+                    <h1>CryptoWealth Demo</h1>
                     <h4>Hello, {this.props.userName || 'guest'}.</h4>
                 </div>
                 <div className="margin-top-medium text-center">
@@ -41,6 +45,12 @@ class HomeView extends React.Component {
                         :
                         null
                     }
+                </div>
+                <div className="">
+                    <Link className="btn btn-default btn-block" to="/questionnaire">
+                        Start Questionnaire
+                    </Link>
+
                 </div>
             </div>
         );
