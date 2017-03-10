@@ -2,26 +2,25 @@
 
 ## Iteration 2
 
- * Start date: February 22, 2017
- * End date: March 8, 2017
+>Start date: February 22, 2017
+>End date: March 9, 2017
  
 ##Process
 
 #### Roles & responsibilities
 
-*Main roles are meant to give a clear and defined role to every member in the team. They are not the only roles that one would have.*
-
 | Role | Responsibility | Member |
 | --- | --- | --- |
-| Front-end Master | Primarily responsible for creating the front-end of the project. | Ian |
-| Back-end Master | Primarily works with the back-end (user profiling, routing, security, database management, middleware...) and is responsible for maintaining development branches associated with the back-end, including creating the sprint backlog and merging PRs | Sakshaat |
-| Chief Data Analyst | Primarily works with the data analysis (parameterization, historical analysis, suggestion algorithms) and is responsible for maintaining development branches associated with the data analysis section, including creating the sprint backlog and merging PRs | Aaron |
-| Technical Lead | Works with the entire stack, merging any outstanding PRs, helping to create high-level algorithms and keeping code standards and RESTful endpoints consistent | Akshay |
-| Business/QA Lead | Helps to coordinate the team for sync meetings, ensures presentation quality of the product and of deliverables, and helps to create high-level algorithms through researching resources and APIs | Harold |
+| Front-end Engineer | Ensures front-end is kept consistent and structurally sound, merging related PRs | Ian |
+| Front-end Analyst | Creates any miscellaneous pages required for the front-end | Harold |
+| Scrum Master | Helps to coordinate the team for sync meetings by finding available space and working with everyone's schedules | Harold |
+| Designer | Creates a colour scheme, logo and overall look and feel of the project | Sakshaat |
+| Data Analyst | Works with the data analysis back-end and helps to route data to the front-end, merging related PRs | Aaron |
+| Technical/QA Lead | Sets up the project, sets up deployment, documents the directory structure, merges any outstanding PRs and ensures presentation quality | Akshay |
 
 #### Events
 
-Describe meetings (and other events) you are planning to have:
+The first meeting is our in-person planning meeting, on February 22, 2017 at 8:00 pm. 
 
  * When and where? In-person or online?
  1. Meeting on February 22, 2017 (Wednesday) at 8:00pm (In-person)
