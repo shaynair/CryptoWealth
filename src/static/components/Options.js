@@ -7,10 +7,10 @@ class Options extends Component {
 };
     render(){
         return (
-            <label>
+            <li className="col-md-8">
                 <input type="radio" name={this.props.name}/>
                 {this.props.propText}
-            </label>
+            </li>
         )
     }
 }
