@@ -45,8 +45,6 @@ class HomeView extends React.Component {
                 </div>
                 <div className="row">
                     <Link className="btn btn-default col-md-4 col-md-offset-4" to="/questionnaire">
-
->>>>>>> 49e66219d6c17d2722f37425ec345171504b3c26
                         Start Questionnaire
                     </Link>
 
