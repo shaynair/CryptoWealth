@@ -9,7 +9,7 @@ function getPortfolioHtml(portfolioJSON) {
     portfolioTableHtml += "<tr>"
     portfolioTableHtml += "<td class='assetSymbol'>" + portfolioObj.assets[i].assetSymbol + "</td>"
     portfolioTableHtml += "<td class='assetName'>" + portfolioObj.assets[i].assetName + "</td>"
-    portfolioTableHtml += "<td class='assetAlloc'>" + portfolioObj.assets[i].assetAlloc + "</td>"
+    portfolioTableHtml += "<td class='assetAlloc'>" + portfolioObj.assets[i].assetAlloc + "%</td>"
     portfolioTableHtml += "</tr>"
   }
   portfolioTableHtml += "</table>"
