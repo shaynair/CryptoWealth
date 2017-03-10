@@ -16,7 +16,7 @@ const Login = t.struct({
 
 const LoginFormOptions = {
     auto: 'placeholders',
-    help: <i>Hint: a@a.com / qw</i>,
+    help: '',
     fields: {
         password: {
             type: 'password'

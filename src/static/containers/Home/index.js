@@ -31,7 +31,7 @@ class HomeView extends React.Component {
                     />
                 </div>
                 <div className="text-center">
-                    <h1>CryptoWealth Demo</h1>
+                    <h1>CryptoWealth</h1>
                     <h4>Hello, {this.props.userName || 'guest'}.</h4>
                 </div>
                 <div className="margin-top-medium">
