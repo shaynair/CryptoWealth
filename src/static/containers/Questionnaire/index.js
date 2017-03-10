@@ -86,10 +86,10 @@ class QuestionnaireView extends Component {
         }
 
         return(
-            <div className="Container">
+            <div className="container-fluid ">
                 <Question propQuestion={this.props.question.text}/>
                 <form className="questions">
-                <ul className="container-fluid">
+                <ul className="container-fluid options">
                     {this.props.question.options.map(
                         (option, index) =>
                             <Options key={index} propText={option} name={this.props.currentQuestion} onClick={this.handleInputChange}/>)
