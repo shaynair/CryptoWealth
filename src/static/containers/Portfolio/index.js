@@ -10,7 +10,8 @@ class PortfolioView extends React.Component {
   };
 
   componentWillMount() {
-    this.props.dispatch(dataFetchProtectedData(0, 10));
+    /* Fetch portfolio data based on two parameters: { risk, cash } */
+    this.props.dispatch(dataFetchProtectedData(5, 10000));
   }
 
   render() {
