@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
 import * as actionCreators from '../../actions/questionnaire';
-
 import './style.scss';
-import Options from '../../components/Options'
-import Question from '../../components/Question'
+import Options from '../../components/Options';
+import Question from '../../components/Question';
 
 
 class QuestionnaireView extends Component {

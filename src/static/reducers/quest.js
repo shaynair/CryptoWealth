@@ -11,29 +11,39 @@ import {
 
 const questions = {
     1: {
-        text: "What's the main reason you're investing?",
-        options: ['Buying a mansion', 'Saving for the end of the world', 'Get rich quick'],
-        optionRisks: [7, 1, 10]
+        text: "How long are you looking to invest for?",
+        options: ['0 - 6 months', '6 - 12 months', '1 - 3 years', '3 - 5 years', '5 - 10 years'],
+        optionRisks: [1, 3, 5, 7, 10]
     },
     2: {
-        text: "Q2",
-        options: ["opt1", "opt2"],
-        optionRisks: [7, 1]
+        text: "What's your primary reason for investing?",
+        options: ["Retirement", "Children's education", "Saving for the long-term", "Wedding fund", "Buying a house", "Other"],
+        optionRisks: [1, 3, 6, 2, 9, 2]
     },
     3: {
-        text: "Q3",
-        options: ["opt1", "opt2"],
-        optionRisks: [1, 10]
+        text: "Do you currently have any debt?",
+        options: ["Yes :(", "No!"],
+        optionRisks: [4, 8]
+    },
+    4: {
+      text: "Do you have an emergency fund?",
+      options: ["Yes", "No"],
+      optionRisks: [10, 3]
+    },
+    5: {
+      text: "What is your annual income?",
+      options: ["Less than 60k", "60k - 90k", "91k - 140k", "141 - 200k", "200k or more"],
+      optionRisks: [1, 3, 5, 7, 10]
     }
 };
 
 const initialState = {
     currentQuestion : 1,
     question: questions[1],
-    answers: [-1, -1, -1],
+    answers: [-1, -1, -1, -1, -1],
     riskLevel: 0,
     investment: 0,
-    totalQuestions: 3
+    totalQuestions: 5
 };
 
 export default createReducer(initialState, {
