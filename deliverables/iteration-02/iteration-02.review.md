@@ -52,7 +52,9 @@ Our team was able to agree on meeting times much easier after we co-ordinated ou
 
 1. We actually decided on a PostgreSQL database which is now set up with our project. It was included in the starter code, and we decided to go with it due to its ease-of-use when integrating with Django. Our original plan was to use a NoSQL database such as Firebase or MongoDB, but we prioritized ease-of-use above efficiency for our project.
 
-2. We were able to deploy our application to Heroku! As found [here](https://cryptowealth.herokuapp.com/). We hope to use this for future presentations.
+2. The starter code also came with a basic authentication system, which is present in our codebase as well. We will expand upon it for our own uses.
+
+3. We were able to deploy our application to Heroku! As found [here](https://cryptowealth.herokuapp.com/). We hope to use this for future presentations.
 
 ## Meeting Highlights
 
