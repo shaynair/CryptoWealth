@@ -34,9 +34,6 @@ class HomeView extends React.Component {
                     <h1>CryptoWealth Demo</h1>
                     <h4>Hello, {this.props.userName || 'guest'}.</h4>
                 </div>
-                <div className="margin-top-medium text-center">
-                    <p>Attempt to access some <Link to="/protected"><b>protected content</b></Link>.</p>
-                </div>
                 <div className="margin-top-medium">
                     {this.props.statusText ?
                         <div className="alert alert-info">
@@ -46,8 +43,8 @@ class HomeView extends React.Component {
                         null
                     }
                 </div>
-                <div className="">
-                    <Link className="btn btn-default btn-block" to="/questionnaire">
+                <div className="row">
+                    <Link className="btn btn-default col-md-4 col-md-offset-4" to="/questionnaire">
                         Start Questionnaire
                     </Link>
 
