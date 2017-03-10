@@ -2,12 +2,12 @@ import fetch from 'isomorphic-fetch';
 
 import { SERVER_URL } from '../utils/config';
 import { checkHttpStatus, parseJSON } from '../utils';
-import { DATA_FETCH_PROTECTED_DATA_REQUEST, DATA_RECEIVE_PROTECTED_DATA } from '../constants';
+import { DATA_FETCH_PORTFOLIO_REQUEST, DATA_RECEIVE_PORTFOLIO } from '../constants';
 
 
 export function dataReceiveProtectedData(data) {
     return {
-        type: DATA_RECEIVE_PROTECTED_DATA,
+        type: DATA_RECEIVE_PORTFOLIO,
         payload: {
             data
         }
@@ -16,23 +16,23 @@ export function dataReceiveProtectedData(data) {
 
 export function dataFetchProtectedDataRequest() {
     return {
-        type: DATA_FETCH_PROTECTED_DATA_REQUEST
+        type: DATA_FETCH_PORTFOLIO_REQUEST
     };
 }
 
 export function dataFetchProtectedData(risk, cash) {
     return (dispatch, state) => {
         dispatch(dataFetchProtectedDataRequest());
-        return fetch(`${SERVER_URL}/api/v1/portfolios/risk/`, {
+        return fetch(`${SERVER_URL}/api/v1/portfolios/risk/?risk=${risk}&cash=${cash}`, {
             credentials: 'include',
             headers: {
                 Accept: 'application/json',
             }
-        }, { risk, cash })
+        })
             .then(checkHttpStatus)
             .then(parseJSON)
             .then((response) => {
-                dispatch(dataReceiveProtectedData(response.data));
+                dispatch(dataReceiveProtectedData(response));
             })
             .catch((error) => {
                 if (error && typeof error.response !== 'undefined' && error.response.status === 401) {
