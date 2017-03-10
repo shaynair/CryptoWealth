@@ -4,85 +4,8 @@
     <meta charset="utf-8">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.bundle.min.js"></script>-->
     <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
-    <script>
-      $( document ).ready(function() {
-
-          $("input[name='profile']").change(function() {
-              var selectedProfile = $('input[name=profile]:checked', '#profileChooser').val();
-              if (selectedProfile == "A") {
-                $(".portfolioType").text("Conservative");
-                $(".portfolioDescription").text("A Conservative profile is best suited for risk-averse investors who value stability and preservation of capital. We recommend a relatively stable asset mix that has a past performance of minimal fluctuations. This type of profile is willing to trade high returns for investment safety.");
-                $("#portfolioTable").html("<table><tr><th colspan='2'>Asset</th><th>Allocation</th></tr><tr><td class='assetShortName'>BTC</td><td class='assetLongName'>Bitcoin</td><td class='assetAllocation'>20%</td></tr><tr><td class='assetShortName'>ETC</td><td class='assetLongName'>Ethereum</td><td class='assetAllocation'>20%</td></tr><tr><td class='assetShortName'>DASH</td><td class='assetLongName'>Dash</td><td class='assetAllocation'>20%</td></tr><tr><td class='assetShortName'>XRP</td><td class='assetLongName'>Ripple</td><td class='assetAllocation'>15%</td></tr><tr><td class='assetShortName'>XMR</td><td class='assetLongName'>Monero</td><td class='assetAllocation'>25%</td></tr></table>");
-
-                var ctx = document.getElementById("myChart");
-                var myChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                      labels: [
-                        "BTC (Bitcoin)",
-                        "ETC (Ethereum)",
-                        "DASH (Dash)",
-                        "XRP (Ripple)",
-                        "XMR (Monero)"
-                      ],
-                      datasets: [
-                        {
-                          data: [20,20,20,15,25],
-                          backgroundColor: [
-                              "#36A2EB",
-                              "#FFCE56",
-                              "#31a57b",
-                              "#d8462f",
-                              "#953099"
-                          ],
-                          hoverBackgroundColor: [
-                              "#36A2EB",
-                              "#FFCE56",
-                              "#31a57b",
-                              "#d8462f",
-                              "#953099"
-                          ]
-                        }
-                      ]
-                    },
-                });
-              } else if (selectedProfile == "B") {
-                $(".portfolioType").text("Aggressive");
-                $(".portfolioDescription").text("An Aggressive profile is best suited for high-capital investors who have a greater than average risk tolerance. Expect price fluctuations in the asset mix. This type of profile has potential for high gain, at the risk of high loss.");
-                $("#portfolioTable").html("<table><tr><th colspan='2'>Asset</th><th>Allocation</th></tr><tr><td class='assetShortName'>BTC</td><td class='assetLongName'>Bitcoin</td><td class='assetAllocation'>40%</td></tr><tr><td class='assetShortName'>ETC</td><td class='assetLongName'>Ethereum</td><td class='assetAllocation'>34.5%</td></tr><tr><td class='assetShortName'>XMR</td><td class='assetLongName'>Monero</td><td class='assetAllocation'>25.5%</td></tr></table>");
-
-                var ctx = document.getElementById("myChart");
-                var myChart = new Chart(ctx, {
-                    type: 'pie',
-                    data: {
-                      labels: [
-                        "BTC (Bitcoin)",
-                        "ETC (Ethereum)",
-                        "XMR (Monero)"
-                      ],
-                      datasets: [
-                        {
-                          data: [40,34.5,25.5],
-                          backgroundColor: [
-                              "#36A2EB",
-                              "#FFCE56",
-                              "#31a57b",
-                          ],
-                          hoverBackgroundColor: [
-                              "#36A2EB",
-                              "#FFCE56",
-                              "#31a57b",
-                          ]
-                        }
-                      ]
-                    },
-                });
-              }
-          })
-      });
-    </script>
+    <script type="text/javascript" src="portfolioAllocations.js"></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
@@ -90,11 +13,9 @@
   </head>
 
   <body>
-    <h1 id="portfolioTitle">Your Personalized Portfolio</h1>
+    <h1 id="pageTitle">Your Personalized Portfolio</h1>
 
-    <div id="portfolioPreamble">
-      Based on the answers you provided, we have personalized a suitable profile for your needs.
-    </div>
+    <div id="pagePreamble">Based on the answers you provided, we have personalized a suitable profile for your needs.</div>
 
     <form id="profileChooser">
       <input type="radio" name="profile" value="A" checked> A<br>
@@ -102,85 +23,17 @@
     </form>
 
     <div id="portfolioText">
-      <h4>Profile type:</h4>
-      <h3 class="portfolioType">Conservative</h3>
-      <div class="portfolioDescription">
-        A Conservative profile is best suited for risk-averse investors who value stability and preservation of capital. We recommend a relatively stable asset mix that has a past performance of minimal fluctuations. This type of profile is willing to trade high returns for investment safety.
-      </div>
+      <h4>Profile type:
+        <span class="portfolioType"><em>Conservative</em></span>
+      </h4>
+      <div class="portfolioDescription">A Conservative profile is best suited for risk-averse investors who value stability and preservation of capital. We recommend a relatively stable asset mix that has a past performance of minimal fluctuations. This type of profile is willing to trade high returns for investment safety.</div>
     </div>
     <br>
 
-    <div id="portfolioTable" class="table-striped">
-      <table>
-        <tr>
-          <th colspan="2">Asset</th>
-          <th>Allocation</th>
-        </tr>
-        <tr>
-          <td class="assetShortName">BTC</td>
-          <td class="assetLongName">Bitcoin</td>
-          <td class="assetAllocation">20%</td>
-        </tr>
-        <tr>
-          <td class="assetShortName">ETC</td>
-          <td class="assetLongName">Ethereum</td>
-          <td class="assetAllocation">20%</td>
-        </tr>
-        <tr>
-          <td class="assetShortName">DASH</td>
-          <td class="assetLongName">Dash</td>
-          <td class="assetAllocation">20%</td>
-        </tr>
-        <tr>
-          <td class="assetShortName">XRP</td>
-          <td class="assetLongName">Ripple</td>
-          <td class="assetAllocation">15%</td>
-        </tr>
-        <tr>
-          <td class="assetShortName">XMR</td>
-          <td class="assetLongName">Monero</td>
-          <td class="assetAllocation">25%</td>
-        </tr>
-      </table>
-    </div>
+    <div id="portfolioTableWrapper" class="table table-striped"></div>
 
-    <div id="portfolioChart">
-      <canvas id="myChart" width="200" height="200"></canvas>
-
-      <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: [
-              "Blue",
-              "Yellow",
-              "Green",
-              "Red",
-              "Purple"
-            ],
-            datasets: [
-              {
-                data: [20,20,20,15,25],
-                backgroundColor: [
-                    "#36A2EB",
-                    "#FFCE56",
-                    "#31a57b",
-                    "#d8462f",
-                    "#953099"
-                ],
-                hoverBackgroundColor: [
-                    "#36A2EB",
-                    "#FFCE56",
-                    "#31a57b",
-                    "#d8462f",
-                    "#953099"
-                ]
-              }
-            ]
-          },
-      });
-      </script>
+    <div id="portfolioChartWrapper">
+      <canvas id="portfolioChart" width="200" height="200"></canvas>
     </div>
 
   </body>
