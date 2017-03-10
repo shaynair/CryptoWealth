@@ -9,7 +9,7 @@ class Options extends Component {
         return (
             <li className="col-md-8">
                 <input type="radio" name={this.props.name}/>
-                {this.props.propText}
+                <span className="option-text"> {this.props.propText} </span>
             </li>
         )
     }
