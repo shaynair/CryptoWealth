@@ -41,7 +41,7 @@ class App extends React.Component {
 
         return (
             <div className="app">
-                <nav className="navbar navbar-default">
+                <nav className="navbar navbar-inverse bg-inverse">
                     <div className="container-fluid">
                         <div className="navbar-header">
                             <button type="button"

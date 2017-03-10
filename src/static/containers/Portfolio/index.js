@@ -4,26 +4,6 @@ import { connect } from 'react-redux';
 import { dataFetchProtectedData } from '../../actions/portfolio';
 import { PortfolioTable } from './PortfolioTable';
 
-var portfolioA = {
-    data: [
-        {
-            symbol: "BTC",
-            name: "Bitcoin",
-            alloc: 20
-        },
-        {
-            symbol: "ETC",
-            name: "Ethereum",
-            alloc: 21
-        },
-        {
-            symbol: "DASH",
-            name: "Dash",
-            alloc: 19
-        }
-    ]
-}
-
 
 class PortfolioView extends React.Component {
 
@@ -37,7 +17,7 @@ class PortfolioView extends React.Component {
   }
 
   render() {
-    return (<PortfolioTable portfolio={ portfolioA } > </PortfolioTable>);
+    return ( <PortfolioTable portfolio={ this.props.data }></PortfolioTable> );
   }
 }
 

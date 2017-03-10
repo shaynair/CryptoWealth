@@ -81,23 +81,25 @@ class QuestionnaireView extends Component {
     render() {
         let button = null;
         if (this.props.currentQuestion == this.props.totalQuestions) {
-            button = <button className="btn-info" onClick={this.submitQuestionnaire}> Submit </button>
+            button = <button className="btn-info col-md-1" onClick={this.submitQuestionnaire}> Submit </button>
         } else {
-            button = <button className="btn-primary" onClick={this.nextQuestion}> Next </button>
+            button = <button className="btn-primary col-md-1" onClick={this.nextQuestion}> Next </button>
         }
 
         return(
             <div className="Container">
                 <Question propQuestion={this.props.question.text}/>
                 <form className="questions">
+                <ul className="container-fluid">
                     {this.props.question.options.map(
                         (option, index) =>
                             <Options key={index} propText={option} name={this.props.currentQuestion} onClick={this.handleInputChange}/>)
                     }
-                    <br/>
-                    <button className="btn-danger" onClick={this.prevQuestion}> Go Back </button>
-                    <br/>
+                </ul>
+                <div className="container-fluid">
+                    <button className="btn-danger col-md-1" onClick={this.prevQuestion}> Go Back </button>
                     {button}
+                </div>
                 </form>
             </div>
         )
