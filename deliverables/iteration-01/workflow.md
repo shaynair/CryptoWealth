@@ -66,17 +66,3 @@ Finally, we will also create data visualization artifacts such as burndown graph
 A sample data visualization artifact can be seen below. This is an interactive burndown graph.
 
 ![Chart](https://cristinasantamarina.files.wordpress.com/2015/06/zenhub-burndown-chart.png)
-
-#### Workflow
-
-On GitHub, we plan to use forks and feature branches to maintain our development.
-
-The `master` branch in the `csc301-winter-2017` version of the repository will serve as our base reference and submission branch. Changes meant for production will be pushed to this branch on a regular basis. We will push this branch to our production hosting environments manually whenever appropriate for presentation.
-
-We will also maintain a `develop` branch on an ongoing basis on the `csc301-winter-2017` version of the repository. It will serve as reference for us, and will be the central repository to which pull requests from respective forks are accepted to. At the end of each sprint, if the `develop` branch is fully tested and ready for production, we will issue a pull request to `master` which will be merged.
-
-After the `develop` branch, we will maintain individual forks. The reasoning for using forking (as opposed to branching further) is that we do not have administrative access to the central repository. By forking, we are able to use our respective forks with Continuous Integration and/or with automated hosting services.
-
-Individual `develop` branches will be used for our development hosting environments. Each individual will also create `feature` branches on an ongoing basis, which will be merged back to `develop`, which will then be used to create a pull request to our central repository's `develop` branch.
-
-An explanation of this workflow can be found at the [Atlassian Gitflow Workflow page](https://www.atlassian.com/git/tutorials/comparing-workflows#gitflow-workflow) or the [GitHub workflow page](https://guides.github.com/introduction/flow/).
