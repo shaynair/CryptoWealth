@@ -22,10 +22,10 @@ DEMO:  - 100 seconds
   The first user portfolio we will see is for a conservative investor.  Acting as if we are a new user navigating to the    website for the first time, we will input our user preferences through the questionnaire and generate a portfolio.
   (SELECT START QUESTIONNAIRE)
   
-  Our conservative investor is looking to invest for a relatively short term, lets say 1 - 3 years
+  Our conservative investor is looking for a relatively short term investment, lets say 1 - 3 years
   (SELECT 1 - 3 YEARS, NEXT QUESTION)
   
-  They have a daughter going to college in a few years so they are looking to save for the childrens education 
+  They have a daughter going to college in a few years so they are looking to save for childrens education 
   (SELECT CHILDRENS EDUCATION, NEXT QUESTION)
   
   They currently have some debt
