@@ -13,7 +13,7 @@ class PortfolioView extends React.Component {
 
   componentWillMount() {
     /* Fetch portfolio data based on two parameters: { risk, cash } */
-    this.props.dispatch(dataFetchProtectedData(5, 10000));
+    this.props.dispatch(dataFetchProtectedData(this.props.risk, 10000));
   }
 
   render() {
@@ -23,7 +23,8 @@ class PortfolioView extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-      data: state.portfolio.data
+      data: state.portfolio.data,
+      risk: state.quest.riskLevel
     };
 };
 
