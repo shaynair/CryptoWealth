@@ -71,7 +71,7 @@ class QuestionnaireView extends Component {
                 value = i + 1;
             }
         }
-        const risk = this.props.riskLevel + + this.props.question.optionRisks[value - 1];
+        const risk = (this.props.riskLevel + + this.props.question.optionRisks[value - 1]) / this.props.totalQuestions;
         this.props.dispatch(this.props.actions.submitAnswer(risk));
     };
 
