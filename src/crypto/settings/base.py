@@ -99,6 +99,15 @@ REST_FRAMEWORK = {
     ),
 }
 
+# ############ CELERY ###########################
+
+BROKER_URL = 'redis://redis-17225.c12.us-east-1-4.ec2.cloud.redislabs.com:17225'
+CELERY_RESULT_BACKEND = BROKER_URL
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/New_York'
+
 # ############ REST KNOX ########################
 REST_KNOX = {
     'SECURE_HASH_ALGORITHM': 'cryptography.hazmat.primitives.hashes.SHA512',
