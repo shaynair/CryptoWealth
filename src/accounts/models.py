@@ -71,16 +71,7 @@ class MyUserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """
     Model that represents an user.
-
-    To be active, the user must register and confirm his email.
     """
-
-    GENDER_MALE = 'M'
-    GENDER_FEMALE = 'F'
-    GENDER_CHOICES = (
-        (GENDER_MALE, 'Male'),
-        (GENDER_FEMALE, 'Female')
-    )
 
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
@@ -107,10 +98,6 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     email = models.EmailField(_('Email address'), unique=True)
 
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES, default=GENDER_MALE)
-
-    confirmed_email = models.BooleanField(default=False)
-
     is_staff = models.BooleanField(
         _('staff status'),
         default=False,
@@ -125,8 +112,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
-
-    activation_key = models.UUIDField(unique=True, default=uuid.uuid4)  # email
 
     USERNAME_FIELD = 'email'
 
@@ -155,23 +140,3 @@ class User(AbstractBaseUser, PermissionsMixin):
         :return: string
         """
         return self.first_name
-
-    def activation_expired(self):
-        """
-        Check if user's activation has expired.
-
-        :return: boolean
-        """
-        return self.date_joined + timedelta(days=settings.ACCOUNT_ACTIVATION_DAYS) < timezone.now()
-
-    def confirm_email(self):
-        """
-        Confirm email.
-
-        :return: boolean
-        """
-        if not self.activation_expired() and not self.confirmed_email:
-            self.confirmed_email = True
-            self.save()
-            return True
-        return False

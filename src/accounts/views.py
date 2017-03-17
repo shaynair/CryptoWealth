@@ -35,33 +35,3 @@ class UserLoginView(GenericAPIView):
             'user': self.get_serializer(request.user).data,
             'token': token
         })
-
-
-class UserConfirmEmailView(AtomicMixin, GenericAPIView):
-    serializer_class = None
-    authentication_classes = ()
-
-    def get(self, request, activation_key):
-        """
-        View for confirm email.
-
-        Receive an activation key as parameter and confirm email.
-        """
-        user = get_object_or_404(User, activation_key=str(activation_key))
-        if user.confirm_email():
-            return Response(status=status.HTTP_200_OK)
-
-        log.warning(message='Email confirmation key not found.',
-                    details={'http_status_code': status.HTTP_404_NOT_FOUND})
-        return Response(status=status.HTTP_404_NOT_FOUND)
-
-
-class UserEmailConfirmationStatusView(GenericAPIView):
-    serializer_class = None
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request):
-        """Retrieve user current confirmed_email status."""
-        user = self.request.user
-        return Response({'status': user.confirmed_email}, status=status.HTTP_200_OK)
