@@ -35,7 +35,7 @@ class QuestionnaireView extends Component {
     let value;
     for (let i = 0; i < radios.length; i += 1) {
       if (radios[i].type === 'radio' && radios[i].checked) {
-                // get value, set checked flag or do whatever you need to
+        // get value, set checked flag or do whatever you need to
         value = i + 1;
       }
     }
@@ -49,7 +49,7 @@ class QuestionnaireView extends Component {
       const risk = this.props.riskLevel + this.props.question.optionRisks[value - 1];
       this.props.dispatch(this.props.actions.updateRiskLevel(risk));
 
-            // change question
+      // change question
       this.props.dispatch(this.props.actions.nextQuestion(index));
     }
   };
@@ -59,9 +59,9 @@ class QuestionnaireView extends Component {
     const index = this.props.currentQuestion - 1;
 
     if (index >= 1) {
-            // update risk level
+      // update risk level
 
-            // change question
+      // change question
       this.props.dispatch(this.props.actions.prevQuestion(index));
     }
   };
@@ -72,7 +72,7 @@ class QuestionnaireView extends Component {
     let value;
     for (let i = 0; i < radios.length; i += 1) {
       if (radios[i].type === 'radio' && radios[i].checked) {
-                // get value, set checked flag or do whatever you need to
+        // get value, set checked flag or do whatever you need to
         value = i + 1;
       }
     }
@@ -85,54 +85,38 @@ class QuestionnaireView extends Component {
   render() {
     let button = null;
     if (this.props.currentQuestion === this.props.totalQuestions) {
-      button = (< button
-className="btn-info col-md-1"
-                    onClick={this.submitQuestionnaire}
-      >
-                    Submit < /button>);
+      button = (<button className="btn-info col-md-1" onClick={this.submitQuestionnaire}>Submit</button>);
     } else {
-      button = (< button
-className="btn-primary col-md-1"
-                        onClick={this.nextQuestion}
-      >
-                        Next < /button>);
+      button = (<button className="btn-primary col-md-1" onClick={this.nextQuestion}>Next</button>);
     }
 
-    return (<
-                        div className="container-fluid "
-    >
-      <
-                        Question propQuestion={this.props.question.text}
-      /> <
-                        form className="questions"
-      >
-        <
-                        ul className="container-fluid options"
-        > {
+    return (<div className="container-fluid">
+      <Question propQuestion={this.props.question.text} />
+      <form className="questions">
+        <ul className="container-fluid options">
+          {
                             this.props.question.options.map(
                                 (option, index) => {
-                                  return (< Options
-key={index}
-                                        propText={option}
-                                        name={this.props.currentQuestion}
-                                        onClick={this.handleInputChange}
+                                  return (<Options
+                                    key={index}
+                                    propText={option}
+                                    name={this.props.currentQuestion}
+                                    onClick={this.handleInputChange}
                                   />);
                                 })
-                            } <
-                            /ul> <
-                            div className="container-fluid"
-                            >
-                              <
-                            button className="btn-danger col-md-1"
-                            onClick={this.prevQuestion}
-                              >
-                            Go Back < /button> { button } < /
-                            div > <
-                            /form> < /
-                            div >
+                            }
+        </ul>
+        <div className="container-fluid">
+          <button className="btn-danger col-md-1" onClick={this.prevQuestion}>
+            Go Back
+          </button>
+          { button }
+        </div>
+      </form>
+    </div>
     );
   }
-                }
+}
 
 const mapStateToProps = (state) => {
                     // noinspection JSUnresolvedVariable

@@ -17,37 +17,29 @@ class PortfolioTable extends React.Component {
     let portfolios = (< tr / >);
     if (this.props.portfolio != null) {
       portfolios = this.props.portfolio.map((asset) => {
-        return (<
-                    tr >
-          <
-                    td className="assetSymbol"
-          >
-            { asset.symbol } < /td> <
-                    td className="assetName"
-            >
-              { asset.name } < /td> <
-                    td className="assetSymbol"
-              >
-                { asset.alloc } < /td> < /
-                    tr >
+        return (<tr>
+          <td className="assetSymbol">
+            { asset.symbol }
+          </td>
+          <td className="assetName">
+            { asset.name }
+          </td>
+          <td className="assetSymbol">
+            { asset.alloc }
+          </td>
+        </tr>
         );
       });
     }
 
-    return (<
-            table className="table"
-            id="portfolio-table"
-    >
-      <
-            thead >
-        <
-            th > Symbols < /th> <
-            th > Assets < /th> <
-            th > Allocation < /th>
-
-        { portfolios } <
-            /thead> < /
-            table >
+    return (<table className="table" id="portfolio-table">
+      <thead>
+        <th>Symbols</th>
+        <th>Assets</th>
+        <th>Allocation</th>
+        { portfolios }
+      </thead>
+    </table>
     );
   }
 }

@@ -97,19 +97,19 @@ class LoginView extends React.Component {
           {statusText}
           <form onSubmit={this.login}>
             <Form
-ref={(ref) => { this.loginForm = ref; }}
-                              type={Login}
-                              options={LoginFormOptions}
-                              value={this.state.formValues}
-                              onChange={this.onFormChange}
+              ref={(ref) => { this.loginForm = ref; }}
+              type={Login}
+              options={LoginFormOptions}
+              value={this.state.formValues}
+              onChange={this.onFormChange}
             />
             <button
-disabled={this.props.isAuthenticating}
-                                type="submit"
-                                className="btn btn-default btn-block"
+              disabled={this.props.isAuthenticating}
+              type="submit"
+              className="btn btn-default btn-block"
             >
-                            Submit
-                        </button>
+              Submit
+            </button>
           </form>
         </div>
       </div>

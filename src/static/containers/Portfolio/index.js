@@ -19,14 +19,12 @@ class PortfolioView extends React.Component {
   }
 
   render() {
-    return (< div className="col-md-6 col-md-offset-3" >
-      <
-            h3 className="table-header col-md-4 col-md-offset-4"
-      >
-            Sample Portfolio < /h3> <
-            PortfolioTable portfolio={this.props.data}
-            /> < /
-            div >);
+    return (<div className="col-md-6 col-md-offset-3">
+      <h3 className="table-header col-md-4 col-md-offset-4">
+        Sample Portfolio
+      </h3>
+      <PortfolioTable portfolio={this.props.data} />
+    </div>);
   }
 }
 
