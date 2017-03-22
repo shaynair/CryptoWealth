@@ -5,7 +5,8 @@ import {
     NEXT_QUESTION,
     PREVIOUS_QUESTION,
     SUBMIT_ANSWERS,
-    TOGGLE_ANSWER
+    TOGGLE_ANSWER,
+    UPDATE_PROGRESS
 } from '../constants';
 
 export function addInvestment(amount) {
@@ -71,5 +72,15 @@ export function submitAnswer(risk) {
             riskLevel: risk
         }
     };
+}
+
+export function updateProgress (percent, color) {
+    return {
+        type: UPDATE_PROGRESS,
+        payload: {
+            percent: percent,
+            color: color
+        }
+    }
 }
 
