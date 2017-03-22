@@ -7,8 +7,10 @@ import * as actionCreators from '../../actions/questionnaire';
 import './style.scss';
 import Options from '../../components/Options';
 import Question from '../../components/Question';
+import ProgressBar from '../../components/ProgressBar';
 
-
+// TODO [ian]:  implement progress bar
+// TODO [ian]:  update style for questionnaire
 class QuestionnaireView extends Component {
     static propTypes = {
         currentQuestion: React.PropTypes.number.isRequired,
@@ -40,19 +42,38 @@ class QuestionnaireView extends Component {
                 value = i;
             }
         }
-        if (value >= 0 && value != null) {
+        if (value >= 0 && value !== null) {
             const current = this.props.currentQuestion;
             this.props.actions.toggleAnswer(value, current);
         }
 
-        if (index <= this.props.totalQuestions && value != null) {
+        if (index <= this.props.totalQuestions && value !== null) {
             const risk = this.props.riskLevel + this.props.question.optionRisks[value];
             this.props.actions.updateRiskLevel(risk);
 
             // change question
             radios[value].checked = false;
             this.props.actions.nextQuestion(index);
+
+            // update progress bar
+            let percent = 20 + (index / this.props.totalQuestions) * 100;
+            const color = this.chooseColor(percent);
+            this.props.actions.updateProgress(percent.toString(), color);
         }
+    };
+
+    chooseColor = (percent) => {
+        let color;
+        if (percent <= 33){
+            color = '#FF4B41';
+        } else if (percent <= 66) {
+            color = '#FF9920';
+        } else if (percent >= 75) {
+            color = '#A7FF34';
+        } else if (percent === 100){
+            color = '#00CA0D';
+        }
+        return color;
     };
 
     prevQuestion = (e) => {
@@ -64,8 +85,14 @@ class QuestionnaireView extends Component {
             const answer = this.props.answers[index];
             const risk = this.props.riskLevel - this.props.question.optionRisks[answer];
             this.props.actions.updateRiskLevel(risk);
+
             // change question
             this.props.actions.prevQuestion(index);
+
+            // update progress bar
+            let percent = ((this.props.currentQuestion - 1) / this.props.totalQuestions) * 100;
+            const color = this.chooseColor(percent);
+            this.props.actions.updateProgress(percent.toString(), color);
         }
     };
 
@@ -86,14 +113,22 @@ class QuestionnaireView extends Component {
     };
 
     render() {
-        let button = null;
-        if (this.props.currentQuestion === this.props.totalQuestions) {
-            button = (<button className="btn-info col-md-1" onClick={this.submitQuestionnaire}>Submit</button>);
+        let nextBtn = null;
+        if ((this.props.currentQuestion + 1) === this.props.totalQuestions) {
+            nextBtn = (<button className="btn-info col-md-1" onClick={this.submitQuestionnaire}>Submit</button>);
         } else {
-            button = (<button className="btn-primary col-md-1" onClick={this.nextQuestion}>Next</button>);
+            nextBtn = (<button className="btn-primary col-md-1" onClick={this.nextQuestion}>Next</button>);
+        }
+
+        let prevBtn = null;
+        if ((this.props.currentQuestion) !== 0) {
+            prevBtn = (<button className="btn-danger col-md-1" onClick={this.prevQuestion}>
+                Go Back
+            </button>);
         }
 
         return (<div className="container-fluid">
+                <ProgressBar percent={ this.props.percent } color={ this.props.color } />
                 <Question propQuestion={this.props.question.text}/>
                 <form className="questions">
                     <ul className="container-fluid options">
@@ -111,10 +146,8 @@ class QuestionnaireView extends Component {
                         }
                     </ul>
                     <div className="container-fluid">
-                        <button className="btn-danger col-md-1" onClick={this.prevQuestion}>
-                            Go Back
-                        </button>
-                        { button }
+                        { prevBtn }
+                        { nextBtn }
                     </div>
                 </form>
             </div>
@@ -130,6 +163,8 @@ const mapStateToProps = (state) => {
         currentQuestion: state.quest.currentQuestion,
         totalQuestions: state.quest.totalQuestions,
         riskLevel: state.quest.riskLevel,
+        percent: state.quest.percent,
+        color: state.quest.color
     };
 };
 const mapDispatchToProps = (dispatch) => {

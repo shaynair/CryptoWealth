@@ -6,7 +6,8 @@ import {
     TOGGLE_ANSWER,
     NEXT_QUESTION,
     PREVIOUS_QUESTION,
-    SUBMIT_ANSWERS
+    SUBMIT_ANSWERS,
+    UPDATE_PROGRESS
 } from '../constants';
 
 const questions = {
@@ -45,7 +46,9 @@ const initialState = {
     answers: [-1, -1, -1, -1, -1],
     riskLevel: 0,
     investment: 0,
-    totalQuestions: 5
+    totalQuestions: 5,
+    percent: '20',
+    color: '#FF4B41'
 };
 
 export default createReducer(initialState, {
@@ -96,5 +99,12 @@ export default createReducer(initialState, {
         return Object.assign({}, initialState, {
             riskLevel: payload.riskLevel
         });
+    },
+
+    [UPDATE_PROGRESS]: (state, payload) => {
+        return Object.assign({}, state, {
+            percent: payload.percent,
+            color: payload.color
+        })
     }
 });
