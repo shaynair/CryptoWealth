@@ -55,10 +55,10 @@ export function authLogoutAndRedirect() {
   };
 }
 
-export function authLoginUser(email, password, redirect = '/') {
+export function authLoginUser(username, password, redirect = '/') {
   return (dispatch) => {
     dispatch(authLoginUserRequest());
-    const auth = btoa(`${email}:${password}`);
+    const auth = btoa(`${username}:${password}`);
     return fetch(`${SERVER_URL}/api/v1/accounts/login/`, {
       method: 'post',
       headers: {

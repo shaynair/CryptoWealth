@@ -7,7 +7,7 @@ from .utils import validate_email as email_is_valid
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'first_name', 'last_name',)
+        fields = ('email', 'username',)
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('id', 'email', 'first_name', 'last_name', 'password')
+        fields = ('id', 'email', 'username', 'password')
 
     def create(self, validated_data):
         """
@@ -30,7 +30,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     def validate_email(self, value):
         """
-        Validate if email is valid or there is an user using the email.
+        Validate if email is valid or there is a user using the email.
 
         :param value: string
         :return: string
@@ -41,5 +41,18 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
         if User.objects.filter(email=value).exists():
             raise serializers.ValidationError('Email already in use, please use a different email address.')
+
+        return value
+
+    def validate_username(self, value):
+        """
+        Validate if there is a user using the username.
+
+        :param value: string
+        :return: string
+        """
+
+        if User.objects.filter(username=value).exists():
+            raise serializers.ValidationError('Username already in use, please use a different one.')
 
         return value

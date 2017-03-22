@@ -26,7 +26,8 @@ INSTALLED_APPS = (
     'django_extensions',
 
     'accounts',
-    'base'
+    'base',
+    'portfolio'
 )
 
 MIDDLEWARE_CLASSES = (
