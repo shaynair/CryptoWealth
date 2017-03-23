@@ -9,7 +9,6 @@ import Options from '../../components/Options';
 import Question from '../../components/Question';
 import ProgressBar from '../../components/ProgressBar';
 
-// TODO [ian]: highlight label when radio button is selected
 // TODO [ian]: update style for next and prev buttons
 class QuestionnaireView extends Component {
     static propTypes = {
@@ -50,8 +49,6 @@ class QuestionnaireView extends Component {
     nextQuestion = (e) => {
         e.preventDefault();
         const index = this.props.currentQuestion + 1;
-
-        const radios = document.getElementsByTagName('input');
         let checkedOption = this.getCheckedOption();
 
         if (checkedOption >= 0 && checkedOption !== null) {
@@ -141,7 +138,7 @@ class QuestionnaireView extends Component {
                 <ProgressBar percent={ this.props.percent } color={ this.props.color } />
                 <Question propQuestion={this.props.question.text}/>
                 <form className="questions">
-                    <ul className="container-fluid options">
+                    <ul className="options">
                         {
                             this.props.question.options.map(
                                 (option, index) => {
@@ -153,6 +150,7 @@ class QuestionnaireView extends Component {
                                         answer={this.props.answers[this.props.currentQuestion].toString()}
                                         handleOptionChange={this.handleOptionChange}
                                         selectedOption={this.props.selectedOption}
+                                        totalOptions={this.props.question.options.length}
                                     />);
                                 })
                         }

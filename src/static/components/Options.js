@@ -18,19 +18,34 @@ class Options extends Component {
         labelStyle = {
             display: 'block',
             padding: '20px 0',
-            borderRadius: '15px',
-            fontSize: '1.2em'
-        };
+            fontSize: '1.2em',
+            color: '#303030',
+            marginBottom: '0',
+            fontWeight: 'normal'
+        }; 
+        console.log('total options');
+        console.log(this.props.totalOptions);
+
+        if (this.props.value === 0) {
+            labelStyle = Object.assign({}, labelStyle, {
+                borderRadius: '20px 20px 0 0'
+            });
+        } else if (this.props.value === this.props.totalOptions - 1) {
+            labelStyle = Object.assign({}, labelStyle, {
+                borderRadius: '0 0 20px 20px'
+            });
+        }
 
         if (this.props.selectedOption === this.props.value) {
             labelStyle = Object.assign({}, labelStyle, {
-               background: '#69FFAD'
+                background: '#ED7957',
+                color: 'white'
             });
         } else {
             labelStyle = Object.assign({}, labelStyle, {
                 background: '#FFFDFC',
             });
-        } 
+        }
 
         return (
         <label style={labelStyle} className="col-12">
