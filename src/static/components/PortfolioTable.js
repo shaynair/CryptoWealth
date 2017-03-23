@@ -8,9 +8,7 @@ class PortfolioTable extends React.Component {
         if (this.props.portfolio != null ) {
             var portfolios = this.props.portfolio.map(function(asset, index) {
                 return (
-
                     <tr key= { index }>
-
                         <td className='assetSymbol'> { asset.symbol } </td>
                         <td className='assetName'>  { asset.name } </td>
                         <td className='assetSymbol'> { asset.alloc } </td>

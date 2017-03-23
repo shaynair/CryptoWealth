@@ -7,7 +7,6 @@ import {
     AUTH_SIGNUP_USER_FAILURE,
     AUTH_SIGNUP_USER_REQUEST,
     AUTH_SIGNUP_USER_SUCCESS,
-
     AUTH_LOGIN_USER_FAILURE,
     AUTH_LOGIN_USER_REQUEST,
     AUTH_LOGIN_USER_SUCCESS,
@@ -90,7 +89,6 @@ export function authLogoutAndRedirect() {
 
 export function authSignUpUser(username, password, email, redirect = "/login") {
     return (dispatch) => {
-
         dispatch(authSignUpUserRequest());
 
         return fetch(`${SERVER_URL}/api/v1/accounts/register/`, {
@@ -106,7 +104,6 @@ export function authSignUpUser(username, password, email, redirect = "/login") {
                 })
             }).then(checkHttpStatus)
             .then(parseJSON)
-
             .then((response) => {
                 dispatch(authSignUpUserSuccess());
                 dispatch(push(redirect));
