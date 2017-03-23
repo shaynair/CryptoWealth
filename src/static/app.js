@@ -28,6 +28,10 @@ class App extends React.Component {
     this.props.dispatch(push('/protected'));
   };
 
+  goToAnalytics = () => {
+    this.props.dispatch(push('/analytics'));
+  }
+
 
   render() {
     const homeClass = classNames({
@@ -39,6 +43,10 @@ class App extends React.Component {
     const loginClass = classNames({
       active: this.props.pathName === '/login'
     });
+    const analyticsClass = classNames({
+      active: this.props.pathName === "/analytics"
+    });
+
     const styles = {
       propStyle: {
         padding: '0px',
@@ -62,7 +70,7 @@ class App extends React.Component {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
               </button>
-              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> CryptoWealth Demo </a>
+              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> CryptoWealth</a>
             </div>
             <div className="collapse navbar-collapse" id="top-navbar">
               { this.props.isAuthenticated ?
@@ -72,9 +80,9 @@ class App extends React.Component {
                       <i className="fa fa-home" /> Home
                     </a>
                   </li>
-                  <li className={protectedClass}>
-                    <a className="js-go-to-protected-button" tabIndex="0" onClick={this.goToProtected} >
-                      <i className="fa fa-lock" /> Protected
+                  <li className={analyticsClass}>
+                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>  
+                      <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
                   <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}> Logout </a>

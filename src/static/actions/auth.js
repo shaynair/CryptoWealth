@@ -43,6 +43,7 @@ export function authSignUpUserFailure(error, message) {
     }
 }
 
+
 export function authLoginUserFailure(error, message) {
     sessionStorage.removeItem('token');
     return {

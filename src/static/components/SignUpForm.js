@@ -53,7 +53,6 @@ class SignUpForm extends React.Component {
     };
     
     render() {
-
         let statusText = null;
 
         if (this.props.statusText) {
