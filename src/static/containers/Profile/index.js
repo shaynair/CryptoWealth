@@ -17,14 +17,13 @@ const tabs =
 class ProfileView extends React.Component {
 
   static propTypes = {
-    statusText: React.PropTypes.string,
     userName: React.PropTypes.string
   };
 
   render() {
     return (
         <div className="container">
-            <h1> Hi, { person["firstName"] } {person["lastName"] } </h1>
+            <h1> Hi, { this.props.userName } </h1>
             { tabs }
             <div className="tab-content">
                 <div id="profile-overview" className="tab-pane fade in active">
@@ -83,7 +82,6 @@ class ProfileView extends React.Component {
 const mapStateToProps = (state) => {
   return {
     userName: state.auth.userName,
-    statusText: state.auth.statusText
   };
 };
 

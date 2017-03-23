@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { push } from 'react-router-redux';
 
-export default function requireAuthentication(Component) {
+export default function requireAuthentication(Component, DefaultComponent = null) {
   class AuthenticatedComponent extends React.Component {
 
     static propTypes = {
@@ -22,7 +22,7 @@ export default function requireAuthentication(Component) {
     }
 
     checkAuth() {
-      if (!this.props.isAuthenticated) {
+      if (!this.props.isAuthenticated && DefaultComponent === null) {
         const redirectAfterLogin = this.props.location.pathname;
         this.props.dispatch(push(`/login?next=${redirectAfterLogin}`));
       }
@@ -33,7 +33,7 @@ export default function requireAuthentication(Component) {
         <div>
           {this.props.isAuthenticated === true
                         ? <Component {...this.props} />
-                        : null
+                        : (DefaultComponent ?  <DefaultComponent {...this.props} /> : null)
                     }
         </div>
       );
