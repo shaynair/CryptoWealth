@@ -9,8 +9,8 @@ import Options from '../../components/Options';
 import Question from '../../components/Question';
 import ProgressBar from '../../components/ProgressBar';
 
-// TODO [ian]:  implement progress bar
-// TODO [ian]:  update style for questionnaire
+// TODO [ian]: highlight label when radio button is selected
+// TODO [ian]: update style for next and prev buttons
 class QuestionnaireView extends Component {
     static propTypes = {
         currentQuestion: React.PropTypes.number.isRequired,
@@ -30,34 +30,50 @@ class QuestionnaireView extends Component {
         }).isRequired,
     };
 
+    getCheckedOption = () => {
+        const radios = document.getElementsByTagName('input');
+        let index = null;
+        for (let i = 0; i < radios.length; i += 1) {
+            if (radios[i].type === 'radio' && radios[i].checked) {
+                index = i;
+            }
+        }
+        return index;
+    };
+
+    handleOptionChange = () => {
+        const index = this.getCheckedOption();
+        const label = document.getElementsByTagName('label');
+        this.props.actions.changeOption(index);
+    };
+
     nextQuestion = (e) => {
         e.preventDefault();
         const index = this.props.currentQuestion + 1;
 
         const radios = document.getElementsByTagName('input');
-        let value = null;
-        for (let i = 0; i < radios.length; i += 1) {
-            if (radios[i].type === 'radio' && radios[i].checked) {
-                // get value, set checked flag or do whatever you need to
-                value = i;
-            }
-        }
-        if (value >= 0 && value !== null) {
+        let checkedOption = this.getCheckedOption();
+
+        if (checkedOption >= 0 && checkedOption !== null) {
             const current = this.props.currentQuestion;
-            this.props.actions.toggleAnswer(value, current);
+            this.props.actions.toggleAnswer(checkedOption, current);
         }
 
-        if (index <= this.props.totalQuestions && value !== null) {
-            const risk = this.props.riskLevel + this.props.question.optionRisks[value];
+        if (index <= this.props.totalQuestions && checkedOption !== null) {
+            const risk = this.props.riskLevel + this.props.question.optionRisks[checkedOption];
             this.props.actions.updateRiskLevel(risk);
 
+            // reset selected options
+            this.props.actions.changeOption(-1);
+
             // change question
-            radios[value].checked = false;
             this.props.actions.nextQuestion(index);
 
             // update progress bar
             let percent = 20 + (index / this.props.totalQuestions) * 100;
             const color = this.chooseColor(percent);
+            console.log('percent');
+            console.log(percent);
             this.props.actions.updateProgress(percent.toString(), color);
         }
     };
@@ -71,7 +87,7 @@ class QuestionnaireView extends Component {
         } else if (percent >= 75) {
             color = '#A7FF34';
         } else if (percent === 100){
-            color = '#00CA0D';
+            color = '#1BA42C';
         }
         return color;
     };
@@ -90,7 +106,7 @@ class QuestionnaireView extends Component {
             this.props.actions.prevQuestion(index);
 
             // update progress bar
-            let percent = ((this.props.currentQuestion - 1) / this.props.totalQuestions) * 100;
+            let percent = (index / this.props.totalQuestions) * 100;
             const color = this.chooseColor(percent);
             this.props.actions.updateProgress(percent.toString(), color);
         }
@@ -98,15 +114,9 @@ class QuestionnaireView extends Component {
 
     submitQuestionnaire = (e) => {
         e.preventDefault();
-        const radios = document.getElementsByTagName('input');
-        let value;
-        for (let i = 0; i < radios.length; i += 1) {
-            if (radios[i].type === 'radio' && radios[i].checked) {
-                // get value, set checked flag or do whatever you need to
-                value = i;
-            }
-        }
-        const totalRisk = this.props.riskLevel + this.props.question.optionRisks[value];
+        const checkedOption = this.getCheckedOption();
+
+        const totalRisk = this.props.riskLevel + this.props.question.optionRisks[checkedOption];
         const risk = Math.round(totalRisk / this.props.totalQuestions);
         this.props.actions.submitAnswer(risk);
         this.props.dispatch(push('/portfolio'));
@@ -127,7 +137,7 @@ class QuestionnaireView extends Component {
             </button>);
         }
 
-        return (<div className="container-fluid">
+        return (<div className="wrapper">
                 <ProgressBar percent={ this.props.percent } color={ this.props.color } />
                 <Question propQuestion={this.props.question.text}/>
                 <form className="questions">
@@ -137,10 +147,12 @@ class QuestionnaireView extends Component {
                                 (option, index) => {
                                     return (<Options
                                         key={index}
+                                        value={index}
                                         text={option}
                                         name={this.props.currentQuestion}
-                                        answer={this.props.answers[this.props.currentQuestion]}
-                                        idx = {index}
+                                        answer={this.props.answers[this.props.currentQuestion].toString()}
+                                        handleOptionChange={this.handleOptionChange}
+                                        selectedOption={this.props.selectedOption}
                                     />);
                                 })
                         }
@@ -164,7 +176,8 @@ const mapStateToProps = (state) => {
         totalQuestions: state.quest.totalQuestions,
         riskLevel: state.quest.riskLevel,
         percent: state.quest.percent,
-        color: state.quest.color
+        color: state.quest.color,
+        selectedOption: state.quest.selectedOption
     };
 };
 const mapDispatchToProps = (dispatch) => {

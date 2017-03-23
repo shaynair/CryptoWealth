@@ -7,7 +7,8 @@ import {
     NEXT_QUESTION,
     PREVIOUS_QUESTION,
     SUBMIT_ANSWERS,
-    UPDATE_PROGRESS
+    UPDATE_PROGRESS,
+    CHANGE_OPTION
 } from '../constants';
 
 const questions = {
@@ -105,6 +106,12 @@ export default createReducer(initialState, {
         return Object.assign({}, state, {
             percent: payload.percent,
             color: payload.color
+        })
+    },
+
+    [CHANGE_OPTION]: (state, payload) => {
+        return Object.assign({}, state, {
+            selectedOption: payload.selectedOption
         })
     }
 });

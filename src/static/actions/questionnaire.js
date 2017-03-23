@@ -6,7 +6,8 @@ import {
     PREVIOUS_QUESTION,
     SUBMIT_ANSWERS,
     TOGGLE_ANSWER,
-    UPDATE_PROGRESS
+    UPDATE_PROGRESS,
+    CHANGE_OPTION
 } from '../constants';
 
 export function addInvestment(amount) {
@@ -80,6 +81,15 @@ export function updateProgress (percent, color) {
         payload: {
             percent: percent,
             color: color
+        }
+    }
+}
+
+export function changeOption (option) {
+    return {
+        type: CHANGE_OPTION,
+        payload: {
+            selectedOption: option,
         }
     }
 }

@@ -8,8 +8,6 @@ class ProgressBar extends Component {
     };
 
     render() {
-        console.log('percent');
-        console.log(this.props.percent);
         return (
           <div className="progress">
               <Line percent={ this.props.percent } strokeWidth="4" strokeColor={ this.props.color } />
