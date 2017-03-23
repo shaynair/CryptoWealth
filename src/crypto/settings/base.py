@@ -73,8 +73,6 @@ USE_TZ = True
 
 AUTH_USER_MODEL = 'accounts.User'
 
-ACCOUNT_ACTIVATION_DAYS = 7  # days
-
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 STATICFILES_DIRS = (
@@ -100,6 +98,15 @@ REST_FRAMEWORK = {
         'rest_framework.parsers.MultiPartParser',
     ),
 }
+
+# ############ CELERY ###########################
+
+BROKER_URL = 'redis://redis-17225.c12.us-east-1-4.ec2.cloud.redislabs.com:17225'
+CELERY_RESULT_BACKEND = BROKER_URL
+CELERY_ACCEPT_CONTENT = ['application/json']
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'America/New_York'
 
 # ############ REST KNOX ########################
 REST_KNOX = {

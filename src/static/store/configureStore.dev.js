@@ -9,28 +9,28 @@ import rootReducer from '../reducers';
 import DevTools from '../containers/Root/DevTools';
 
 export default function configureStore(initialState, history) {
-    const logger = createLogger();
+  const logger = createLogger();
 
     // Add so dispatched route actions to the history
-    const reduxRouterMiddleware = routerMiddleware(history);
+  const reduxRouterMiddleware = routerMiddleware(history);
 
-    const middleware = applyMiddleware(thunk, logger, reduxRouterMiddleware);
+  const middleware = applyMiddleware(thunk, logger, reduxRouterMiddleware);
 
-    const createStoreWithMiddleware = compose(
+  const createStoreWithMiddleware = compose(
         middleware,
         DevTools.instrument()
     );
 
-    const store = createStoreWithMiddleware(createStore)(rootReducer, initialState);
+  const store = createStoreWithMiddleware(createStore)(rootReducer, initialState);
 
-    if (module.hot) {
-        module.hot
+  if (module.hot) {
+    module.hot
             .accept('../reducers', () => {
-                const nextRootReducer = require('../reducers/index'); // eslint-disable-line global-require
+              const nextRootReducer = require('../reducers/index'); // eslint-disable-line global-require
 
-                store.replaceReducer(nextRootReducer);
+              store.replaceReducer(nextRootReducer);
             });
-    }
+  }
 
-    return store;
+  return store;
 }

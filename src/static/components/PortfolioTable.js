@@ -3,15 +3,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as actionCreators from '../actions/data';
 
-//sample portfolios: A=Conservative; B=Aggressive
-// var portfolioA = '{ "assets" : [' +
-//     '{ "assetSymbol":"BTC" , "assetName":"Bitcoin" , "assetAlloc":"20"},' +
-//     '{ "assetSymbol":"ETC" , "assetName":"Ethereum" , "assetAlloc":"21"},' +
-//     '{ "assetSymbol":"DASH" , "assetName":"Dash" , "assetAlloc":"19"},' +
-//     '{ "assetSymbol":"XRP" , "assetName":"Ripple" , "assetAlloc":"15"},' +
-//     '{ "assetSymbol":"XMR" , "assetName":"Monero" , "assetAlloc":"25"}]}';
-
-
 class PortfolioTable extends React.Component {
     render() {
         if (this.props.portfolio != null ) {

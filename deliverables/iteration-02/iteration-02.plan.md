@@ -34,7 +34,7 @@ The third meeting will be on March 9, 2017 and it will be an in-person meeting. 
 
 We plan to create documents which will be pushed to the GitHub repository, including a workflow document and deliverables.
 
- * A markdown document documenting our project, set-up and best practices for Git.
+ * A markdown document documenting our project, set-up and best practices for Git. (README.md)
  * A task board on ZenHub: ![ZenHub Board](https://i.gyazo.com/e5c466f2df8d4ca1a2571f51cae0cfb4.png)
  * GitHub pull requests, issues and Burndown graphs detailing each group member's work over time.
 
@@ -68,7 +68,7 @@ An explanation of this workflow can be found at the [Atlassian Gitflow Workflow 
 
 #### Artifacts
 
- * Pictures and schematic diagrams of our application flow. This will show the application's inner workings in relation to our basic features, i.e. we will show what happens when the user performs certain actions. It can be seen ![here](https://i.gyazo.com/bf8b349da188f0a74bdb8cdb0e74df41.png).
+ * Pictures and schematic diagrams of our application flow. This will show the application's inner workings in relation to our basic features, i.e. we will show what happens when the user performs certain actions. It can be seen here: ![here](https://i.gyazo.com/bf8b349da188f0a74bdb8cdb0e74df41.png)
 
  * A script of our video. We will introduce our idea and present it in a short, digestible manner.
 

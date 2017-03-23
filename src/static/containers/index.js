@@ -4,3 +4,4 @@ export QuestionnaireView from './Questionnaire/index';
 export ProtectedView from './Protected/index';
 export NotFoundView from './NotFound/index';
 export PortfolioView from './Portfolio/index';
+export ProfileView from './Profile/index';
