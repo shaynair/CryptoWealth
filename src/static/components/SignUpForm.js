@@ -5,6 +5,7 @@ import * as actionCreators from '../actions/auth';
 import { connect } from 'react-redux';
 import classNames from 'classnames';
 
+
 const Form = t.form.Form;
 
 const SignUp = t.struct({
@@ -52,6 +53,7 @@ class SignUpForm extends React.Component {
     };
     
     render() {
+
         let statusText = null;
 
         if (this.props.statusText) {
@@ -72,11 +74,13 @@ class SignUpForm extends React.Component {
         
         }
 
+
         return(      
             <div className="login">
                 <h1 className="text-center">Sign Up For A Free Account!</h1>
                 <div className="login-container margin-top-medium">
                 {statusText}
+
                     <form onSubmit={this.signup}>
                         <Form ref={(ref) => { this.signUpForm = ref; }}
                                 type={SignUp}
@@ -87,6 +91,7 @@ class SignUpForm extends React.Component {
                         <button 
                             disabled={this.props.isAuthenticating} 
                             type="submit"  
+
                             className="btn btn-default btn-block"> Submit
                         </button>
                     </form>
@@ -98,6 +103,7 @@ class SignUpForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+
     isAuthenticating: state.auth.isAuthenticating,
     statusText: state.auth.statusText
   };
