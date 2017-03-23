@@ -96,7 +96,7 @@ class App extends React.Component {
           </div>
         </nav>
 
-        <div stlye={styles.propStyle}>
+        <div style={styles.propStyle}>
           {this.props.children}
         </div>
       </div>

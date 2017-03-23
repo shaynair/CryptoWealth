@@ -5,6 +5,8 @@ import { checkHttpStatus, parseJSON } from '../utils';
 import {
     AUTH_LOGOUT_USER,
     AUTH_SIGNUP_USER_FAILURE,
+    AUTH_SIGNUP_USER_REQUEST,
+    AUTH_SIGNUP_USER_SUCCESS,
     AUTH_LOGIN_USER_FAILURE,
     AUTH_LOGIN_USER_REQUEST,
     AUTH_LOGIN_USER_SUCCESS,
@@ -24,6 +26,22 @@ export function authLoginUserSuccess(token, user) {
     };
 }
 
+export function authSignUpUserSuccess() {
+    return {
+        type: AUTH_SIGNUP_USER_SUCCESS
+    }
+}
+
+export function authSignUpUserFailure(error, message) {
+    return {
+        type: AUTH_SIGNUP_USER_FAILURE,
+        payload: {
+            status: error,
+            statusText: message
+        }
+    }
+}
+
 export function authLoginUserFailure(error, message) {
     sessionStorage.removeItem('token');
     return {
@@ -40,6 +58,13 @@ export function authLoginUserRequest() {
         type: AUTH_LOGIN_USER_REQUEST
     };
 }
+
+export function authSignUpUserRequest() {
+    return {
+        type: AUTH_SIGNUP_USER_REQUEST
+    };
+}
+
 
 
 export function authLogout() {
@@ -60,6 +85,7 @@ export function authLogoutAndRedirect() {
 
 export function authSignUpUser(username, password, email, redirect = "/login") {
     return (dispatch) => {
+        dispatch(authSignUpUserRequest());
         return fetch(`${SERVER_URL}/api/v1/accounts/register/`, {
                 method: 'post',
                 headers: {
@@ -73,13 +99,35 @@ export function authSignUpUser(username, password, email, redirect = "/login") {
                 })
             }).then(checkHttpStatus)
             .then(parseJSON)
-            .then(dispatch(push(redirect)))
+            .then((response) => {
+                dispatch(authSignUpUserSuccess());
+                dispatch(push(redirect));
+            })
             .catch((error) => {
-                if (error.response.status === 400) {
-                    return error.response.json();
-                } else if (error.response.status >= 500) {
-                    return error.response.json();
+                if (error && typeof error.response !== 'undefined' && error.response.status === 400) {
+                    // Invalid authentication credentials
+                    return error.response.json().then((data) => {
+
+                        var message = "";
+
+                        if (data.hasOwnProperty("username")) {
+                            message += data.username[0] + "\n";
+                        }
+                        if (data.hasOwnProperty("email")) {
+                            message += data.email[0] + "\n";
+                        }
+
+                        dispatch(authSignUpUserFailure(400, message));
+                    });
+                } else if (error && typeof error.response !== 'undefined' && error.response.status >= 500) {
+                    // Server side error
+                    dispatch(authSignUpUserFailure(500, "A server error occurred while sending your data. We're working to fix this issue."));
+                } else {
+                    // Most likely connection issues
+                    dispatch(authSignUpUserFailure('Connection Error', 'An error occurred while sending your data!'));
                 }
+
+                return Promise.resolve();
             })
     }
 }
