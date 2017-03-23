@@ -2,6 +2,8 @@ try:
 	import urllib.request as urllib2
 except ImportError:
 	import urllib2
+import json
+import codecs
 
 class Market(object):
 
@@ -16,13 +18,12 @@ class Market(object):
 		""" Internal urljoin function because urlparse.urljoin sucks """
 		return "/".join(map(lambda x: str(x).rstrip('/'), args))
 
-	def _get(self, api_call, query):
+	def _get(self, api_call, query=None):
 		url = self._urljoin(self.base_url, api_call)
 		if query == None:
 			response = self.opener.open(url)
 		else:
-			response_url = self._urljoin(url, query)
-			response = self.opener.open(response_url)
+			response = self.opener.open(self._urljoin(url, query))
 		return response
 
 	def ticker(self, param=None):
@@ -30,15 +31,23 @@ class Market(object):
 			ticker(currency) returns a dict containing only the currency you
 			passed as an argument.
 		"""
-		data = self._get('ticker/', query=param)
-		return data
+		return self._get('ticker/', query=param)
 
 	def stats(self):
 		""" stats() returns a dict containing cryptocurrency statistics. """
-		data = self._get('global/', query=None)
-		return data
+		return self._get('global/')
 
-	# def _getRelevantCurrencies(self):
-	# 	""" stats() returns a dict containing relevant crypto-currencies to be analyzed """
-	# 	market = Market()
 
+	def get_relevant_market_data(self):
+		''' Helper function that returns json object of crypto-currencies to consider for portfolio
+			used in construction + re-balancing of portfolio object
+		'''
+		loaded_data = json.load(codecs.getreader('utf-8')(self.ticker()))
+		by_id = {}
+		by_sym = {}
+		by_name = {}
+		for currency in loaded_data:
+			by_id[currency.get('id')] = currency
+			by_sym[currency.get('symbol')] = currency
+			by_name[currency.get('name')] = currency
+		return {'id': by_id, 'symbol': by_sym, 'name': by_name}

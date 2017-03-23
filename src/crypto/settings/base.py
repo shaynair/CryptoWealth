@@ -24,9 +24,11 @@ INSTALLED_APPS = (
     'rest_framework',
     'knox',
     'django_extensions',
+    'security',
 
     'accounts',
-    'base'
+    'base',
+    'portfolio'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -37,6 +39,9 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'security.middleware.DoNotTrackMiddleware',
+    'security.middleware.ContentNoSniff',
+    'security.middleware.XssProtectMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.common.CommonMiddleware'
 )

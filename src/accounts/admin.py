@@ -14,4 +14,4 @@ class CustomUserAdmin(UserAdmin):
     form = CustomUserChangeForm
 
 
-admin.site.register(User, CustomUserAdmin)
+#admin.site.register(User, CustomUserAdmin)
