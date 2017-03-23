@@ -38,10 +38,17 @@ class App extends React.Component {
     const loginClass = classNames({
       active: this.props.pathName === '/login'
     });
+    const styles = {
+      propStyle: {
+        padding: '0px',
+        height: '100%',
+        width: '100%'
+      }
+    }
 
     return (
       <div className="app">
-        <nav className="navbar navbar-inverse bg-inverse">
+        <nav className="navbar navbar-inverse bg-inverse" >
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button"
@@ -97,7 +104,7 @@ className="js-go-to-protected-button"
           </div>
         </nav>
 
-        <div>
+        <div stlye={styles.propStyle}>
           {this.props.children}
         </div>
       </div>

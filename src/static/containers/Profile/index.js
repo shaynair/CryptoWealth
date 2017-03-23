@@ -4,9 +4,7 @@ import { Router } from 'react-router';
 import { connect } from 'react-redux';
 import './style.scss';
 
-
-
-const tabs = 
+const tabs =
   <ul className="nav nav-tabs">
     <li className="active" ><a data-toggle="tab" href="#profile-overview">Overview</a></li>
     <li><a data-toggle="tab" href="#profile-analytics">Analytics</a></li>
@@ -40,18 +38,18 @@ class ProfileView extends React.Component {
                       </ul>
 
                       <div className="tab-content">
-                        <div id="graph1" className="graph-div tab-pane fade in active"> 
+                        <div id="graph1" className="graph-div tab-pane fade in active">
                           <h4> Insert Graph 1 here @Har0ld </h4>
                         </div>
-                        <div id="graph2" className="graph-div tab-pane fade"> 
+                        <div id="graph2" className="graph-div tab-pane fade">
                           <h4> Insert Graph 2 here @Har0ld </h4>
                         </div>
-                        <div id="graph3" className="graph-div tab-pane fade"> 
+                        <div id="graph3" className="graph-div tab-pane fade">
                           <h4> Insert Graph 3 here @Har0ld </h4>
                         </div>
                       </div>
 
-                      
+
                     </div>
                     <div className="overview-bar col-md-3">
                       <div className="overview-card">
@@ -59,7 +57,7 @@ class ProfileView extends React.Component {
                         <h1> { person["totalValue"]}  </h1>
                       </div>
                       <div className="overview-card">
-                        <h4> Total Earnings: </h4> 
+                        <h4> Total Earnings: </h4>
                         <h1> {person["totalEarnings"]} </h1>
                       </div>
                       <div className="overview-card">
@@ -67,9 +65,9 @@ class ProfileView extends React.Component {
                         <h2> {person["totalReturn"]} </h2>
                       </div>
                     </div>
-                    
+
                 </div>
-              
+
               <div id="profile-analytics" className="tab-pane fade">
                 <h3> Analytics </h3>
               </div>
