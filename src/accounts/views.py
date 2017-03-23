@@ -5,15 +5,14 @@ from knox.models import AuthToken
 from rest_framework import status
 from rest_framework.authentication import BasicAuthentication
 from rest_framework.generics import GenericAPIView
-from rest_framework.mixins import CreateModelMixin
+from rest_framework.mixins import CreateModelMixin, UpdateModelMixin
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
-
-from ipware.ip import get_real_ip, get_ip
+from rest_framework import status
 
 from accounts.models import User
 from accounts.serializers import UserRegistrationSerializer, UserSerializer
-from .utils import AtomicMixin
+from .utils import AtomicMixin, IPMixin
 
 
 class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):
@@ -25,22 +24,23 @@ class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):
         return self.create(request)
 
 
-class UserLoginView(GenericAPIView):
+class UserLoginView(AtomicMixin, IPMixin, GenericAPIView):
     serializer_class = UserSerializer
     authentication_classes = (BasicAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def post(self, request):
         """User login with username and password."""
-
-        ip = get_real_ip(request)
-        if ip is not None:
-            ip = get_ip(request)
-        if ip is not None:
-            # TODO: log IP
-            pass
+        user = self.get_serializer(request.user).data
         token = AuthToken.objects.create(request.user)
+        try:
+            ob = User.objects.get(username=user['username'])
+            ob.last_ip = self.get_ip(request)
+            ob.save()
+        except:
+            return Response({ 'error': 'No user found' }, status=status.HTTP_400_BAD_REQUEST)
+
         return Response({
-            'user': self.get_serializer(request.user).data,
+            'user': user,
             'token': token
         })

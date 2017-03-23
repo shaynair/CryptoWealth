@@ -107,6 +107,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     date_joined = models.DateTimeField(_('date joined'), default=timezone.now)
 
+    last_ip = models.CharField(_('last known ip'), null=True, blank=True, default=None, max_length=20)
+
     USERNAME_FIELD = 'username'
 
     objects = MyUserManager()
