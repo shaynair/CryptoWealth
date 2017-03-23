@@ -1,5 +1,6 @@
 label {
-    display: block
+    display: block;
+    margin-bottom: 0;
 }
 
 input[radio]{
@@ -16,8 +17,11 @@ input[radio]{
 }
 
 .options {
+    box-shadow: 0 6px 52px -9px rgba(0,0,0,0.75);
     margin-bottom: 40px;
-    text-align: center;
+    text-align: left;
+    border: cornsilk 1px solid;
+    border-radius: 20px;
 }
 
 .option-text {
