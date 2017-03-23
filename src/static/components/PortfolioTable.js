@@ -6,9 +6,11 @@ import * as actionCreators from '../actions/data';
 class PortfolioTable extends React.Component {
     render() {
         if (this.props.portfolio != null ) {
-            var portfolios = this.props.portfolio.map(function(asset) {
+            var portfolios = this.props.portfolio.map(function(asset, index) {
                 return (
-                    <tr>
+
+                    <tr key= { index }>
+
                         <td className='assetSymbol'> { asset.symbol } </td>
                         <td className='assetName'>  { asset.name } </td>
                         <td className='assetSymbol'> { asset.alloc } </td>
