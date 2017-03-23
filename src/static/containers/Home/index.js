@@ -19,21 +19,19 @@ class HomeView extends React.Component {
             <div className="margin-top-medium text-center">
                 <img className="page-logo margin-bottom-medium"
                     src={reactLogo}
-                    alt="ReactJs" />
-                <img className="page-logo margin-bottom-medium"
-                    src={reduxLogo}
-                    alt="Redux" />
-            </div> 
+                    alt="ReactJs"
+                />
+            </div>
             <div className="text-center">
               <h1 > CryptoWealth < /h1> <h4 > Hello, { this.props.userName || 'guest' }. < /h4>
             </div> <div className="margin-top-medium"> {
-                this.props.statusText ? <div className="alert alert-info"> { this.props.statusText } 
+                this.props.statusText ? <div className="alert alert-info"> { this.props.statusText }
                 </div> :null
-            } 
-            </div> 
+            }
+            </div>
             <div className="row">
               <Link className="btn btn-default col-md-4 col-md-offset-4" to="/questionnaire">Start Questionnaire </Link>
-            </div> 
+            </div>
         </div>
     );
   }

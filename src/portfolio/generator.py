@@ -4,7 +4,6 @@ class PortfolioGenerator():
 
     market_data = Market().get_relevant_market_data()
 
-
     def __init__(self, risk_level=0, portfolio_value=0):
         ''' Create new portfolio object
             risk_level: integer (1 - 10)
