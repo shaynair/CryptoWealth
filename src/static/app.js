@@ -39,6 +39,13 @@ class App extends React.Component {
     const loginClass = classNames({
       active: this.props.pathName === '/login'
     });
+    const styles = {
+      propStyle: {
+        padding: '0px',
+        height: '100%',
+        width: '100%'
+      }
+    }
 
     return (
       <div className="app">
@@ -89,7 +96,7 @@ class App extends React.Component {
           </div>
         </nav>
 
-        <div>
+        <div stlye={styles.propStyle}>
           {this.props.children}
         </div>
       </div>
