@@ -3,8 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 
 import './style.scss';
-import reactLogo from './images/react-logo.png';
-import reduxLogo from './images/redux-logo.png';
+import CryptoWealthLogo from './images/CryptoWealthLogo.png';
 
 class HomeView extends React.Component {
 
@@ -18,22 +17,24 @@ class HomeView extends React.Component {
         <div className="container">
             <div className="margin-top-medium text-center">
                 <img className="page-logo margin-bottom-medium"
-                    src={reactLogo}
-                    alt="ReactJs" />
-                <img className="page-logo margin-bottom-medium"
-                    src={reduxLogo}
-                    alt="Redux" />
-            </div> 
+                    src={CryptoWealthLogo}
+                    alt="ReactJs"
+                />
+            </div>
             <div className="text-center">
               <h1 > CryptoWealth < /h1> <h4 > Hello, { this.props.userName || 'guest' }. < /h4>
             </div> <div className="margin-top-medium"> {
-                this.props.statusText ? <div className="alert alert-info"> { this.props.statusText } 
+                this.props.statusText ? <div className="alert alert-info"> { this.props.statusText }
                 </div> :null
-            } 
-            </div> 
+            }
+
+            <div>
+              <h1> If you don't want to be poor forever then click the button below!! </h1>
+            </div>
+            </div>
             <div className="row">
               <Link className="btn btn-default col-md-4 col-md-offset-4" to="/questionnaire">Start Questionnaire </Link>
-            </div> 
+            </div>
         </div>
     );
   }

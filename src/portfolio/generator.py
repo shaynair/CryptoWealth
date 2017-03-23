@@ -4,13 +4,11 @@ class PortfolioGenerator():
 
     market_data = Market().get_relevant_market_data()
 
-
     def __init__(self, risk_level=0, portfolio_value=0):
         ''' Create new portfolio object
             risk_level: integer (1 - 10)
             cash_value: integer (0]
          '''
-
         # Set class variables, error check
         if (risk_level < 0 | risk_level > 10):
             raise ValueError("Risk level must be within 0 - 10")

@@ -41,7 +41,7 @@ python3 -m virtualenv env
 
 **Do the following only once:**
 
-* Install back-end dependencies: `python3 -m pip install -r dev-requirements.txt`
+* Install back-end dependencies: `python3 -m pip install -r base-requirements.txt`
 
 * Set up front-end dependencies: `npm run global-install && npm install`
 
@@ -102,7 +102,6 @@ _(Note: These are necessary due to quirks of [contribution graphs](https://help.
 ├── .prospector.yml, .sass-lint.yml, .travis.yml     <- Configuration settings for Prospector (Python code analyzer), SASS Lint (CSS/SASS analyzer) and Travis CI (automated test runner) respectively
 ├── Procfile, runtime.txt                            <- Configuration settings for Heroku (hosting platform)
 ├── base-requirements.txt                            <- Base environment packages for Python (Django back-end).
-├── dev-requirements.txt                             <- Development environment packages for Python (Django back-end).
 ├── requirements.txt                                 <- Production environment packages for Python (Django back-end).
 ├── init-user-db.sh                                  <- Initialization script for PostgreSQL.
 ├── run-django.sh                                    <- Shell script to run Django back-end.
