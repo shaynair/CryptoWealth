@@ -6,12 +6,8 @@ import {
     PREVIOUS_QUESTION,
     SUBMIT_ANSWERS,
     TOGGLE_ANSWER,
-<<<<<<< HEAD
     UPDATE_PROGRESS,
     CHANGE_OPTION
-=======
-    UPDATE_PROGRESS
->>>>>>> implemented progress bar
 } from '../constants';
 
 export function addInvestment(amount) {

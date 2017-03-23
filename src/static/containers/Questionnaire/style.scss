@@ -1,10 +1,23 @@
+label {
+    display: block
+}
+
+input[radio]{
+    visibility: hidden;
+}
+
+.wrapper {
+    margin: 5% 15%;
+}
+
 .questions {
     padding: 5px;
     margin-top: 15px;
 }
 
 .options {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
+    text-align: center;
 }
 
 .option-text {
