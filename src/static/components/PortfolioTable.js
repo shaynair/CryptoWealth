@@ -9,9 +9,9 @@ class PortfolioTable extends React.Component {
             var portfolios = this.props.portfolio.map(function(asset) {
                 return (
                     <tr>
-                        <td class='assetSymbol'> { asset.symbol } </td>
-                        <td class='assetName'>  { asset.name } </td>
-                        <td class='assetSymbol'> { asset.alloc } </td>
+                        <td className='assetSymbol'> { asset.symbol } </td>
+                        <td className='assetName'>  { asset.name } </td>
+                        <td className='assetSymbol'> { asset.alloc } </td>
                     </tr>
                 )
             })
@@ -24,13 +24,14 @@ class PortfolioTable extends React.Component {
 
         return (
             <table className="table" id="portfolio-table"> 
-                <thead>
+                <tbody>
+                <tr>
                     <th> Symbols </th>
                     <th> Assets </th>
                     <th> Allocation </th>
-                    
+                </tr>
                         { portfolios }
-                </thead>
+                </tbody>
             </table>
         );
     }
