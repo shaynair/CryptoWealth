@@ -8,7 +8,9 @@ import './style.scss';
 import Options from '../../components/Options';
 import Question from '../../components/Question';
 import ProgressBar from '../../components/ProgressBar';
+import Investment from '../../components/Investment';
 
+// TODO [ian]: add investment field at the end of questionnaire
 // TODO [ian]: update style for next and prev buttons
 class QuestionnaireView extends Component {
     static propTypes = {
@@ -46,6 +48,20 @@ class QuestionnaireView extends Component {
         this.props.actions.changeOption(index);
     };
 
+    chooseColor = (percent) => {
+        let color;
+        if (percent <= 33) {
+            color = '#FF4B41';
+        } else if (percent <= 66) {
+            color = '#FF9920';
+        } else if (percent > 66 && percent < 100) {
+            color = '#A7FF34';
+        } else if (percent === 100) {
+            color = '#1BA42C';
+        }
+        return color;
+    };
+
     nextQuestion = (e) => {
         e.preventDefault();
         const index = this.props.currentQuestion + 1;
@@ -56,6 +72,7 @@ class QuestionnaireView extends Component {
             this.props.actions.toggleAnswer(checkedOption, current);
         }
 
+        // move on to next question
         if (index <= this.props.totalQuestions && checkedOption !== null) {
             const risk = this.props.riskLevel + this.props.question.optionRisks[checkedOption];
             this.props.actions.updateRiskLevel(risk);
@@ -67,27 +84,16 @@ class QuestionnaireView extends Component {
             this.props.actions.nextQuestion(index);
 
             // update progress bar
+            console.log('index');
+            console.log(index);
             let percent = 20 + (index / this.props.totalQuestions) * 100;
+
+            if (percent > 100) percent = 100;
             const color = this.chooseColor(percent);
-            console.log('percent');
-            console.log(percent);
             this.props.actions.updateProgress(percent.toString(), color);
         }
     };
 
-    chooseColor = (percent) => {
-        let color;
-        if (percent <= 33){
-            color = '#FF4B41';
-        } else if (percent <= 66) {
-            color = '#FF9920';
-        } else if (percent >= 75) {
-            color = '#A7FF34';
-        } else if (percent === 100){
-            color = '#1BA42C';
-        }
-        return color;
-    };
 
     prevQuestion = (e) => {
         e.preventDefault();
@@ -111,20 +117,41 @@ class QuestionnaireView extends Component {
 
     submitQuestionnaire = (e) => {
         e.preventDefault();
-        const checkedOption = this.getCheckedOption();
+        // get investment amount
+        const investmentAmount = document.getElementById('investment').value;
+        if (investmentAmount === null) {
+            return;
+        }
 
-        const totalRisk = this.props.riskLevel + this.props.question.optionRisks[checkedOption];
-        const risk = Math.round(totalRisk / this.props.totalQuestions);
-        this.props.actions.submitAnswer(risk);
+        const risk = Math.round(this.props.riskLevel / this.props.totalQuestions);
+
+        this.props.actions.submitAnswer(risk, investmentAmount);
         this.props.dispatch(push('/portfolio'));
     };
 
     render() {
+
         let nextBtn = null;
+        let options = null;
+
         if ((this.props.currentQuestion + 1) === this.props.totalQuestions) {
             nextBtn = (<button className="btn-info col-md-1" onClick={this.submitQuestionnaire}>Submit</button>);
+            options = <Investment handleChange={this.handleInvestmentChange}/>;
         } else {
             nextBtn = (<button className="btn-primary col-md-1" onClick={this.nextQuestion}>Next</button>);
+            options = this.props.question.options.map(
+                (option, index) => {
+                    return (<Options
+                        key={index}
+                        value={index}
+                        text={option}
+                        name={this.props.currentQuestion}
+                        answer={this.props.answers[this.props.currentQuestion].toString()}
+                        handleOptionChange={this.handleOptionChange}
+                        selectedOption={this.props.selectedOption}
+                        totalOptions={this.props.question.options.length}
+                    />);
+                });
         }
 
         let prevBtn = null;
@@ -134,26 +161,13 @@ class QuestionnaireView extends Component {
             </button>);
         }
 
+
         return (<div className="wrapper">
-                <ProgressBar percent={ this.props.percent } color={ this.props.color } />
+                <ProgressBar percent={ this.props.percent } color={ this.props.color }/>
                 <Question propQuestion={this.props.question.text}/>
                 <form className="questions">
                     <ul className="options">
-                        {
-                            this.props.question.options.map(
-                                (option, index) => {
-                                    return (<Options
-                                        key={index}
-                                        value={index}
-                                        text={option}
-                                        name={this.props.currentQuestion}
-                                        answer={this.props.answers[this.props.currentQuestion].toString()}
-                                        handleOptionChange={this.handleOptionChange}
-                                        selectedOption={this.props.selectedOption}
-                                        totalOptions={this.props.question.options.length}
-                                    />);
-                                })
-                        }
+                        {options}
                     </ul>
                     <div className="container-fluid">
                         { prevBtn }

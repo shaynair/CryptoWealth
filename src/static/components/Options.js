@@ -11,7 +11,7 @@ class Options extends Component {
 
     render() {
         const radioStyle = {
-          visibility: 'hidden'
+            visibility: 'hidden'
         };
 
         let labelStyle;
@@ -22,9 +22,7 @@ class Options extends Component {
             color: '#303030',
             marginBottom: '0',
             fontWeight: 'normal'
-        }; 
-        console.log('total options');
-        console.log(this.props.totalOptions);
+        };
 
         if (this.props.value === 0) {
             labelStyle = Object.assign({}, labelStyle, {
@@ -48,13 +46,13 @@ class Options extends Component {
         }
 
         return (
-        <label style={labelStyle} className="col-12">
-            <input type="radio" style={radioStyle} name={this.props.name} value={this.props.value}
-                   checked={this.props.selectedOption === this.props.value}
-                   onChange={this.props.handleOptionChange}
-            />
-            <span className="option-text"> {this.props.text} </span>
-        </label>
+            <label style={labelStyle} className="col-12">
+                <input type="radio" style={radioStyle} name={this.props.name} value={this.props.value}
+                       checked={this.props.selectedOption === this.props.value}
+                       onChange={this.props.handleOptionChange}
+                />
+                <span className="option-text"> {this.props.text} </span>
+            </label>
         );
     }
 }
