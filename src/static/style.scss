@@ -1,0 +1,24 @@
+@import "styles/main";
+#main-nav {
+    border-radius: 0px;
+    border: 0px;
+}
+
+#main-nav a {
+    color: $theme-grey;
+}
+
+#main-nav li.active a {
+    background-color: $theme-orange;
+    color: white;
+    transition: all linear 0.1s;
+}
+
+#main-nav li a:hover {
+    color: white;
+    transition: all linear 0.1s;
+}
+
+.navbar-brand {
+    color: $theme-grey !important;
+}
