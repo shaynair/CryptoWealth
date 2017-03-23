@@ -10,6 +10,7 @@ class PortfolioGenerator():
             risk_level: integer (1 - 10)
             cash_value: integer (0]
          '''
+
         # Set class variables, error check
         if (risk_level < 0 | risk_level > 10):
             raise ValueError("Risk level must be within 0 - 10")
@@ -24,7 +25,7 @@ class PortfolioGenerator():
         self._construct_portfolio()
 
     def _construct_portfolio(self):
-        ''' This is where algorithm will be implemented to create a portfolio.
+        '''  Algorithm to initially construct portfolio
         '''
         if self.risk_level < 5:
             self.portfolio.append({'id': 'bitcoin', 'alloc': 4})
@@ -39,6 +40,7 @@ class PortfolioGenerator():
             self.portfolio.append({'id': 'maidsafecoin', 'alloc': 25})
             self.portfolio.append({'id': 'augur', 'alloc': 12})
 
+        # Calculate and reset invested/cash value variables
         invested_value = 0
         for p in self.portfolio:
             p['name'] = self.get_name(p['id'])
