@@ -3,8 +3,6 @@ from django.core.exceptions import ValidationError
 from django.core.validators import validate_email as django_validate_email
 from django.db import transaction
 
-from ipware.ip import get_real_ip, get_ip
-
 
 def validate_email(value):
     """Validate a single email."""
@@ -24,12 +22,6 @@ def validate_email(value):
         else:
             return True
 
-class IPMixin(object):
-    def get_ip(self, request):
-        ip = get_real_ip(request)
-        if ip is not None:
-            ip = get_ip(request)
-        return ip
 
 class AtomicMixin(object):
     """

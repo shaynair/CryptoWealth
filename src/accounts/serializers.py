@@ -1,13 +1,13 @@
 from rest_framework import serializers
 
-from .models import User
+from accounts.models import User
 from .utils import validate_email as email_is_valid
 
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'email', 'username',)
+        fields = ('email', 'username',)
 
 
 class UserRegistrationSerializer(serializers.ModelSerializer):
@@ -15,7 +15,7 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('email', 'username', 'password', 'id',)
+        fields = ('id', 'email', 'username', 'password')
 
     def create(self, validated_data):
         """

@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 import classNames from 'classnames';
 
 import { authLogoutAndRedirect } from './actions/auth';
-import './styles/main.scss';
+import './style.scss';
 
 class App extends React.Component {
 
@@ -28,6 +28,7 @@ class App extends React.Component {
     this.props.dispatch(push('/protected'));
   };
 
+
   render() {
     const homeClass = classNames({
       active: this.props.pathName === '/'
@@ -38,10 +39,17 @@ class App extends React.Component {
     const loginClass = classNames({
       active: this.props.pathName === '/login'
     });
+    const styles = {
+      propStyle: {
+        padding: '0px',
+        height: '100%',
+        width: '100%'
+      }
+    }
 
     return (
       <div className="app">
-        <nav className="navbar navbar-inverse bg-inverse">
+        <nav id="main-nav" className="navbar navbar-inverse bg-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
               <button type="button"
@@ -54,31 +62,22 @@ class App extends React.Component {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
               </button>
-              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}>
-                                CryptoWealth Demo
-                            </a>
+              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> CryptoWealth Demo </a>
             </div>
             <div className="collapse navbar-collapse" id="top-navbar">
-              {this.props.isAuthenticated ?
+              { this.props.isAuthenticated ?
                 <ul className="nav navbar-nav navbar-right">
                   <li className={homeClass}>
                     <a className="js-go-to-index-button" tabIndex="0" onClick={this.goToIndex}>
                       <i className="fa fa-home" /> Home
-                                        </a>
+                    </a>
                   </li>
                   <li className={protectedClass}>
-                    <a
-className="js-go-to-protected-button"
-                                           tabIndex="0"
-                                           onClick={this.goToProtected}
-                    >
+                    <a className="js-go-to-protected-button" tabIndex="0" onClick={this.goToProtected} >
                       <i className="fa fa-lock" /> Protected
-                                        </a>
+                    </a>
                   </li>
-                  <li>
-                    <a className="js-logout-button" tabIndex="0" onClick={this.logout}>
-                                            Logout
-                                        </a>
+                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}> Logout </a>
                   </li>
                 </ul>
                                 :
@@ -97,7 +96,7 @@ className="js-go-to-protected-button"
           </div>
         </nav>
 
-        <div>
+        <div stlye={styles.propStyle}>
           {this.props.children}
         </div>
       </div>
