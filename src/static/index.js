@@ -13,7 +13,11 @@ const target = document.getElementById('root');
 const store = configureStore(initialState, browserHistory);
 const history = syncHistoryWithStore(browserHistory, store);
 
-const node = (<Root store={store} history={history} />);
+const node = (<
+    Root store={store}
+    history={history}
+/>
+);
 
 const token = sessionStorage.getItem('token');
 let user = {};

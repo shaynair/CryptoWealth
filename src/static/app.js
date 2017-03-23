@@ -11,7 +11,7 @@ class App extends React.Component {
 
   static propTypes = {
     isAuthenticated: React.PropTypes.bool.isRequired,
-    children: React.PropTypes.shape().isRequired,
+    children: React.PropTypes.shape(),
     dispatch: React.PropTypes.func.isRequired,
     pathName: React.PropTypes.string.isRequired
   };
@@ -44,17 +44,15 @@ class App extends React.Component {
         <nav className="navbar navbar-inverse bg-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-              <button
-type="button"
-                                    className="navbar-toggle collapsed"
-                                    data-toggle="collapse"
-                                    data-target="#top-navbar"
-                                    aria-expanded="false"
-              >
-                <span className="sr-only">Toggle navigation</span>
-                <span className="icon-bar" />
-                <span className="icon-bar" />
-                <span className="icon-bar" />
+              <button type="button"
+                className="navbar-toggle collapsed"
+                data-toggle="collapse"
+                data-target="#top-navbar"
+                aria-expanded="false">
+                  <span className="sr-only">Toggle navigation</span>
+                  <span className="icon-bar" />
+                  <span className="icon-bar" />
+                  <span className="icon-bar" />
               </button>
               <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}>
                                 CryptoWealth Demo
