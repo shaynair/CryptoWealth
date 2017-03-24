@@ -167,7 +167,7 @@ class QuestionnaireView extends Component {
                         selectedOption={this.props.selectedOption}
                         totalOptions={this.props.question.options.length}
                     />);
-                });]
+                });
         }
 
         let prevBtn = null;
