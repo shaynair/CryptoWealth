@@ -1,8 +1,15 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import './style.scss';
 import AllocationGraph from  "./graphs/AllocationGraph";
 import TrendGraph from "./graphs/TrendGraph";
+import { SERVER_URL } from '../../utils/config';
+import { checkHttpStatus, parseJSON } from '../../utils';
+
+import * as actionCreators from '../../actions/profile';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+
+import { fetchProfileData} from '../../actions/profile';
 
 const tabs =
   <ul className="nav nav-tabs">
@@ -14,10 +21,19 @@ const tabs =
   const person = {firstName:"Philip", lastName:"Banks", totalValue: "$200,000,000", totalEarnings: "$200,000", totalReturn: "10%"}
 
 class ProfileView extends React.Component {
-
   static propTypes = {
-    userName: React.PropTypes.string
+    dispatch: React.PropTypes.func.isRequired,
+    userName: React.PropTypes.string,
+    token: React.PropTypes.string,
+    total: React.PropTypes.number,
+    returns: React.PropTypes.number,
+    portfolios: React.PropTypes.object
   };
+
+  componentWillMount() {
+    this.props.dispatch(fetchProfileData(this.props.token));
+    console.log(this.props.portfolios);
+  }
 
   render() {
     return (
@@ -32,7 +48,7 @@ class ProfileView extends React.Component {
                   <ul className="nav nav-tabs">
                     <li className="active" ><a data-toggle="tab" href="#graph1">Portfolio</a></li>
                     <li><a data-toggle="tab" href="#graph2">Recent Trends</a></li>
-                    <li><a data-toggle="tab" href="#graph3">Graph3 </a></li>
+                    <li><a data-toggle="tab" href="#graph3">Future Projections</a></li>
                   </ul>
 
                   <div className="tab-content">
@@ -73,8 +89,19 @@ class ProfileView extends React.Component {
 const mapStateToProps = (state) => {
   return {
     userName: state.auth.userName,
+    token: state.auth.token,
+    total: state.profile.total,
+    returns: state.profile.returns,
+    portfolios: state.profile.portfolios
   };
 };
 
-export default connect(mapStateToProps)(ProfileView);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch,
+    actions: bindActionCreators(actionCreators, dispatch)
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileView);
 export { ProfileView as ProfileViewNotConnected };

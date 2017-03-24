@@ -42,7 +42,7 @@ class SignUpForm extends React.Component {
         dispatch: React.PropTypes.func.isRequired,
         isAuthenticating: React.PropTypes.bool.isRequired,
         statusText: React.PropTypes.string,
-        investment: React.PropTypes.string.isRequired,
+        investment: React.PropTypes.number.isRequired,
         riskLevel: React.PropTypes.number.isRequired
     };
 
