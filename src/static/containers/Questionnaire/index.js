@@ -84,6 +84,8 @@ class QuestionnaireView extends Component {
             this.props.actions.nextQuestion(index);
 
             // update progress bar
+            console.log('index');
+            console.log(index);
             let percent = 20 + (index / this.props.totalQuestions) * 100;
 
             if (percent > 100) percent = 100;
@@ -120,7 +122,6 @@ class QuestionnaireView extends Component {
         if (investmentAmount === null) {
             return;
         }
-
         const risk = Math.round(this.props.riskLevel / this.props.totalQuestions);
 
         this.props.actions.submitAnswer(risk, investmentAmount);

@@ -1,72 +1,48 @@
+from .models import Currency
 from .market import Market
 
-class PortfolioGenerator():
+def create_portfolio(risk_level=0, portfolio_value=0):
+    ''' Create new portfolio object
+         risk_level: integer (1 - 10)
+         cash_value: integer (0]
+    '''
+    # Set class variables, error check
+    if (risk_level < 0 | risk_level > 10):
+        raise ValueError("Risk level must be within 0 - 10")
+    if (portfolio_value < 0):
+        raise ValueError("Portfolio value must be greater than 0")
+    portfolio = []
 
-    market_data = Market().get_relevant_market_data()
+    Market().update_market_data()
 
-    def __init__(self, risk_level=0, portfolio_value=0):
-        ''' Create new portfolio object
-            risk_level: integer (1 - 10)
-            cash_value: integer (0]
-         '''
-        # Set class variables, error check
-        if (risk_level < 0 | risk_level > 10):
-            raise ValueError("Risk level must be within 0 - 10")
-        if (portfolio_value < 0):
-            raise ValueError("Portfolio value must be greater than 0")
-        self.risk_level = risk_level
-        self.cash_value = portfolio_value
-        self.holdings_value = 0
-        self.portfolio = []
+    '''
+    Algorithm Description: Loop through every crypto-currency and assign it a portfolio suitability value based on
+    portfolio risk and cash value.  Select top 10 ranking currencies for portfolio
+    '''
+    bitcoin_market_cap = (Currency.objects.filter(symbol='BTC')).first().market_cap
+    ranked_currencies = []
+    for currency in Currency.objects.all():
 
-        # Generate portfolio holdings
-        self._construct_portfolio()
+        seven_day_change = currency.percent_change_7d / 100
+        market_cap = currency.market_cap / bitcoin_market_cap
 
-    def _construct_portfolio(self):
-        '''  Algorithm to initially construct portfolio
-        '''
-        if self.risk_level < 5:
-            self.portfolio.append({'id': 'bitcoin', 'alloc': 4})
-            self.portfolio.append({'id': 'ethereum', 'alloc': 5})
-            self.portfolio.append({'id': 'dash', 'alloc': 10})
-            self.portfolio.append({'id': 'ripple', 'alloc': 10})
-            self.portfolio.append({'id': 'monero', 'alloc': 5})
-        else:
-            self.portfolio.append({'id': 'bitcoin', 'alloc': 7})
-            self.portfolio.append({'id': 'litecoin', 'alloc': 137})
-            self.portfolio.append({'id': 'nem', 'alloc': 13})
-            self.portfolio.append({'id': 'maidsafecoin', 'alloc': 25})
-            self.portfolio.append({'id': 'augur', 'alloc': 12})
+        factor1 = ((10 - risk_level) * 10 * market_cap)
+        factor2 = risk_level * 10 * seven_day_change
 
-        # Calculate and reset invested/cash value variables
-        invested_value = 0
-        for p in self.portfolio:
-            p['name'] = self.get_name(p['id'])
-            p['symbol'] = self.get_symbol(p['id'])
-            invested_value += p['alloc'] * self.get_price(p['id'])
-        self.holdings_value = invested_value
-        self.cash_value -= invested_value
+        value = factor1 + factor2
 
-    def balance_portfolio(self):
-        ''' Re-balance portfolio considering current market conditions '''
-        pass
+        ranked_currencies.append({'symbol': currency.symbol, 'rank': value, 'price': currency.price, 'name': currency.name})
 
+    portfolio = sorted(ranked_currencies, key=lambda x: -x['rank'])[:10]
 
-    def get_total_portfolio_value(self):
-        return self.cash_value + self.holdings_value
+    # Calculate and reset invested/cash value variables
+    for p in portfolio:
+        p['alloc'] = (portfolio_value / len(portfolio)) / p['price']
+    return portfolio
 
-    def get_symbol(self, currency):
-        ''' Helper function to get symbol of currency '''
-        return self.market_data.get('id')[currency].get('symbol')
-
-    def get_id(self, currency):
-        ''' Helper function to get symbol of currency '''
-        return self.market_data.get('name')[currency].get('id')
-
-    def get_name(self, currency):
-        ''' Helper function to get symbol of currency '''
-        return self.market_data.get('id')[currency].get('name')
-
-    def get_price(self, currency):
-        ''' Helper function to get current price of currency '''
-        return float(self.market_data.get('id')[currency].get('price_usd'))
+def rebalance_portfolio(risk_level, portfolio):
+    ''' Re-balance portfolio considering current market conditions '''
+    portfolio_value = 0
+    for p in portfolio:
+        portfolio_value += p['alloc'] * p['price']
+    return create_portfolio(risk_level, portfolio_value)

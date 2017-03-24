@@ -5,6 +5,7 @@ import { push } from 'react-router-redux';
 import classNames from 'classnames';
 
 import { authLogoutAndRedirect } from './actions/auth';
+import Logo from "./images/logo.png";
 import './style.scss';
 
 class App extends React.Component {
@@ -32,6 +33,9 @@ class App extends React.Component {
     this.props.dispatch(push('/analytics'));
   }
 
+  goToActivityLog = () => {
+    this.props.dispatch(push('/activity'));
+  }
 
   render() {
     const homeClass = classNames({
@@ -45,6 +49,9 @@ class App extends React.Component {
     });
     const analyticsClass = classNames({
       active: this.props.pathName === "/analytics"
+    });
+    const activityLogClass = classNames({
+      active: this.props.pathName === "/activity"
     });
 
     const styles = {
@@ -70,10 +77,16 @@ class App extends React.Component {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
               </button>
-              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> CryptoWealth</a>
+              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> 
+                <img className="nav-logo" src= { Logo } /> 
+              </a>
+              <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}> 
+                CryptoWealth 
+              </a>
             </div>
             <div className="collapse navbar-collapse" id="top-navbar">
-              { this.props.isAuthenticated ?
+              { 
+                this.props.isAuthenticated ?
                 <ul className="nav navbar-nav navbar-right">
                   <li className={homeClass}>
                     <a className="js-go-to-index-button" tabIndex="0" onClick={this.goToIndex}>
@@ -85,7 +98,13 @@ class App extends React.Component {
                       <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
-                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}> Logout </a>
+                  <li className={activityLogClass}>
+                    <a className="" tabIndex="0" onClick={this.goToActivityLog}>  
+                      <i className="fa fa-tasks" /> Activity Log
+                    </a>
+                  </li>
+                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}> 
+                  <i className="fa fa-power-off" />  Logout </a>
                   </li>
                 </ul>
                                 :
@@ -93,17 +112,16 @@ class App extends React.Component {
                   <li className={homeClass}>
                     <a className="js-go-to-index-button" tabIndex="0" onClick={this.goToIndex}>
                       <i className="fa fa-home" /> Home
-                                        </a>
+                    </a>
                   </li>
                   <li className={loginClass}>
                     <Link className="js-login-button" to="/login">Login</Link>
                   </li>
                 </ul>
-                            }
+              }
             </div>
           </div>
         </nav>
-
         <div style={styles.propStyle}>
           {this.props.children}
         </div>
