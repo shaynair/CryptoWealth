@@ -39,8 +39,9 @@ const questions = {
         options: ['Less than 60k', '60k - 90k', '91k - 140k', '141 - 200k', '200k or more'],
         optionRisks: [1, 3, 5, 7, 10]
     },
-    5:{
-        text: 'How much are you planning to invest?'
+    5: {
+        text: 'How much are you planning to invest?',
+        optionRisks: [1, 3, 5, 7, 10] // previous option risks
     }
 };
 
