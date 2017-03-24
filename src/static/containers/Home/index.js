@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-// import BubbleExample from './chart';
+import BubbleExample from './chart';
 
 import CryptoWealthLogo from './images/CryptoWealthLogo.png';
 
@@ -52,6 +52,9 @@ class HomeView extends React.Component {
             </div>
 
             <div className="col-md-6">
+              <row>
+                <BubbleExample />
+              </row>
               <div>
                 <h1 style={styles.descriptionStyle}> If you dont want to be poor forever then click the button below!! </h1>
               </div>

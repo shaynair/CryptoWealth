@@ -38,16 +38,16 @@ class Market(object):
 		return self._get('global/')
 
 
-	def get_relevant_market_data(self):
+	def update_market_data(self):
 		''' Helper function that returns json object of crypto-currencies to consider for portfolio
 			used in construction + re-balancing of portfolio object
 		'''
+
 		loaded_data = json.load(codecs.getreader('utf-8')(self.ticker()))
-		by_id = {}
-		by_sym = {}
-		by_name = {}
 		for currency in loaded_data:
-			by_id[currency.get('id')] = currency
-			by_sym[currency.get('symbol')] = currency
-			by_name[currency.get('name')] = currency
-		return {'id': by_id, 'symbol': by_sym, 'name': by_name}
+			Currency.objects.update_or_create(
+ 				symbol=currency.get('symbol'),
+				name=currency.get('name'),
+				price=currency.get('price_usd'),
+				percent_change_7d=currency.get('percent_change_7d')
+			)

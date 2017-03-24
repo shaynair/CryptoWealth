@@ -32,7 +32,6 @@ class App extends React.Component {
     this.props.dispatch(push('/analytics'));
   }
 
-
   render() {
     const homeClass = classNames({
       active: this.props.pathName === '/'
@@ -103,7 +102,6 @@ class App extends React.Component {
             </div>
           </div>
         </nav>
-
         <div style={styles.propStyle}>
           {this.props.children}
         </div>
