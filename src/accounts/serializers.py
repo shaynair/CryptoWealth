@@ -2,8 +2,6 @@ from rest_framework import serializers
 
 from .models import User
 from .utils import validate_email as email_is_valid
-
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
@@ -25,7 +23,6 @@ class UserRegistrationSerializer(serializers.ModelSerializer):
         """
         user = User.objects.create(**validated_data)
         user.set_password(validated_data['password'])
-        print(validated_data)
         user.save()
         return user
 

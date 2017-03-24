@@ -11,8 +11,6 @@ def create_portfolio(risk_level=0, portfolio_value=0):
         raise ValueError("Risk level must be within 0 - 10")
     if (portfolio_value < 0):
         raise ValueError("Portfolio value must be greater than 0")
-    portfolio = []
-
     Market().update_market_data()
 
     '''
@@ -31,7 +29,7 @@ def create_portfolio(risk_level=0, portfolio_value=0):
 
         value = factor1 + factor2
 
-        ranked_currencies.append({'symbol': currency.symbol, 'rank': value, 'price': currency.price, 'name': currency.name})
+        ranked_currencies.append({'symbol': currency.symbol, 'rank': value, 'price': currency.price, 'name': currency.name, 'currency': currency})
 
     portfolio = sorted(ranked_currencies, key=lambda x: -x['rank'])[:10]
 
