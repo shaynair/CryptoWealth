@@ -13,13 +13,13 @@ Unique crypto-currency portfolios will be constructed for each investor based on
 
 Think of our application as a fusion between the traditional debt and equity securities robo-advisors, such as WealthSimple and Betterment, but we are addressing a gap in their user base by extending their investment options with crypto-currencies like BitCoin, Ethereum and LiteCoin.
 
-In our video we will demonstrate a single user walk-through, demonstrating how a user would use our application.
+In our video we will demonstrate a single user walk-through, displaying how a user would use our application.
 
 ### DEMO:  - 100 seconds
 
-First we immediately draw our prospective investor’s attention to our “Start Questionnaire” button. This UX design is meant to intuitively get them investing as soon as possible. This questionnaire serves to assess an investors financial health, investment objectives, and risk tolerance so that we can recommend them a personalized portfolio (SELECT = 'Start Questionnaire’)
+First we will act as a potential investor by filling out a simple questionnaire (SELECT = 'Start Questionnaire’)
 
-Our risky investor is looking to invest for a long term, say 5 - 10 years (SELECT 5 - 10 YEARS, NEXT QUESTION)
+Our investor is looking to invest for a long term, say 5 - 10 years (SELECT 5 - 10 YEARS, NEXT QUESTION)
 
 They are looking to save for retirement (SELECT BUYING A HOUSE, NEXT QUESTION)
 
@@ -35,7 +35,7 @@ Here we see a sample portfolio has been generated based on our preferences and w
 
 Now we can log in using our the account we just created (SELECT LOGIN)
 
-Now we are redirected to our user's home page, here we can see a dynamic doughnut chart displaying their portfolio allocation, their portfolio value, total earnings and total returns percentage
+Here we are redirected to our user's home page, where we can see a dynamic doughnut chart displaying their portfolio allocation, their portfolio value, total earnings and total returns percentage
 
 
 ### DISCUSSION: -  30 seconds
