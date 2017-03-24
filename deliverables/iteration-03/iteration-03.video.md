@@ -1,5 +1,9 @@
 # CryptoWealth
 
+## Video
+
+The finished video can be seen [here](https://youtu.be/9Jx32W4hTAY).
+
 ## Script
 
 ### INTRO: (BASIC PRODUCT OVERVIEW/TARGET USERS + VIDEO INTRO) - 45 seconds
@@ -41,7 +45,3 @@ Here we are redirected to our user's home page, where we can see a dynamic dough
 ### DISCUSSION: -  30 seconds
 So, we have seen how a prospective user may use our application.  After filling out a simple survey a customized portfolio was generated for our user.  
 In our next steps we will be focusing our efforts on enhancing the user-interface and completing some of the extra features that we weren't able to complete this iteration.  This includes adding more informative charts in the 'Analytics' tab, and adding a complete history of a users automatic portfolio adjustments under the 'Activity Log' tab.
-
-## Video
-
-Our finished video can be seen [here]().
