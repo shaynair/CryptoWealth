@@ -10,9 +10,12 @@ class Button extends Component {
     render() {
 
         return (
-            <button className={this.props.classes} onClick={this.props.handleClick}>
-                {this.props.text}
-            </button>
+            <div className={this.props.classes}>
+                <label>
+                <button className={this.props.arrowClass} onClick={this.props.handleClick}/>
+                    {this.props.text}
+                </label>
+            </div>
         );
     }
 }

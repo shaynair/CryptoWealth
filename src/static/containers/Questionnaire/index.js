@@ -129,18 +129,22 @@ class QuestionnaireView extends Component {
 
     render() {
 
-        let nextBtn = null;
-        let options = null;
+        let nextBtn;
+        let options;
 
         if ((this.props.currentQuestion + 1) === this.props.totalQuestions) {
-            nextBtn = (<Button classes="btn-info col-md-1"
+            nextBtn = (<Button classes="nextBtn"
                                handleClick={this.submitQuestionnaire}
-                               text="Submit Questionnaire"/>);
+                               text="Submit Questionnaire"
+                               arrowClass="arrow right"
+            />);
+
             options = <Investment handleChange={this.handleInvestmentChange}/>;
         } else {
-            nextBtn = (<Button classes="btn-primary col-md-1"
+            nextBtn = (<Button classes="nextBtn"
                                handleClick={this.nextQuestion}
                                text="Next Question"
+                               arrowClass="arrow right"
                         />);
             options = this.props.question.options.map(
                 (option, index) => {
@@ -159,9 +163,10 @@ class QuestionnaireView extends Component {
 
         let prevBtn = null;
         if ((this.props.currentQuestion) !== 0) {
-            prevBtn = (<Button classes="btn-danger col-md-1"
+            prevBtn = (<Button classes="prevBtn"
                                handleClick={this.prevQuestion}
                                text="Go Back"
+                               arrowClass="arrow left"
             />);
         }
 
@@ -173,9 +178,15 @@ class QuestionnaireView extends Component {
                     <ul className="options">
                         {options}
                     </ul>
-                    <div className="container-fluid">
-                        { prevBtn }
-                        { nextBtn }
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-2">
+                                { prevBtn }
+                            </div>
+                            <div className="pull-right col-md-2 col-md-pull-3">
+                                { nextBtn }
+                            </div>
+                        </div>
                     </div>
                 </form>
             </div>
