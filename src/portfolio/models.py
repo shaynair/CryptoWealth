@@ -20,7 +20,7 @@ class Currency(models.Model):
         }
     )
 
-    percent_change_7d = models.FloatField('7d change')
+    percent_change_7d = models.FloatField(_('7d change'))
 
     market_cap = models.FloatField(_('market cap'))
 
