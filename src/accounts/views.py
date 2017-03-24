@@ -22,14 +22,9 @@ class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):
 
     def post(self, request):
         """User registration view."""
-
-        params = dict(parse_qsl(request.body.decode('utf-8')))
-        if 'risk' not in params or 'cash' not in params:
-            return Response({'error': 'Need risk and cash'}, status=status.HTTP_400_BAD_REQUEST)
-
         user = self.create(request)
         user_ob = User.objects.filter(id=user.data['id']).first()
-        for portfolio_data in create_portfolio(int(params['risk']), int(params['cash'])):
+        for portfolio_data in create_portfolio(user_ob.risk, user_ob.cash):
             portfolio = Portfolio.objects.create(
                 user=user_ob,
                 currency=Currency.objects.filter(symbol=portfolio_data['symbol']).first(),
