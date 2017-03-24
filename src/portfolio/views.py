@@ -31,7 +31,20 @@ class UserPortfolioView(GenericAPIView):
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        return Response(self.serializer_class(self.get_queryset().filter(user=request.user.id), many=True).data)
+        portfolios = self.serializer_class(self.get_queryset().filter(user=request.user.id), many=True).data
+
+        total_cash = 0
+        for p in portfolios:
+            currency = Currency.objects.filter(symbol=p['currency']).first()
+            p['name'] = currency.name
+            p['price'] = currency.price
+            p['cash'] = currency.price * p['allocation']
+            total_cash += p['cash']
+
+        for p in portfolios:
+            p['percent'] = (p['cash'] / total_cash) * 100
+
+        return Response(portfolios)
 
 class CurrencyView(ListAPIView):
     queryset = Portfolio.objects.all()

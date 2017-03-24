@@ -32,7 +32,7 @@ class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):
         for portfolio_data in create_portfolio(int(params['risk']), int(params['cash'])):
             portfolio = Portfolio.objects.create(
                 user=user_ob,
-                currency=portfolio_data['currency'],
+                currency=Currency.objects.filter(currency=portfolio_data['symbol']).first(),
                 allocation=portfolio_data['alloc'],
             )
             portfolio.save()
