@@ -107,6 +107,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     cash = models.FloatField(_('cash'), default=0)
 
+    risk = models.IntegerField(_('risk'), default=0)
+
     USERNAME_FIELD = 'username'
 
     objects = MyUserManager()

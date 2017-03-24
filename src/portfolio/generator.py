@@ -1,5 +1,6 @@
-from .models import Currency
+from .models import Currency, Portfolio
 from .market import Market
+from accounts.models import User
 
 def create_portfolio(risk_level=0, portfolio_value=0):
     ''' Create new portfolio object
@@ -11,8 +12,6 @@ def create_portfolio(risk_level=0, portfolio_value=0):
         raise ValueError("Risk level must be within 0 - 10")
     if (portfolio_value < 0):
         raise ValueError("Portfolio value must be greater than 0")
-    Market().update_market_data()
-
     '''
     Algorithm Description: Loop through every crypto-currency and assign it a portfolio suitability value based on
     portfolio risk and cash value.  Select top 10 ranking currencies for portfolio
@@ -38,9 +37,23 @@ def create_portfolio(risk_level=0, portfolio_value=0):
         p['alloc'] = (portfolio_value / len(portfolio)) / p['price']
     return portfolio
 
-def rebalance_portfolio(risk_level, portfolio):
+def rebalance_all():
     ''' Re-balance portfolio considering current market conditions '''
-    portfolio_value = 0
-    for p in portfolio:
-        portfolio_value += p['alloc'] * p['price']
-    return create_portfolio(risk_level, portfolio_value)
+    Market().update_market_data()
+
+    for user in User.objects.all():
+        portfolio_value = 0
+        for portfolio in Portfolio.objects.filter(user=user.id):
+            currency = Currency.objects.filter(symbol=portfolio.currency).first()
+            portfolio_value += portfolio.allocation * currency.value
+
+        Portfolio.objects.delete(user=user.id)
+
+        new_portfolio = create_portfolio(user.risk, portfolio_value)
+        for portfolio_data in new_portfolio:
+            portfolio_object = Portfolio.objects.create(
+                user=user,
+                currency=Currency.objects.filter(symbol=portfolio_data['symbol']).first(),
+                allocation=portfolio_data['alloc'],
+            )
+            portfolio_object.save()
