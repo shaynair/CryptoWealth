@@ -22,25 +22,25 @@ const questions = {
         options: ['Retirement', "Children's education", 'Saving for the long-term', 'Wedding fund',
             'Buying a house', 'Other'
         ],
-        optionRisks: [1, 3, 6, 2, 9, 2]
+        optionRisks: [3, 4, 8, 5, 7, 9]
     },
     2: {
         text: 'Do you currently have any debt?',
-        options: ['Yes :(', 'No!'],
+        options: ['Yes', 'No'],
         optionRisks: [4, 8]
     },
     3: {
         text: 'Do you have an emergency fund?',
         options: ['Yes', 'No'],
-        optionRisks: [10, 3]
+        optionRisks: [10, 5]
     },
     4: {
         text: 'What is your annual income?',
         options: ['Less than 60k', '60k - 90k', '91k - 140k', '141 - 200k', '200k or more'],
-        optionRisks: [1, 3, 5, 7, 10]
+        optionRisks: [3, 5, 7, 8, 10]
     },
     5:{
-        text: 'How much are you planning to invest?'
+        text: 'How much money would you like to invest?'
     }
 };
 

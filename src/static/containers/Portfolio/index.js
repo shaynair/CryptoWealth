@@ -11,16 +11,17 @@ class PortfolioView extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     risk: React.PropTypes.number.isRequired,
+    cash: React.PropTypes.number.isRequired,
     data: React.PropTypes.array
   };
 
   componentWillMount() {
         /* Fetch portfolio data based on two parameters: { risk, cash } */
-    this.props.dispatch(dataFetchProtectedData(this.props.risk, 10000));
+    this.props.dispatch(dataFetchProtectedData(this.props.risk, this.props.cash));
   }
 
   render() {
-    return ( 
+    return (
     <div className="col-md-6 col-md-offset-3">
       <h3 className="table-header col-md-4 col-md-offset-4"> Sample Portfolio </h3>
       <PortfolioTable portfolio={ this.props.data }></PortfolioTable>
@@ -32,7 +33,8 @@ class PortfolioView extends React.Component {
 const mapStateToProps = (state) => {
   return {
     data: state.portfolio.data,
-    risk: state.quest.riskLevel
+    risk: state.quest.riskLevel,
+    cash: state.quest.investment
   };
 };
 
