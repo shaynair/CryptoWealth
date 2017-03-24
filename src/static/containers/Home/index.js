@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { Button } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-// import BubbleExample from './chart';
+import LineGraph from './chart';
 
 import Logo from '../../images/logo.png';
+import Hero from '../../images/hero.jpg';
+
+import './style.scss';
 
 class HomeView extends React.Component {
 
@@ -26,41 +29,38 @@ class HomeView extends React.Component {
         paddingLeft: '210px'
       },
       descriptionStyle: {
-        paddingTop: '100px'
+        paddingTop: '0px',
+        textAlign: 'center'
       },
       imageStyle: {
         width: 600,
-        height: 550
+        height: 500
+      },
+      linkStyle: {
+        fontSize: '40px',
+        textAlign: 'center',
+        paddingTop: '50px'
       }
     };
 
     return (
-      <div className="container" style={styles.containerStyle}>
-          <div className="row">
+      <div>
+        <div className="hero-unit">
+          <h1 className="align-middle"> CryptoWealth </h1>
+          <h2> View your customized portfolio for free today! </h2>
+          <p> <Link className="btn btn-primary btn-large col-md-2 hero-button" to="/questionnaire"> 
+          Start Questionnaire </Link>
+          </p>
+        </div>
 
-            <div className="col-md-6">
-              <div className="row">
-                <div className="imageContainer">
-                  <img style={styles.imageStyle} src={ Logo } alt="ReactJs" />
-                </div>
-              </div>
-              <div className="row">
+        <div className="container" style={styles.containerStyle}>
+            <div className="row">
+              <div className="col-md-6">
                 <div>
-                  <h1 style={styles.titleStyle}> CryptoWealth < /h1> <h4 style={styles.helloStyle} > Hello, { this.props.userName || 'guest' }. < /h4>
+                  <LineGraph />
                 </div>
               </div>
-            </div>
-
-            <div className="col-md-6">
-              <div>
-                <h1 style={styles.descriptionStyle}> If you dont want to be poor forever then click the button below!! </h1>
-              </div>
-
-              <div>
-                <Link to="/questionnaire">Start Questionnaire </Link>
-              </div>
-            </div>
-
+          </div>
         </div>
       </div>
     );

@@ -38,6 +38,9 @@ const questions = {
         text: 'What is your annual income?',
         options: ['Less than 60k', '60k - 90k', '91k - 140k', '141 - 200k', '200k or more'],
         optionRisks: [1, 3, 5, 7, 10]
+    },
+    5:{
+        text: 'How much are you planning to invest?'
     }
 };
 
@@ -47,7 +50,7 @@ const initialState = {
     answers: [-1, -1, -1, -1, -1],
     riskLevel: 0,
     investment: 0,
-    totalQuestions: 5,
+    totalQuestions: 6,
     percent: '20',
     color: '#FF4B41'
 };
@@ -98,7 +101,8 @@ export default createReducer(initialState, {
 
     [SUBMIT_ANSWERS]: (state, payload) => {
         return Object.assign({}, initialState, {
-            riskLevel: payload.riskLevel
+            riskLevel: payload.riskLevel,
+            investment: payload.investment
         });
     },
 

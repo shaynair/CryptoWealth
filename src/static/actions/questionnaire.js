@@ -66,16 +66,17 @@ export function prevQuestion(index) {
     };
 }
 
-export function submitAnswer(risk) {
+export function submitAnswer(risk, investment) {
     return {
         type: SUBMIT_ANSWERS,
         payload: {
-            riskLevel: risk
+            riskLevel: risk,
+            investment: investment
         }
     };
 }
 
-export function updateProgress (percent, color) {
+export function updateProgress(percent, color) {
     return {
         type: UPDATE_PROGRESS,
         payload: {
@@ -85,7 +86,7 @@ export function updateProgress (percent, color) {
     }
 }
 
-export function changeOption (option) {
+export function changeOption(option) {
     return {
         type: CHANGE_OPTION,
         payload: {
