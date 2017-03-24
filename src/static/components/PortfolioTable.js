@@ -1,40 +1,44 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-import * as actionCreators from '../actions/data';
+
 
 class PortfolioTable extends React.Component {
-    render() {
-        if (this.props.portfolio != null ) {
-            var portfolios = this.props.portfolio.map(function(asset, index) {
-                return (
-                    <tr key= { index }>
-                        <td className='assetSymbol'> { asset.symbol } </td>
-                        <td className='assetName'>  { asset.name } </td>
-                        <td className='assetSymbol'> { asset.alloc } </td>
-                    </tr>
-                )
-            })
-        } else {
-            var portfolio = (
-                <tr>
-                </tr>
-            )
-        }
+  static propTypes = {
+    portfolio: React.PropTypes.array
+  };
+  render() {
+    let portfolios = (< tr / >);
 
-        return (
-            <table className="table" id="portfolio-table"> 
-                <tbody>
-                <tr>
-                    <th> Symbols </th>
-                    <th> Assets </th>
-                    <th> Allocation </th>
-                </tr>
-                        { portfolios }
-                </tbody>
-            </table>
-        );
+    if (this.props.portfolio != null) {
+      portfolios = this.props.portfolio.map((asset, index) => {
+        return (<tr key= { index }>
+          <td className="assetSymbol">
+            { asset.symbol }
+          </td>
+          <td className="assetName">
+            { asset.name }
+          </td>
+          <td className="assetSymbol">
+            { asset.alloc }
+          </td>
+        </tr>)
+      });
+    }
+
+
+    return (<div>
+        <table className="table portfolio-table" id="portfolio-table">
+          <thead>
+            <th className="theader">Symbols</th>
+            <th className="theader">Assets</th>
+            <th className="theader">Allocation</th>
+            { portfolios }
+          </thead>
+        </table>
+        <div className="portfolioChartWrapper" ref="portfolioChartWrapper">
+        </div>
+      </div>);
     }
 }
+
 
 export { PortfolioTable };

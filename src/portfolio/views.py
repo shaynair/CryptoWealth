@@ -10,6 +10,7 @@ from rest_framework.response import Response
 from .generator import *
 from .serializers import PortfolioSerializer, CurrencySerializer
 from .models import Portfolio, Currency
+from accounts.models import User
 
 class BasicRiskView(APIView):
     serializer_class = None
@@ -44,7 +45,13 @@ class UserPortfolioView(GenericAPIView):
         for p in portfolios:
             p['percent'] = (p['cash'] / total_cash) * 100
 
-        return Response(portfolios)
+        user = User.objects.filter(id=request.user.id).first()
+        total_change = total_cash - user.cash
+        returns = 0
+        if user.cash > 0:
+            returns = (total_change / user.cash) * 100
+
+        return Response({ 'portfolio': portfolios, 'total': total_change, 'returns': returns})
 
 class CurrencyView(ListAPIView):
     queryset = Portfolio.objects.all()
