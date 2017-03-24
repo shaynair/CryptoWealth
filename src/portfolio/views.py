@@ -51,7 +51,7 @@ class UserPortfolioView(GenericAPIView):
         if user.cash > 0:
             returns = (total_change / user.cash) * 100
 
-        return Response({ 'portfolio': portfolios, 'total': total_change, 'returns': returns})
+        return Response({ 'portfolio': portfolios, 'value': total_cash, 'total': total_change, 'returns': returns})
 
 class CurrencyView(ListAPIView):
     queryset = Portfolio.objects.all()
