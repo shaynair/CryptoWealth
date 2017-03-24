@@ -28,7 +28,8 @@ INSTALLED_APPS = (
 
     'accounts',
     'base',
-    'portfolio'
+    'portfolio',
+    'crypto'
 )
 
 MIDDLEWARE_CLASSES = (
