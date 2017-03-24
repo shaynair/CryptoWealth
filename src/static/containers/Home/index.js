@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Button } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-// import BubbleExample from './chart';
+import LineGraph from './chart';
 
 import CryptoWealthLogo from './images/CryptoWealthLogo.png';
 
@@ -26,18 +26,23 @@ class HomeView extends React.Component {
         paddingLeft: '210px'
       },
       descriptionStyle: {
-        paddingTop: '100px'
+        paddingTop: '0px',
+        textAlign: 'center'
       },
       imageStyle: {
         width: 600,
-        height: 550
+        height: 500
+      },
+      linkStyle: {
+        fontSize: '40px',
+        textAlign: 'center',
+        paddingTop: '50px'
       }
     };
 
     return (
       <div className="container" style={styles.containerStyle}>
           <div className="row">
-
             <div className="col-md-6">
               <div className="row">
                 <div className="imageContainer">
@@ -46,21 +51,20 @@ class HomeView extends React.Component {
               </div>
               <div className="row">
                 <div>
-                  <h1 style={styles.titleStyle}> CryptoWealth < /h1> <h4 style={styles.helloStyle} > Hello, { this.props.userName || 'guest' }. < /h4>
+                  <h1 style={styles.titleStyle}> CryptoWealth </h1> <h4 style={styles.helloStyle} > Hello, { this.props.userName || 'guest' }. < /h4>
                 </div>
               </div>
             </div>
 
             <div className="col-md-6">
               <div>
-                <h1 style={styles.descriptionStyle}> If you dont want to be poor forever then click the button below!! </h1>
+                <LineGraph />
+                <h2 style={styles.descriptionStyle}> View your customized portfolio for free today! </h2>
               </div>
-
               <div>
-                <Link to="/questionnaire">Start Questionnaire </Link>
+                <Link style={styles.linkStyle} to="/questionnaire"> Start Questionnaire </Link>
               </div>
             </div>
-
         </div>
       </div>
     );
