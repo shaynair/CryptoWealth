@@ -12,6 +12,8 @@ from .serializers import PortfolioSerializer, CurrencySerializer
 from .models import Portfolio, Currency
 from accounts.models import User
 
+import math
+
 class BasicRiskView(APIView):
     serializer_class = None
     authentication_classes = ()
@@ -38,20 +40,23 @@ class UserPortfolioView(GenericAPIView):
         for p in portfolios:
             currency = Currency.objects.filter(symbol=p['currency']).first()
             p['name'] = currency.name
-            p['price'] = currency.price
-            p['cash'] = currency.price * p['allocation']
+            p['price'] = math.ceil(currency.price * 100000) / 100000
+            p['cash'] = math.ceil(currency.price * p['allocation'] * 10000) / 10000
+            p['allocation'] = math.ceil(p['allocation'] * 10000000) / 10000000
             total_cash += p['cash']
 
         for p in portfolios:
-            p['percent'] = (p['cash'] / total_cash) * 100
+            p['percent'] = math.ceil((p['cash'] / total_cash) * 10000) / 100
 
         user = User.objects.filter(id=request.user.id).first()
-        total_change = total_cash - user.cash
+        total_change = math.ceil((total_cash - user.cash) * 100) / 100
         returns = 0
         if user.cash > 0:
-            returns = (total_change / user.cash) * 100
+            returns = math.ceil((total_change / user.cash) * 10000) / 100
 
-        return Response({ 'portfolio': portfolios, 'total': total_change, 'returns': returns})
+        total_cash = math.ceil(total_cash * 100) / 100
+
+        return Response({ 'portfolio': portfolios, 'value': total_cash, 'total': total_change, 'returns': returns})
 
 class CurrencyView(ListAPIView):
     queryset = Portfolio.objects.all()
