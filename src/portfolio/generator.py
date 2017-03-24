@@ -44,9 +44,7 @@ def rebalance_all():
     for user in User.objects.all():
         portfolio_value = 0
         for portfolio in Portfolio.objects.filter(user=user.id):
-            currency = Currency.objects.filter(symbol=portfolio.currency).first()
-            if currency is not None:
-                portfolio_value += portfolio.allocation * currency.price
+            portfolio_value += portfolio.allocation * portfolio.currency.price
             portfolio.delete()
 
         new_portfolio = create_portfolio(user.risk, portfolio_value)
