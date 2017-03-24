@@ -2,7 +2,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import './style.scss';
 
-const person = {firstName:"Philip", lastName:"Banks", totalValue: "$200,000,000", totalEarnings: "$200,000", totalReturn: "10%"}
+const tabs =
+  <ul className="nav nav-tabs">
+    <li className="active" ><a data-toggle="tab" href="#profile-overview">Overview</a></li>
+    <li><a data-toggle="tab" href="#profile-analytics">Analytics</a></li>
+    <li><a data-toggle="tab" href="#profile-activity-log">Activity Log</a></li>
+  </ul>;
+
+  const person = {firstName:"Philip", lastName:"Banks", totalValue: "$200,000,000", totalEarnings: "$200,000", totalReturn: "10%"}
 
 class ProfileView extends React.Component {
 

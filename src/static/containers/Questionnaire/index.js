@@ -94,6 +94,19 @@ class QuestionnaireView extends Component {
         }
     };
 
+    chooseColor = (percent) => {
+        let color;
+        if (percent <= 33){
+            color = '#FF4B41';
+        } else if (percent <= 66) {
+            color = '#FF9920';
+        } else if (percent >= 75) {
+            color = '#A7FF34';
+        } else if (percent === 100){
+            color = '#1BA42C';
+        }
+        return color;
+    };
 
     prevQuestion = (e) => {
         e.preventDefault();
@@ -125,12 +138,10 @@ class QuestionnaireView extends Component {
 
         const risk = Math.round(this.props.riskLevel / this.props.totalQuestions);
 
-        this.props.actions.submitAnswer(risk, investmentAmount);
-        this.props.dispatch(push('/portfolio'));
+        this.props.actions.submitAnswer(risk, investmentAmount);        this.props.dispatch(push('/portfolio'));
     };
 
     render() {
-
         let nextBtn = null;
         let options = null;
 
