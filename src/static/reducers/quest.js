@@ -40,7 +40,8 @@ const questions = {
         optionRisks: [1, 3, 5, 7, 10]
     },
     5:{
-        text: 'How much are you planning to invest?'
+        text: 'How much are you planning to invest?',
+        optionRisks: [1, 3, 5, 7, 10] // previous option risks
     }
 };
 

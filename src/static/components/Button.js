@@ -3,7 +3,7 @@ import React, {Component} from 'react';
 class Button extends Component {
     static propTypes = {
         classes: React.PropTypes.string,
-        onClick: React.PropTypes.func.isRequired,
+        handleClick: React.PropTypes.func.isRequired,
         text: React.PropTypes.string.isRequired
     };
 

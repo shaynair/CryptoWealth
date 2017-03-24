@@ -84,8 +84,6 @@ class QuestionnaireView extends Component {
             this.props.actions.nextQuestion(index);
 
             // update progress bar
-            console.log('index');
-            console.log(index);
             let percent = 20 + (index / this.props.totalQuestions) * 100;
 
             if (percent > 100) percent = 100;
@@ -109,7 +107,7 @@ class QuestionnaireView extends Component {
             this.props.actions.prevQuestion(index);
 
             // update progress bar
-            let percent = (index / this.props.totalQuestions) * 100;
+            let percent = (index / this.props.totalQuestions) * 100 + 20;
             const color = this.chooseColor(percent);
             this.props.actions.updateProgress(percent.toString(), color);
         }
