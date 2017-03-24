@@ -2,7 +2,7 @@
 .hero-unit {
     background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../../images/hero.jpg');
     background-size: cover;
-    height: 550px;
+    height: 690px;
     padding-top: 170px;
     padding-left: 80px;
     margin-bottom: 20px;
@@ -26,4 +26,8 @@
     font-size: 25px;
     color: #FFFFFF;
     margin-bottom: 25px;
+}
+
+html {
+    background-color: #222;
 }
