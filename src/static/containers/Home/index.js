@@ -1,11 +1,7 @@
 import React, { Button } from 'react';
 import { Link } from 'react-router';
 import { connect } from 'react-redux';
-<<<<<<< HEAD
 import LineGraph from './chart';
-=======
-import BubbleExample from './chart';
->>>>>>> c8c74bbe97ee53c51e669911eff1d47d465db16f
 
 import CryptoWealthLogo from './images/CryptoWealthLogo.png';
 
@@ -61,13 +57,11 @@ class HomeView extends React.Component {
             </div>
 
             <div className="col-md-6">
-              <row>
-                <BubbleExample />
-              </row>
               <div>
                 <LineGraph />
                 <h2 style={styles.descriptionStyle}> View your customized portfolio for free today! </h2>
               </div>
+
               <div>
                 <Link style={styles.linkStyle} to="/questionnaire"> Start Questionnaire </Link>
               </div>

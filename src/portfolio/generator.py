@@ -1,7 +1,7 @@
-if __name__ == '__main__':
-    from market import Market
-else:
-    from .market import Market
+# if __name__ == '__main__':
+#     from market import Market
+# else:
+from .market import Market
 
 class PortfolioGenerator():
 
@@ -53,7 +53,7 @@ class PortfolioGenerator():
             self.portfolio.append({'id': 'bitcoin', 'alloc': 7})
 
         # Calculate and reset invested/cash value variables
-        self.update_cash_holdings_value()
+        # self.update_cash_holdings_value()
 
     def update_cash_holdings_value(self):
         invested_value = 0
@@ -80,7 +80,3 @@ class PortfolioGenerator():
     def get_price(self, currency):
         ''' Helper function to get current price of currency '''
         return float(self.market_data.get('id')[currency].get('price_usd'))
-
-if __name__ == '__main__':
-    p = PortfolioGenerator()
-
