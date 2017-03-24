@@ -41,10 +41,24 @@ class Market(object):
 
 		loaded_data = json.load(codecs.getreader('utf-8')(self._ticker()))
 		for currency in loaded_data:
-			Currency.objects.update_or_create(
- 				symbol=currency.get('symbol'),
-				name=currency.get('name'),
-				price=currency.get('price_usd'),
-				percent_change_7d=currency.get('percent_change_7d'),
-				market_cap=currency.get('market_cap_usd')
-			)
+			if currency['price_usd'] == None or currency['market_cap_usd'] == None or currency['percent_change_7d'] == None:
+				continue
+
+			found = False
+			for old_currencies in Currency.objects.filter(symbol=currency.get('symbol')):
+				found = True
+
+			Currency.objects.filter(symbol=currency.get('symbol'), name=currency.get('name')).update(
+						price=currency.get('price_usd'),
+						percent_change_7d=currency.get('percent_change_7d'),
+						market_cap=currency.get('market_cap_usd')
+					)
+
+			if not found:
+				Currency.objects.create(
+					symbol=currency.get('symbol'),
+					name=currency.get('name'),
+					price=currency.get('price_usd'),
+					percent_change_7d=currency.get('percent_change_7d'),
+					market_cap=currency.get('market_cap_usd')
+				)
