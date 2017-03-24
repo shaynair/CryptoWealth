@@ -87,7 +87,7 @@ export function authLogoutAndRedirect() {
     };
 }
 
-export function authSignUpUser(username, password, email, redirect = "/login") {
+export function authSignUpUser(username, password, email, investment, riskLevel, redirect = "/login") {
     return (dispatch) => {
         dispatch(authSignUpUserRequest());
 
@@ -100,7 +100,9 @@ export function authSignUpUser(username, password, email, redirect = "/login") {
                 body: JSON.stringify({
                     username: username,
                     password: password,
-                    email: email
+                    email: email,
+                    risk: riskLevel,
+                    cash: investment
                 })
             }).then(checkHttpStatus)
             .then(parseJSON)
@@ -120,6 +122,12 @@ export function authSignUpUser(username, password, email, redirect = "/login") {
                         }
                         if (data.hasOwnProperty("email")) {
                             message += data.email[0] + "\n";
+                        }
+                        if (data.hasOwnProperty("risk")) {
+                            message += data.risk[0] + "\n";
+                        }
+                        if (data.hasOwnProperty("cash")) {
+                            message += data.cash[0] + "\n";
                         }
 
                         dispatch(authSignUpUserFailure(400, message));
