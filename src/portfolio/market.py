@@ -45,5 +45,6 @@ class Market(object):
  				symbol=currency.get('symbol'),
 				name=currency.get('name'),
 				price=currency.get('price_usd'),
-				percent_change_7d=currency.get('percent_change_7d')
+				percent_change_7d=currency.get('percent_change_7d'),
+				market_cap=currency.get('market_cap_usd')
 			)

@@ -22,6 +22,8 @@ class Currency(models.Model):
 
     percent_change_7d = models.FloatField('7d change')
 
+    market_cap = models.FloatField(_('market cap'))
+
     def __str__(self):
         """
         Unicode representation for a model.
