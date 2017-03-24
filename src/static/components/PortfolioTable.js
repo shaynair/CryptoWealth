@@ -27,12 +27,12 @@ class PortfolioTable extends React.Component {
 
     return (<div>
         <table className="table portfolio-table" id="portfolio-table">
-          <thead>
+          <tbody>
             <th className="theader">Symbols</th>
             <th className="theader">Assets</th>
             <th className="theader">Allocation</th>
             { portfolios }
-          </thead>
+          </tbody>
         </table>
         <div className="portfolioChartWrapper" ref="portfolioChartWrapper">
         </div>
