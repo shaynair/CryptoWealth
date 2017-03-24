@@ -37,6 +37,14 @@ class SignUpForm extends React.Component {
             redirectRoute: "/login"
         };
     }
+    
+    static propTypes = {
+        dispatch: React.PropTypes.func.isRequired,
+        isAuthenticating: React.PropTypes.bool.isRequired,
+        statusText: React.PropTypes.string,
+        investment: React.PropTypes.string.isRequired,
+        riskLevel: React.PropTypes.number.isRequired
+    };
 
     onFormChange = (value) => {
         this.setState({ formValues: value });
@@ -47,7 +55,7 @@ class SignUpForm extends React.Component {
         const value = this.signUpForm.getValue();
         if (value) {
             this.props.actions.authSignUpUser(value.username, 
-                value.password, value.email, 
+                value.password, value.email, this.props.investment, this.props.riskLevel, 
                 this.state.redirectRoute);
         }
     };
@@ -69,8 +77,8 @@ class SignUpForm extends React.Component {
                     {this.props.statusText}
                     </div>
                 </div>
-            </div>);
-        
+            </div>
+            );
         }
 
 
@@ -102,7 +110,8 @@ class SignUpForm extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-
+    investment: state.quest.investment,
+    riskLevel: state.quest.riskLevel,
     isAuthenticating: state.auth.isAuthenticating,
     statusText: state.auth.statusText
   };

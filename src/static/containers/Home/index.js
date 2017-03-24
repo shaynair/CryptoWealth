@@ -3,7 +3,10 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 import LineGraph from './chart';
 
-import CryptoWealthLogo from './images/CryptoWealthLogo.png';
+import Logo from '../../images/logo.png';
+import Hero from '../../images/hero.jpg';
+
+import './style.scss';
 
 class HomeView extends React.Component {
 
@@ -41,31 +44,23 @@ class HomeView extends React.Component {
     };
 
     return (
-      <div className="container" style={styles.containerStyle}>
-          <div className="row">
-            <div className="col-md-6">
-              <div className="row">
-                <div className="imageContainer">
-                  <img style={styles.imageStyle} src={CryptoWealthLogo} alt="ReactJs" />
-                </div>
-              </div>
-              <div className="row">
+      <div>
+        <div className="hero-unit">
+          <h1 className="align-middle"> CryptoWealth </h1>
+          <h2> View your customized portfolio for free today! </h2>
+          <p> <Link className="btn btn-primary btn-large col-md-2 hero-button" to="/questionnaire"> 
+          Start Questionnaire </Link>
+          </p>
+        </div>
+
+        <div className="container" style={styles.containerStyle}>
+            <div className="row">
+              <div className="col-md-6">
                 <div>
-                  <h1 style={styles.titleStyle}> CryptoWealth </h1> <h4 style={styles.helloStyle} > Hello, { this.props.userName || 'guest' }. < /h4>
+                  <LineGraph />
                 </div>
               </div>
-            </div>
-
-            <div className="col-md-6">
-              <div>
-                <LineGraph />
-                <h2 style={styles.descriptionStyle}> View your customized portfolio for free today! </h2>
-              </div>
-
-              <div>
-                <Link style={styles.linkStyle} to="/questionnaire"> Start Questionnaire </Link>
-              </div>
-            </div>
+          </div>
         </div>
       </div>
     );

@@ -12,7 +12,9 @@ from rest_framework import status
 from accounts.models import User
 from accounts.serializers import UserRegistrationSerializer, UserSerializer
 from .utils import AtomicMixin, IPMixin
-
+from portfolio.generator import *
+from portfolio.models import Portfolio
+from urllib.parse import parse_qsl
 
 class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):
     serializer_class = UserRegistrationSerializer
@@ -20,7 +22,22 @@ class UserRegisterView(AtomicMixin, CreateModelMixin, GenericAPIView):
 
     def post(self, request):
         """User registration view."""
-        return self.create(request)
+
+        params = dict(parse_qsl(request.body.decode('utf-8')))
+        if 'risk' not in params or 'cash' not in params:
+            return Response({'error': 'Need risk and cash'}, status=status.HTTP_400_BAD_REQUEST)
+
+        user = self.create(request)
+        user_ob = User.objects.filter(id=user.data['id']).first()
+        for portfolio_data in create_portfolio(int(params['risk']), int(params['cash'])):
+            portfolio = Portfolio.objects.create(
+                user=user_ob,
+                currency=portfolio_data['currency'],
+                allocation=portfolio_data['alloc'],
+            )
+            portfolio.save()
+
+        return user
 
 
 class UserLoginView(IPMixin, AtomicMixin, GenericAPIView):
