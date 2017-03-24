@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import './style.scss';
+import AllocationGraph from  "./graphs/AllocationGraph";
+import TrendGraph from "./graphs/TrendGraph";
 
 const person = {firstName:"Philip", lastName:"Banks", totalValue: "$200,000,000", totalEarnings: "$200,000", totalReturn: "10%"}
 
@@ -21,17 +23,17 @@ class ProfileView extends React.Component {
                 <div className="overview-graph col-md-9" >
 
                   <ul className="nav nav-tabs">
-                    <li className="active" ><a data-toggle="tab" href="#graph1">Graph1 </a></li>
-                    <li><a data-toggle="tab" href="#graph2">Graph2 </a></li>
+                    <li className="active" ><a data-toggle="tab" href="#graph1">Portfolio</a></li>
+                    <li><a data-toggle="tab" href="#graph2">Recent Trends</a></li>
                     <li><a data-toggle="tab" href="#graph3">Graph3 </a></li>
                   </ul>
 
                   <div className="tab-content">
                     <div id="graph1" className="graph-div tab-pane fade in active">
-                      <h4> Insert Graph 1 here @Har0ld </h4>
+                      <AllocationGraph />
                     </div>
                     <div id="graph2" className="graph-div tab-pane fade">
-                      <h4> Insert Graph 2 here @Har0ld </h4>
+                      <TrendGraph />
                     </div>
                     <div id="graph3" className="graph-div tab-pane fade">
                       <h4> Insert Graph 3 here @Har0ld </h4>
@@ -56,12 +58,6 @@ class ProfileView extends React.Component {
                 </div>
 
             </section>
-
-            <section id="profile-activity-log" className="container row">
-                <hr />
-                <h3> Activity Log </h3>
-            </section>
-
         </div>
     );
   }

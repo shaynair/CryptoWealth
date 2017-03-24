@@ -3,7 +3,7 @@ import { Link } from 'react-router';
 import { connect } from 'react-redux';
 // import BubbleExample from './chart';
 
-import CryptoWealthLogo from './images/CryptoWealthLogo.png';
+import Logo from '../../images/logo.png';
 
 class HomeView extends React.Component {
 
@@ -41,7 +41,7 @@ class HomeView extends React.Component {
             <div className="col-md-6">
               <div className="row">
                 <div className="imageContainer">
-                  <img style={styles.imageStyle} src={CryptoWealthLogo} alt="ReactJs" />
+                  <img style={styles.imageStyle} src={ Logo } alt="ReactJs" />
                 </div>
               </div>
               <div className="row">
