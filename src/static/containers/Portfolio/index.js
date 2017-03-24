@@ -16,7 +16,10 @@ class PortfolioView extends React.Component {
   static propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     risk: React.PropTypes.number.isRequired,
-    cash: React.PropTypes.number.isRequired,
+    cash: React.PropTypes.oneOfType([
+      React.PropTypes.string,
+      React.PropTypes.number,
+    ]),
     data: React.PropTypes.array
   };
 
