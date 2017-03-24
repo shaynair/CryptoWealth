@@ -19,9 +19,9 @@ class BasicRiskView(APIView):
     def get(self, request):
         """Retrieve basic risk info."""
         params = request.query_params.dict()
-        p = PortfolioGenerator(int(params['risk']), int(params['cash']))
+        p = create_portfolio(int(params['risk']), int(params['cash']))
 
-        return Response(p.portfolio, status=status.HTTP_200_OK)
+        return Response(p, status=status.HTTP_200_OK)
 
 
 class UserPortfolioView(GenericAPIView):
