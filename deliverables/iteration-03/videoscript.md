@@ -31,7 +31,7 @@ They make more than 200k a year (SELECT MORE THAN 200K, NEXT QUESTION)
 
 And they have $100,000 to invest (INPUT 100,000, FINISH QUESTIONNAIRE)
 
-Here we see a sample portfolio has been generated based on our preferences and we are redirected to a signup page, after inputting some information we will create an account (SELECT SIGNUP)
+Here we see a sample portfolio has been generated based on our preferences and below we are presented with the option to signup, after inputting some basic information we will create an account (SELECT SIGNUP)
 
 Now we can log in using our the account we just created (SELECT LOGIN)
 
