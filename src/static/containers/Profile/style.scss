@@ -22,7 +22,6 @@
 
 .graph-div {
     height: 500px;
-    background-color: $theme-grey;
     padding: 5px;
 }
 
@@ -37,4 +36,9 @@ ul li a {
 
 #profile-activity-log {
     clear: both;
+}
+
+.profile-graph {
+    margin-top: 20px;
+    padding: 20px;
 }

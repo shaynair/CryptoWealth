@@ -2,6 +2,7 @@
 #main-nav {
     border-radius: 0px;
     border: 0px;
+    margin-bottom: 0px !important;
 }
 
 #main-nav a {
@@ -20,5 +21,22 @@
 }
 
 .navbar-brand {
-    color: $theme-grey !important;
+    padding: 0px;
+}
+
+.navbar-brand>img {
+    height: 40px;
+    padding: 0px;
+    width: auto;
+    display: inline;
+    margin-top: -10px;
+    margin-left: -5px;
+}
+
+.nav-header {
+    width: 400px;
+}
+
+.brand-text {
+    margin-left: -25px !important;
 }
