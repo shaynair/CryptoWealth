@@ -9,8 +9,8 @@ import Options from '../../components/Options';
 import Question from '../../components/Question';
 import ProgressBar from '../../components/ProgressBar';
 import Investment from '../../components/Investment';
+import Button from '../../components/Button';
 
-// TODO [ian]: add investment field at the end of questionnaire
 // TODO [ian]: update style for next and prev buttons
 class QuestionnaireView extends Component {
     static propTypes = {
@@ -135,10 +135,15 @@ class QuestionnaireView extends Component {
         let options = null;
 
         if ((this.props.currentQuestion + 1) === this.props.totalQuestions) {
-            nextBtn = (<button className="btn-info col-md-1" onClick={this.submitQuestionnaire}>Submit</button>);
+            nextBtn = (<Button classes="btn-info col-md-1"
+                               handleClick={this.submitQuestionnaire}
+                               text="Submit Questionnaire"/>);
             options = <Investment handleChange={this.handleInvestmentChange}/>;
         } else {
-            nextBtn = (<button className="btn-primary col-md-1" onClick={this.nextQuestion}>Next</button>);
+            nextBtn = (<Button classes="btn-primary col-md-1"
+                               handleClick={this.nextQuestion}
+                               text="Next Question"
+                        />);
             options = this.props.question.options.map(
                 (option, index) => {
                     return (<Options
@@ -156,9 +161,10 @@ class QuestionnaireView extends Component {
 
         let prevBtn = null;
         if ((this.props.currentQuestion) !== 0) {
-            prevBtn = (<button className="btn-danger col-md-1" onClick={this.prevQuestion}>
-                Go Back
-            </button>);
+            prevBtn = (<Button classes="btn-danger col-md-1"
+                               handleClick={this.prevQuestion}
+                               text="Go Back"
+            />);
         }
 
 

@@ -10,6 +10,7 @@ class Investment extends Component {
             <div className="input-group input-group-lg">
                 <span className="input-group-addon">$</span>
                 <input type="number"
+                       min="0"
                        id="investment"
                        className="form-control"
                        style={style}
