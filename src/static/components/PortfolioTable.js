@@ -16,7 +16,7 @@ class PortfolioTable extends React.Component {
                 )
             })
         } else {
-            var portfolio = (
+            var portfolios = (
                 <tr>
                 </tr>
             )

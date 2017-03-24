@@ -105,6 +105,8 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     last_ip = models.CharField(_('last known ip'), null=True, blank=True, default=None, max_length=20)
 
+    cash = models.FloatField(_('cash'), default=0)
+
     USERNAME_FIELD = 'username'
 
     objects = MyUserManager()
