@@ -11,13 +11,13 @@ Our online platform aims to facilitate user investment in crypto-currencies. By 
 
 Unique crypto-currency portfolios will be constructed for each investor based on the level of risk they are willing to accept, their personal interests, preferences and a variety of other parameters. 
 
-Think of our application as a fusion between the traditional debt and equity securities robo-advisors, such as WealthSimple and Betterment, with crypto-currencies like BitCoin, Ethereum and LiteCoin.
+Think of our application as a fusion between the traditional debt and equity securities robo-advisors, such as WealthSimple and Betterment, but we are addressing a gap in their user base by extending their investment options with crypto-currencies like BitCoin, Ethereum and LiteCoin.
 
-In our video we will demonstrate a single user walk-through, demonstrating how a user would utilize our application.
+In our video we will demonstrate a single user walk-through, demonstrating how a user would use our application.
 
 ### DEMO:  - 100 seconds
 
-First we will begin by filling out a short questionnaire, we will act as an investor who is looking to take on a substantial amount of risk in hopes of obtaining high returns (SELECT = 'Start Questionnaire')
+First we immediately draw our prospective investor’s attention to our “Start Questionnaire” button. This UX design is meant to intuitively get them investing as soon as possible. This questionnaire serves to assess an investors financial health, investment objectives, and risk tolerance so that we can recommend them a personalized portfolio (SELECT = 'Start Questionnaire’)
 
 Our risky investor is looking to invest for a long term, say 5 - 10 years (SELECT 5 - 10 YEARS, NEXT QUESTION)
 
@@ -33,12 +33,14 @@ And they have $100,000 to invest (INPUT 100,000, FINISH QUESTIONNAIRE)
 
 Here we see a sample portfolio has been generated based on our preferences and we are redirected to a signup page, after inputting some information we will create an account (SELECT SIGNUP)
 
-Now we are redirected to our user's home page, here we can see a dynamic doughnut chart displaying their portfolio allocation, thier portfolio value, total earnings and total returns percentage
+Now we are redirected to our user's home page, here we can see a dynamic doughnut chart displaying their portfolio allocation, their portfolio value, total earnings and total returns percentage
 
 
 ### DISCUSSION: -  30 seconds
 Here we have seen how a prospective user may use our application.  After filling out a simple survey a customized portfolio was generated for our user.  
 In our next steps we will be focusing our efforts on enhancing the user-interface and completing some of the extra features that we weren't able to complete this iteration.  This includes adding more informative charts in the 'Analytics' tab, and adding a complete history of a users automatic portfolio adjustments under the 'Activity Log' tab.
+
+Don’t forget to give a thumbs, and subscribe if you enjoyed this video!
 
 ## Video
 
