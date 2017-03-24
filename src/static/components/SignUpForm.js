@@ -37,12 +37,12 @@ class SignUpForm extends React.Component {
             redirectRoute: "/login"
         };
     }
-    
+
     static propTypes = {
         dispatch: React.PropTypes.func.isRequired,
         isAuthenticating: React.PropTypes.bool.isRequired,
         statusText: React.PropTypes.string,
-        investment: React.PropTypes.string.isRequired,
+        investment: React.PropTypes.number.isRequired,
         riskLevel: React.PropTypes.number.isRequired
     };
 
@@ -54,12 +54,12 @@ class SignUpForm extends React.Component {
         e.preventDefault();
         const value = this.signUpForm.getValue();
         if (value) {
-            this.props.actions.authSignUpUser(value.username, 
-                value.password, value.email, this.props.investment, this.props.riskLevel, 
+            this.props.actions.authSignUpUser(value.username,
+                value.password, value.email, this.props.investment, this.props.riskLevel,
                 this.state.redirectRoute);
         }
     };
-    
+
     render() {
         let statusText = null;
 
@@ -82,7 +82,7 @@ class SignUpForm extends React.Component {
         }
 
 
-        return(      
+        return(
             <div className="login">
                 <h1 className="text-center">Sign Up For A Free Account!</h1>
                 <div className="login-container margin-top-medium">
@@ -95,9 +95,9 @@ class SignUpForm extends React.Component {
                                 value={this.state.formValues}
                                 onChange={this.onFormChange}
                         />
-                        <button 
-                            disabled={this.props.isAuthenticating} 
-                            type="submit"  
+                        <button
+                            disabled={this.props.isAuthenticating}
+                            type="submit"
 
                             className="btn btn-default btn-block"> Submit
                         </button>
