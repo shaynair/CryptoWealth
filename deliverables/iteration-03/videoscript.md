@@ -33,14 +33,14 @@ And they have $100,000 to invest (INPUT 100,000, FINISH QUESTIONNAIRE)
 
 Here we see a sample portfolio has been generated based on our preferences and we are redirected to a signup page, after inputting some information we will create an account (SELECT SIGNUP)
 
+Now we can log in using our the account we just created (SELECT LOGIN)
+
 Now we are redirected to our user's home page, here we can see a dynamic doughnut chart displaying their portfolio allocation, their portfolio value, total earnings and total returns percentage
 
 
 ### DISCUSSION: -  30 seconds
-Here we have seen how a prospective user may use our application.  After filling out a simple survey a customized portfolio was generated for our user.  
+So, we have seen how a prospective user may use our application.  After filling out a simple survey a customized portfolio was generated for our user.  
 In our next steps we will be focusing our efforts on enhancing the user-interface and completing some of the extra features that we weren't able to complete this iteration.  This includes adding more informative charts in the 'Analytics' tab, and adding a complete history of a users automatic portfolio adjustments under the 'Activity Log' tab.
-
-Don’t forget to give a thumbs, and subscribe if you enjoyed this video!
 
 ## Video
 
