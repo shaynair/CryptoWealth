@@ -5,12 +5,15 @@ except ImportError:
 import json
 import codecs
 from .models import Currency
+import ssl
+
 
 class Market(object):
 	base_url = 'https://api.coinmarketcap.com/v1/'
 
 	def __init__(self):
 		self.opener = urllib2.build_opener()
+		ssl._create_default_https_context = ssl._create_unverified_context
 		self.opener.addheaders.append(('Content-Type', 'application/json'))
 		self.opener.addheaders.append(('User-agent', 'coinmarketcap - python wrapper \
 		around coinmarketcap.com (github.com/mrsmn/coinmarketcap-api)'))
