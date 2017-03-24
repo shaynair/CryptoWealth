@@ -2,8 +2,6 @@ from .market import Market
 
 class PortfolioGenerator():
 
-    market_data = Market().get_relevant_market_data()
-
     def __init__(self, risk_level=0, portfolio_value=0):
         ''' Create new portfolio object
             risk_level: integer (1 - 10)
@@ -26,24 +24,19 @@ class PortfolioGenerator():
         '''  Algorithm to initially construct portfolio
         '''
         if self.risk_level < 5:
-            self.portfolio.append({'id': 'bitcoin', 'alloc': 4})
-            self.portfolio.append({'id': 'ethereum', 'alloc': 5})
-            self.portfolio.append({'id': 'dash', 'alloc': 10})
-            self.portfolio.append({'id': 'ripple', 'alloc': 10})
-            self.portfolio.append({'id': 'monero', 'alloc': 5})
+            self.portfolio.append({'symbol': 'BTC', 'alloc': 4})
+            self.portfolio.append({'symbol': 'ETH', 'alloc': 5})
+            self.portfolio.append({'symbol': 'DASH', 'alloc': 10})
         else:
-            self.portfolio.append({'id': 'bitcoin', 'alloc': 7})
-            self.portfolio.append({'id': 'litecoin', 'alloc': 137})
-            self.portfolio.append({'id': 'nem', 'alloc': 13})
-            self.portfolio.append({'id': 'maidsafecoin', 'alloc': 25})
-            self.portfolio.append({'id': 'augur', 'alloc': 12})
+            self.portfolio.append({'symbol': 'BTC', 'alloc': 7})
+            self.portfolio.append({'symbol': 'LTC', 'alloc': 137})
+            self.portfolio.append({'symbol': 'NEM', 'alloc': 13})
 
         # Calculate and reset invested/cash value variables
         invested_value = 0
         for p in self.portfolio:
-            p['name'] = self.get_name(p['id'])
-            p['symbol'] = self.get_symbol(p['id'])
-            invested_value += p['alloc'] * self.get_price(p['id'])
+            p['name'] = self.get_name(p['symbol'])
+            invested_value += p['alloc'] * self.get_price(p['symbol'])
         self.holdings_value = invested_value
         self.cash_value -= invested_value
 
@@ -55,18 +48,10 @@ class PortfolioGenerator():
     def get_total_portfolio_value(self):
         return self.cash_value + self.holdings_value
 
-    def get_symbol(self, currency):
-        ''' Helper function to get symbol of currency '''
-        return self.market_data.get('id')[currency].get('symbol')
-
-    def get_id(self, currency):
-        ''' Helper function to get symbol of currency '''
-        return self.market_data.get('name')[currency].get('id')
-
     def get_name(self, currency):
         ''' Helper function to get symbol of currency '''
-        return self.market_data.get('id')[currency].get('name')
+        return self.market_data.get(currency, {}).get('name', '')
 
     def get_price(self, currency):
         ''' Helper function to get current price of currency '''
-        return float(self.market_data.get('id')[currency].get('price_usd'))
+        return float(self.market_data.get(currency, {}).get('price_usd', 0))
