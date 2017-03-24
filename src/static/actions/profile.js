@@ -36,7 +36,6 @@ export function fetchProfileData(token) {
             }).then(checkHttpStatus)
             .then(parseJSON)
             .then((response) => {
-                console.log(response);
                 dispatch(fetchSuccess(response));
             })
             .catch((err) => {

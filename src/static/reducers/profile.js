@@ -2,10 +2,11 @@ import { createReducer } from '../utils';
 import { PROFILE_FETCH_FAILURE, PROFILE_FETCH_REQUEST, PROFILE_FETCH_SUCCESS } from '../constants';
 
 const initialState = {
-    portfolios: null,
+    portfolios: [],
     isFetching: false,
     returns: 0,
-    total: 0
+    totalEarnings: 0,
+    totalValue: 0
 };
 
 export default createReducer(initialState, {
@@ -15,11 +16,13 @@ export default createReducer(initialState, {
         });
     },
     [PROFILE_FETCH_SUCCESS]: (state, payload) => {
+        console.log(payload);
         return Object.assign({}, state, {
-            portfolios: payload.portfolios,
+            portfolios: payload.portfolio,
             isFetching: true,
             returns: payload.returns,
-            total: payload.total
+            totalEarnings: payload.total,
+            totalValue: payload.value
         });
     },
     [PROFILE_FETCH_FAILURE]: (state) => {
