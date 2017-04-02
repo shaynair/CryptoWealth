@@ -18,7 +18,7 @@ class PortfolioTable extends React.Component {
             { asset.name }
           </td>
           <td className="assetSymbol">
-            { asset.alloc }
+            { Math.round(asset.alloc * 10000) / 10000 }
           </td>
         </tr>)
       });
@@ -28,8 +28,8 @@ class PortfolioTable extends React.Component {
     return (<div>
         <table className="table portfolio-table" id="portfolio-table">
           <tbody>
-            <th className="theader">Symbols</th>
-            <th className="theader">Assets</th>
+            <th className="theader">Symbol</th>
+            <th className="theader">Asset</th>
             <th className="theader">Allocation</th>
             { portfolios }
           </tbody>
