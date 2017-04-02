@@ -27,6 +27,12 @@
 
 .assetRow:hover {
   background-color: #e6f3ff;
+
+  .assetSymbolContainer {
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+  }
 }
 
 .assetSymbol, .assetName, .assetAlloc {

@@ -10,14 +10,14 @@ class PortfolioTable extends React.Component {
 
     if (this.props.portfolio != null) {
       portfolios = this.props.portfolio.map((asset, index) => {
-        return (<tr key= { index }>
-          <td className="assetSymbol">
+        return (<tr className="assetRow" key= { index }>
+          <td className="assetSymbol assetSymbolContainer">
             { asset.symbol }
           </td>
           <td className="assetName">
             { asset.name }
           </td>
-          <td className="assetSymbol">
+          <td className="assetAlloc">
             { Math.round(asset.alloc * 10000) / 10000 }
           </td>
         </tr>)
@@ -34,8 +34,6 @@ class PortfolioTable extends React.Component {
             { portfolios }
           </tbody>
         </table>
-        <div className="portfolioChartWrapper" ref="portfolioChartWrapper">
-        </div>
       </div>);
     }
 }
