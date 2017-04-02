@@ -4,12 +4,19 @@ except ImportError:
 	import urllib2
 import json
 import codecs
+import calendar
+import time
+from .generator import *
 from .models import Currency
 import ssl
 
+DAY_S = 24 * 60 * 60
+YEAR_S = DAY_S * 365
+BTC = 'BTC'
 
 class Market(object):
 	base_url = 'https://api.coinmarketcap.com/v1/'
+	chart_url = 'https://poloniex.com/public'
 
 	def __init__(self):
 		self.opener = urllib2.build_opener()
@@ -22,45 +29,54 @@ class Market(object):
 		""" Internal urljoin function because urlparse.urljoin sucks """
 		return "/".join(map(lambda x: str(x).rstrip('/'), args))
 
-	def _get(self, api_call, query=None):
+	def _queryjoin(self, query):
+		""" Internal urljoin function because urlparse.urljoin sucks """
+		return "?" + "&".join([k + '=' + str(v) for k, v in query.items()])
+
+	def _get_market(self, api_call='ticker/', query=None):
 		url = self._urljoin(self.base_url, api_call)
 		if query == None:
 			response = self.opener.open(url)
 		else:
 			response = self.opener.open(self._urljoin(url, query))
-		return response
+		return json.load(codecs.getreader('utf-8')(response))
 
-	def _ticker(self, param=None):
-		""" ticker() returns a dict containing all the currencies
-			ticker(currency) returns a dict containing only the currency you
-			passed as an argument.
-		"""
-		return self._get('ticker/', query=param)
+	def get_historical(self, currency):
+		ms = int(calendar.timegm(time.gmtime()))
+		query = {'command': 'returnChartData', 'start': ms - YEAR_S, 'end': ms,
+				 'period': DAY_S, 'currencyPair': BTC + '_' + currency}
 
-	def update_market_data(self):
+		if currency == BTC:
+			query['currencyPair'] = 'USDT_' + currency
+
+		return json.load(codecs.getreader('utf-8')(self.opener.open(self._urljoin(self.chart_url, self._queryjoin(query)))))
+
+	def update_market_data(self, scheduled):
 		''' Helper function that returns json object of crypto-currencies to consider for portfolio
 			used in construction + re-balancing of portfolio object
 		'''
 
-		loaded_data = json.load(codecs.getreader('utf-8')(self._ticker()))
+		loaded_data = self._get_market()
 		for currency in loaded_data:
-			if currency['price_usd'] == None or currency['market_cap_usd'] == None or currency['percent_change_7d'] == None or currency['percent_change_24h'] == None:
+			not_found = Currency.objects.filter(symbol=currency.get('symbol')).count() == 0
+
+			if (scheduled and not_found) or (not scheduled and
+					(currency['price_usd'] == None or currency['market_cap_usd'] == None
+						or currency['percent_change_7d'] == None or currency['percent_change_24h'] == None)):
+				Currency.objects.filter(symbol=currency.get('symbol')).delete()
 				continue
 
-			found = False
-			for old_currencies in Currency.objects.filter(symbol=currency.get('symbol')):
-				found = True
-
-			Currency.objects.filter(symbol=currency.get('symbol'), name=currency.get('name')).update(
-						price=currency.get('price_usd'),
-						percent_change_7d=currency.get('percent_change_7d'),
-						market_cap=currency.get('market_cap_usd')
-					)
-
-			if not found:
+			if not_found:
 				Currency.objects.create(
 					symbol=currency.get('symbol'),
 					name=currency.get('name'),
+					price=currency.get('price_usd'),
+					percent_change_1d=currency.get('percent_change_24h'),
+					percent_change_7d=currency.get('percent_change_7d'),
+					market_cap=currency.get('market_cap_usd')
+				)
+			else:
+				Currency.objects.filter(symbol=currency.get('symbol'), name=currency.get('name')).update(
 					price=currency.get('price_usd'),
 					percent_change_1d=currency.get('percent_change_24h'),
 					percent_change_7d=currency.get('percent_change_7d'),

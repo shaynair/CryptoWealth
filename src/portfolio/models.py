@@ -86,3 +86,21 @@ class AllocationHistory(models.Model):
     currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
 
     user = models.ForeignKey(UserHistory, on_delete=models.CASCADE)
+
+
+
+class HistoricalCurrency(models.Model):
+    """
+    Model that represents an allocation history.
+    """
+
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+
+    price = models.FloatField(_('price'))
+
+    volume = models.FloatField(_('volume'))
+
+    currency = models.ForeignKey(Currency, on_delete=models.CASCADE)
+
+    date = models.IntegerField(_('last change time'))
+

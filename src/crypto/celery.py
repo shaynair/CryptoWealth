@@ -19,4 +19,4 @@ app.autodiscover_tasks(lambda: crypto.settings.INSTALLED_APPS)
 @periodic_task(run_every=crontab(hour=0, minute=0))
 def rebalance(arg):
     print('Run task every day')
-    rebalance_all()
+    rebalance_all(True)
