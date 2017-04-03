@@ -20,11 +20,9 @@ class Currency(models.Model):
         }
     )
 
-    percent_change_7d = models.FloatField(_('7d change'))
-
-    percent_change_1d = models.FloatField('1d change')
-
     market_cap = models.FloatField(_('market cap'))
+
+    supply = models.FloatField(_('supply'), default=0)
 
     def __str__(self):
         """

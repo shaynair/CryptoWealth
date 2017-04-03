@@ -60,21 +60,37 @@ class UserPortfolioView(GenericAPIView):
 
 class UserHistoricalView(GenericAPIView):
     queryset = Portfolio.objects.all()
-    serializer_class = PortfolioSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        portfolios = self.serializer_class(self.get_queryset().filter(user=request.user.id), many=True).data
-
+        portfolios = self.get_queryset().filter(user=request.user.id)
+        slopes = get_slopes(portfolios, request.user.risk)
         ret = {}
 
         for p in portfolios:
-            historical = HistoricalCurrency.objects.filter(currency=Currency.objects.filter(symbol=p['currency']).first())
+            historical = HistoricalCurrency.objects.filter(currency=p.currency)
             construct = []
             for data in historical:
                 construct.append({'date': data.date, 'price': data.price, 'volume': data.volume})
-            ret[p['currency']] = construct
+            ret[p.currency.symbol] = {'historical': construct, 'slope': slopes[p.currency.symbol]}
+
+        return Response(ret)
+
+class UserActivityView(GenericAPIView):
+    queryset = UserHistory.objects.all()
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        histories = self.get_queryset().filter(user=request.user.id)
+        ret = []
+        for h in histories:
+            currencies = {}
+            historical = AllocationHistory.objects.filter(user=h)
+            for data in historical:
+                currencies[data.currency.symbol] = [data.last_allocation, data.new_allocation]
+            ret.append({'time': h.timestamp, 'currencies': currencies})
         return Response(ret)
 
 class CurrencyView(ListAPIView):

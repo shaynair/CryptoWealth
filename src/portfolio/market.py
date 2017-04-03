@@ -9,10 +9,15 @@ import time
 from .generator import *
 from .models import Currency
 import ssl
+import calendar
+import time
 
 DAY_S = 24 * 60 * 60
 YEAR_S = DAY_S * 365
 BTC = 'BTC'
+
+def current_time():
+	return int(calendar.timegm(time.gmtime()))
 
 class Market(object):
 	base_url = 'https://api.coinmarketcap.com/v1/'
@@ -61,8 +66,7 @@ class Market(object):
 			not_found = Currency.objects.filter(symbol=currency.get('symbol')).count() == 0
 
 			if (scheduled and not_found) or (not scheduled and
-					(currency['price_usd'] == None or currency['market_cap_usd'] == None
-						or currency['percent_change_7d'] == None or currency['percent_change_24h'] == None)):
+					(currency['price_usd'] == None or currency['market_cap_usd'] == None or currency['available_supply'] == None)):
 				Currency.objects.filter(symbol=currency.get('symbol')).delete()
 				continue
 
@@ -70,15 +74,13 @@ class Market(object):
 				Currency.objects.create(
 					symbol=currency.get('symbol'),
 					name=currency.get('name'),
+					supply=currency.get('available_supply'),
 					price=currency.get('price_usd'),
-					percent_change_1d=currency.get('percent_change_24h'),
-					percent_change_7d=currency.get('percent_change_7d'),
 					market_cap=currency.get('market_cap_usd')
 				)
 			else:
 				Currency.objects.filter(symbol=currency.get('symbol'), name=currency.get('name')).update(
 					price=currency.get('price_usd'),
-					percent_change_1d=currency.get('percent_change_24h'),
-					percent_change_7d=currency.get('percent_change_7d'),
+					supply=currency.get('available_supply'),
 					market_cap=currency.get('market_cap_usd')
 				)
