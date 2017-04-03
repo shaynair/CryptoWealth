@@ -19,7 +19,7 @@
 }
 
 .hero-unit h1 {
-    color: #FFFFFF;
+
     font-size: 65px;
     letter-spacing: -1px;
     line-height: 1;
@@ -31,6 +31,11 @@
 .hero-unit h2 {
     font-size: 25px;
     color: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+html {
+    background-color: #222;
     margin-bottom: 10px;
     text-shadow: 1px 1px 2px $theme-black;
 }

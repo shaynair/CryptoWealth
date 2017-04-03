@@ -12,6 +12,9 @@ import ssl
 import calendar
 import time
 
+import calendar
+import time
+
 DAY_S = 24 * 60 * 60
 YEAR_S = DAY_S * 365
 BTC = 'BTC'

@@ -7,7 +7,6 @@ class AnalyticsView extends React.Component {
         userName: React.PropTypes.string
     };
 
-    // TODO: Add analytics here
     render() {
         return (
             <div className="container">

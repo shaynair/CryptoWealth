@@ -87,6 +87,8 @@ var TrendGraph = React.createClass({
     );
   }
 });
+<<<<<<< HEAD
+=======
 
 const mapStateToProps = (state) => {
   return {
@@ -110,3 +112,4 @@ TrendGraph.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrendGraph);
 export { TrendGraph as TrendGraphNotConnected };
+>>>>>>> d6d4cbe224f5be809775ca5cd209ad0231b86d09

@@ -5,7 +5,11 @@ import { push } from 'react-router-redux';
 import classNames from 'classnames';
 
 import { authLogoutAndRedirect } from './actions/auth';
+<<<<<<< HEAD
+import Logo from "./images/newlogo.png";
+=======
 import Logo from "./images/logo.png";
+>>>>>>> d6d4cbe224f5be809775ca5cd209ad0231b86d09
 import './style.scss';
 
 class App extends React.Component {
@@ -56,9 +60,23 @@ class App extends React.Component {
 
     const styles = {
       propStyle: {
+<<<<<<< HEAD
+        height: '100%',
+        width: '100%'
+      },
+      navStyle: {
+        backgroundColor: '#696969',
+        height: '50px'
+      },
+      logoStyle: {
+        height: '41px',
+        width: '41x',
+        paddingLeft: '5px'
+=======
         padding: '0px',
         height: '100%',
         width: '100%'
+>>>>>>> d6d4cbe224f5be809775ca5cd209ad0231b86d09
       }
     }
 
@@ -90,11 +108,6 @@ class App extends React.Component {
                   <li className={homeClass}>
                     <a className="js-go-to-index-button" tabIndex="0" onClick={this.goToIndex}>
                       <i className="fa fa-home" /> Home
-                    </a>
-                  </li>
-                  <li className={analyticsClass}>
-                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>
-                      <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
                   <li className={activityLogClass}>
