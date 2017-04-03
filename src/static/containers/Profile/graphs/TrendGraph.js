@@ -1,62 +1,112 @@
 import React from 'react';
-import {Line} from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 
-const data = {
-  labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
-  datasets: [
-    {
-      label: 'My First dataset',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,192,192,0.4)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [65, 59, 80, 81, 56, 55, 40]
-    },
-    {
-      label: 'My Second dataset',
-      fill: false,
-      lineTension: 0.1,
-      backgroundColor: 'rgba(75,122,122,0.2)',
-      borderColor: 'rgba(75,192,192,1)',
-      borderCapStyle: 'butt',
-      borderDash: [],
-      borderDashOffset: 0.0,
-      borderJoinStyle: 'miter',
-      pointBorderColor: 'rgba(75,192,192,1)',
-      pointBackgroundColor: '#fff',
-      pointBorderWidth: 1,
-      pointHoverRadius: 5,
-      pointHoverBackgroundColor: 'rgba(65,122,122,1)',
-      pointHoverBorderColor: 'rgba(220,220,220,1)',
-      pointHoverBorderWidth: 2,
-      pointRadius: 1,
-      pointHitRadius: 10,
-      data: [35, 29, 50, 51, 26, 75, 20]
-    }
-  ]
-};
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
-export default React.createClass({
-  displayName: 'LineExample',
+import * as actionCreators from '../../../actions/profile';
+import { fetchHistoryData } from '../../../actions/profile';
 
+function createDataset(label, dataset, color) {
+      return {
+        label: label,
+        fill: false,
+        lineTension: 2.0,
+        backgroundColor: color,
+        pointRadius: 1,
+        data: dataset,
+        pointHoverRadius: 5,
+        pointHoverBackgroundColor: color,
+        pointHoverBorderColor: color,
+        borderColor: color
+      };
+}
+
+function formatDate(date) {
+    var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+  }
+
+
+
+var TrendGraph = React.createClass({
+  displayName: 'TrendGraph',
+  componentWillMount() {
+    console.log('stuff');
+    this.props.dispatch(fetchHistoryData(this.props.token));
+  },
   render() {
+    var dataset = [];
+
+  	var colourWheel = ['#3399ff','#00cc00','#ffcc00','#ff3399','#666699','#33cccc','#996633','#993399','#ccffff','#C06014'];
+
+    var keys = Object.keys(this.props.history);
+    var t = this;
+
+    var times = undefined;
+
+		if(keys.length != 0) {
+			keys.forEach(function(value, index) {
+        var values = t.props.history[value].map((element) => {
+            return element.price;
+        });
+
+        if(!times) {
+          times = t.props.history[value].map((element) => {
+            var dateObj = new Date(element.date*1000);
+            return formatDate(dateObj);
+          });
+        }
+				dataset.push(createDataset(value, values, colourWheel[index]));
+			});
+		}
+
+    if(!dataset || !times) {
+      return null;
+    }
+
+    var finData = {
+      labels : times,
+      datasets: dataset
+    }
+
     return (
       <div className="profile-graph">
-        <Line data={data} />
+        <Line data={finData} />
       </div>
     );
   }
 });
+
+const mapStateToProps = (state) => {
+  return {
+    token: state.auth.token,
+    history: state.profile.history
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    dispatch,
+    actions: bindActionCreators(actionCreators, dispatch)
+  };
+};
+
+TrendGraph.propTypes = {
+    dispatch: React.PropTypes.func.isRequired,
+    token: React.PropTypes.string,
+    history: React.PropTypes.object
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TrendGraph);
+export { TrendGraph as TrendGraphNotConnected };

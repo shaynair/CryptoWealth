@@ -9,7 +9,7 @@ import * as actionCreators from '../../actions/profile';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { fetchProfileData} from '../../actions/profile';
+import { fetchProfileData } from '../../actions/profile';
 
 const tabs =
   <ul className="nav nav-tabs">
@@ -28,12 +28,11 @@ class ProfileView extends React.Component {
     totalEarnings: React.PropTypes.number,
     totalValue: React.PropTypes.number,
     returns: React.PropTypes.number,
-    portfolios: React.PropTypes.array
+    portfolios: React.PropTypes.array,
+    history: React.PropTypes.object
   };
 
-  componentWillMount() {
-    this.props.dispatch(fetchProfileData(this.props.token));
-  }
+
 
   render() {
     return (
@@ -92,7 +91,8 @@ const mapStateToProps = (state) => {
     totalEarnings: state.profile.totalEarnings,
     totalValue: state.profile.totalValue,
     returns: state.profile.returns,
-    portfolios: state.profile.portfolios
+    portfolios: state.profile.portfolios,
+    history: state.profile.history
   };
 };
 
