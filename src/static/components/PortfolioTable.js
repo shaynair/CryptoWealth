@@ -30,7 +30,7 @@ class PortfolioTable extends React.Component {
           <tbody>
             <th className="theader">Symbol</th>
             <th className="theader">Asset</th>
-            <th className="theader">Allocation</th>
+            <th className="theader">Allocation (shares)</th>
             { portfolios }
           </tbody>
         </table>
