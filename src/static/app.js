@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 import classNames from 'classnames';
 
 import { authLogoutAndRedirect } from './actions/auth';
-import Logo from "./images/logo.png";
+import Logo from "./images/newlogo.png";
 import './style.scss';
 
 class App extends React.Component {
@@ -56,9 +56,17 @@ class App extends React.Component {
 
     const styles = {
       propStyle: {
-        padding: '0px',
         height: '100%',
         width: '100%'
+      },
+      navStyle: {
+        backgroundColor: '#696969',
+        height: '50px'
+      },
+      logoStyle: {
+        height: '41px',
+        width: '41x',
+        paddingLeft: '5px'
       }
     }
 
@@ -67,18 +75,8 @@ class App extends React.Component {
         <nav id="main-nav" className="navbar navbar-inverse bg-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-              <button type="button"
-                className="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#top-navbar"
-                aria-expanded="false">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-              </button>
               <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}>
-                <img className="nav-logo" src= { Logo } />
+                <img className="nav-logo" src={Logo} />
               </a>
               <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}>
               </a>
@@ -90,11 +88,6 @@ class App extends React.Component {
                   <li className={homeClass}>
                     <a className="js-go-to-index-button" tabIndex="0" onClick={this.goToIndex}>
                       <i className="fa fa-home" /> Home
-                    </a>
-                  </li>
-                  <li className={analyticsClass}>
-                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>
-                      <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
                   <li className={activityLogClass}>

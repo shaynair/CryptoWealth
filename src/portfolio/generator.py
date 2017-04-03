@@ -66,7 +66,7 @@ def get_slopes(portfolios, risk_level):
 
         prices = prices[-int(((11 - risk_level) / 10) * len(prices)):]
 
-        slope = (prices[-1] - prices[0]) / (prices[0])
+        slope = (prices[-1] - prices[0]) / (len(prices) * prices[0])
         slopes[portfolio.currency.symbol] = slope
 
     return slopes

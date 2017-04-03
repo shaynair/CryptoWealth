@@ -89,7 +89,8 @@ class SignUpForm extends React.Component {
 
         return(
             <div className="login">
-                <h1 className="text-center">Join us to start investing now!</h1>
+                <h1 className="text-center">Only 1 step away!</h1>
+                <h1 className="text-center">Join us to start investing:</h1>
                 <div className="login-container margin-top-medium">
                 {statusText}
 
@@ -104,7 +105,10 @@ class SignUpForm extends React.Component {
                             disabled={this.props.isAuthenticating}
                             type="submit"
 
-                            className="btn btn-default btn-block"> Start investing
+                            className="btn btn-default btn-block hero-button">
+                              <span className="heroButtonText">
+                                Start Investing
+                              </span>
                         </button>
                     </form>
                 </div>

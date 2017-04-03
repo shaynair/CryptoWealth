@@ -7,6 +7,8 @@ import t from 'tcomb-form';
 
 import * as actionCreators from '../../actions/auth';
 
+import '../Home/style.scss';
+
 const Form = t.form.Form;
 
 const Login = t.struct({
@@ -104,8 +106,10 @@ class LoginView extends React.Component {
             />
             <button disabled={this.props.isAuthenticating}
                                 type="submit"
-                                className="btn btn-default btn-block">
-                            Submit
+                                className="btn btn-default btn-block hero-button">
+                                  <span className="heroButtonText">
+                                    Login
+                                  </span>
                         </button>
           </form>
         </div>
