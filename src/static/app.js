@@ -79,7 +79,6 @@ class App extends React.Component {
         <nav id="main-nav" style={styles.navStyle} className="navbar navbar-inverse bg-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-<<<<<<< HEAD
               <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}>
                 <img style={styles.logoStyle} className="nav-logo" src= { Logo } />
               </a>
@@ -87,27 +86,7 @@ class App extends React.Component {
 
             <div  className="collapse navbar-collapse" id="top-navbar">
               {
-=======
-              <button type="button"
-                className="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#top-navbar"
-                aria-expanded="false">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-              </button>
-              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> 
-                <img className="nav-logo" src= { Logo } /> 
-              </a>
-              <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}> 
-                CryptoWealth 
-              </a>
-            </div>
-            <div className="collapse navbar-collapse" id="top-navbar">
-              { 
->>>>>>> parent of 30d21e6... Change theme, keep new logo
+
                 this.props.isAuthenticated ?
                 <ul style={styles.navStyleTwo} className="nav navbar-nav navbar-right">
                   <li className={homeClass}>
@@ -116,16 +95,16 @@ class App extends React.Component {
                     </a>
                   </li>
                   <li className={analyticsClass}>
-                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>  
+                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>
                       <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
                   <li className={activityLogClass}>
-                    <a className="" tabIndex="0" onClick={this.goToActivityLog}>  
+                    <a className="" tabIndex="0" onClick={this.goToActivityLog}>
                       <i className="fa fa-tasks" /> Activity Log
                     </a>
                   </li>
-                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}> 
+                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}>
                   <i className="fa fa-power-off" />  Logout </a>
                   </li>
                 </ul>
