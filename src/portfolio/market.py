@@ -4,6 +4,8 @@ except ImportError:
 	import urllib2
 import json
 import codecs
+import calendar
+import time
 from .generator import *
 from .models import Currency
 import ssl
@@ -40,7 +42,7 @@ class Market(object):
 		return json.load(codecs.getreader('utf-8')(response))
 
 	def get_historical(self, currency):
-		ms = current_time()
+		ms = int(calendar.timegm(time.gmtime()))
 		query = {'command': 'returnChartData', 'start': ms - YEAR_S, 'end': ms,
 				 'period': DAY_S, 'currencyPair': BTC + '_' + currency}
 

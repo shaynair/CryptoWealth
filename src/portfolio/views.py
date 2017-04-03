@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .generator import *
-from .serializers import *
+from .serializers import PortfolioSerializer, CurrencySerializer
 from .models import *
 from accounts.models import User
 
@@ -75,22 +75,6 @@ class UserHistoricalView(GenericAPIView):
             for data in historical:
                 construct.append({'date': data.date, 'price': data.price, 'volume': data.volume})
             ret[p['currency']] = construct
-        return Response(ret)
-
-class UserActivityView(GenericAPIView):
-    queryset = UserHistory.objects.all()
-    authentication_classes = (TokenAuthentication,)
-    permission_classes = (IsAuthenticated,)
-
-    def get(self, request):
-        histories = self.get_queryset().filter(user=request.user.id)
-        ret = []
-        for h in histories:
-            currencies = {}
-            historical = AllocationHistory.objects.filter(user=h)
-            for data in historical:
-                currencies[data.currency.symbol] = [data.last_allocation, data.new_allocation]
-            ret.append({'time': h.timestamp, 'currencies': currencies})
         return Response(ret)
 
 class CurrencyView(ListAPIView):
