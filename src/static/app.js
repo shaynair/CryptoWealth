@@ -77,15 +77,15 @@ class App extends React.Component {
                   <span className="icon-bar" />
                   <span className="icon-bar" />
               </button>
-              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}> 
-                <img className="nav-logo" src= { Logo } /> 
+              <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}>
+                <img className="nav-logo" src= { Logo } />
               </a>
-              <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}> 
-                CryptoWealth 
+              <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}>
+                 
               </a>
             </div>
             <div className="collapse navbar-collapse" id="top-navbar">
-              { 
+              {
                 this.props.isAuthenticated ?
                 <ul className="nav navbar-nav navbar-right">
                   <li className={homeClass}>
@@ -94,16 +94,16 @@ class App extends React.Component {
                     </a>
                   </li>
                   <li className={analyticsClass}>
-                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>  
+                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>
                       <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
                   <li className={activityLogClass}>
-                    <a className="" tabIndex="0" onClick={this.goToActivityLog}>  
+                    <a className="" tabIndex="0" onClick={this.goToActivityLog}>
                       <i className="fa fa-tasks" /> Activity Log
                     </a>
                   </li>
-                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}> 
+                  <li> <a className="js-logout-button" tabIndex="0" onClick={this.logout}>
                   <i className="fa fa-power-off" />  Logout </a>
                   </li>
                 </ul>
