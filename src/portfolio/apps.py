@@ -5,4 +5,4 @@ class PortfolioConfig(AppConfig):
     verbose_name = "CryptoWealth"
     def ready(self):
         print('Initializing...')
-        #rebalance_all(False)
+        rebalance_all(False)
