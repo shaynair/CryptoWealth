@@ -34,7 +34,8 @@ export default createReducer(initialState, {
     [PROFILE_FETCH_ACTIVITY_LOG]: (state, payload) => {
         return Object.assign({}, state, {
             activityLog: payload.activityLog
-        })
+        });
+      },
     [HISTORY_FETCH_REQUEST]: (state) => {
         return Object.assign({}, state, {
         });
