@@ -41,7 +41,6 @@ export default createReducer(initialState, {
         });
     },
     [HISTORY_FETCH_SUCCESS]: (state, payload) => {
-        console.log(payload);
         return Object.assign({}, state, {
             history: payload,
         });

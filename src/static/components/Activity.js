@@ -18,19 +18,19 @@ class Activity extends Component {
             const allocations = this.props.currencies[currency];
             const allocationBefore = (allocations[0]).toFixed(3);
             const allocationAfter = (allocations[1]).toFixed(3);
-
-            console.log(allocationBefore);
-            console.log(allocationAfter);
-
+            if (allocationBefore === allocationAfter) {
+                continue;
+            }
             currencies.push(
                 <tr key={i}>
                     <td style={style}> {currency} </td>
-                    <td style={style}> {allocationBefore} </td>
-                    <td style={style}> {allocationAfter} </td>
                     <td style={style}> {(allocationAfter - allocationBefore).toFixed(3)} </td>
                 </tr>
             );
             i++;
+        }
+        if (currencies.length === 0) {
+            return null;
         }
 
         return (
@@ -41,8 +41,6 @@ class Activity extends Component {
                 </tr>
                 <tr>
                     <th> Currency </th>
-                    <th> Allocated Before </th>
-                    <th> Allocated After </th>
                     <th> Net Change </th>
                 </tr>
                 {currencies}
