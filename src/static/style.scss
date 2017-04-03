@@ -1,23 +1,20 @@
-@import "styles/main";
 #main-nav {
     border-radius: 0px;
     border: 0px;
-    margin-bottom: 0px !important;
+    margin-bottom: 0px;
 }
 
 #main-nav a {
-    color: $theme-grey;
+    color: white;
 }
 
 #main-nav li.active a {
-    background-color: $theme-orange;
+    background-color: #95D9C3;
     color: white;
-    transition: all linear 0.1s;
 }
 
 #main-nav li a:hover {
     color: white;
-    transition: all linear 0.1s;
 }
 
 .navbar-brand {
@@ -25,7 +22,7 @@
 }
 
 .navbar-brand>img {
-    height: 40px;
+    height: 70px;
     padding: 0px;
     width: auto;
     display: inline;
@@ -38,5 +35,5 @@
 }
 
 .brand-text {
-    margin-left: -25px !important;
+    margin-left: -25px;
 }
