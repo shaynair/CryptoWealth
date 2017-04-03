@@ -42,8 +42,7 @@ var AllocationGraph = React.createClass({
     );
   }
 });
-<<<<<<< HEAD
-=======
+
 
 const mapStateToProps = (state) => {
   return {
@@ -67,4 +66,3 @@ AllocationGraph.propTypes = {
 
 export default connect(mapStateToProps, mapDispatchToProps)(AllocationGraph);
 export { AllocationGraph as AllocationGraphNotConnected };
->>>>>>> d6d4cbe224f5be809775ca5cd209ad0231b86d09

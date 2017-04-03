@@ -15,7 +15,7 @@ class HomeView extends React.Component {
     userName: React.PropTypes.string
   };
 
-  render() {
+  render(){
 
     const styles = {
       containerStyle: {

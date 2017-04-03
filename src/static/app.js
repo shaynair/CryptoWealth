@@ -5,11 +5,7 @@ import { push } from 'react-router-redux';
 import classNames from 'classnames';
 
 import { authLogoutAndRedirect } from './actions/auth';
-<<<<<<< HEAD
 import Logo from "./images/newlogo.png";
-=======
-import Logo from "./images/logo.png";
->>>>>>> d6d4cbe224f5be809775ca5cd209ad0231b86d09
 import './style.scss';
 
 class App extends React.Component {
@@ -60,7 +56,6 @@ class App extends React.Component {
 
     const styles = {
       propStyle: {
-<<<<<<< HEAD
         height: '100%',
         width: '100%'
       },
@@ -72,11 +67,6 @@ class App extends React.Component {
         height: '41px',
         width: '41x',
         paddingLeft: '5px'
-=======
-        padding: '0px',
-        height: '100%',
-        width: '100%'
->>>>>>> d6d4cbe224f5be809775ca5cd209ad0231b86d09
       }
     }
 
@@ -85,18 +75,8 @@ class App extends React.Component {
         <nav id="main-nav" className="navbar navbar-inverse bg-inverse">
           <div className="container-fluid">
             <div className="navbar-header">
-              <button type="button"
-                className="navbar-toggle collapsed"
-                data-toggle="collapse"
-                data-target="#top-navbar"
-                aria-expanded="false">
-                  <span className="sr-only">Toggle navigation</span>
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-                  <span className="icon-bar" />
-              </button>
               <a className="navbar-brand" tabIndex="0" onClick={this.goToIndex}>
-                <img className="nav-logo" src= { Logo } />
+                <img className="nav-logo" src={Logo} />
               </a>
               <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}>
               </a>
