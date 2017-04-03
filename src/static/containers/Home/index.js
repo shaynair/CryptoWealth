@@ -28,7 +28,8 @@ class HomeView extends React.Component {
       <div >
         <div className="hero-unit" >
           <h1 className="align-middle"> CryptoWealth </h1>
-          <h2> View your customized portfolio for free today! </h2>
+          <h2> Start investing now! </h2>
+          <h4> Complete the questionnaire below to get paired with a tailor-made portfolio for free.</h4>
           <p> <Link className="btn btn-primary btn-large col-md-2 hero-button" to="/questionnaire">
           Start Questionnaire </Link>
           </p>
