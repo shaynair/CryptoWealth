@@ -2,14 +2,9 @@ from .models import *
 from .market import Market
 from accounts.models import User
 
-import calendar
-import time
 
 historical =  {}
 BTC = 'BTC'
-
-def current_time():
-    return int(calendar.timegm(time.gmtime()))
 
 def create_portfolio(risk_level=0, portfolio_value=0):
     ''' Create new portfolio object

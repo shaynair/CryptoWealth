@@ -2,6 +2,8 @@ import React from 'react';
 import './style.scss';
 import AllocationGraph from  "./graphs/AllocationGraph";
 import TrendGraph from "./graphs/TrendGraph";
+import AnalyticsGraph from "./graphs/AnalyticsGraph";
+
 import { SERVER_URL } from '../../utils/config';
 import { checkHttpStatus, parseJSON } from '../../utils';
 
@@ -36,18 +38,25 @@ class ProfileView extends React.Component {
   }
 
   render() {
+
+    const styles = {
+      titleStyle: {
+        fontSize: '40px',
+        color: '#696969'
+      }
+    };
+
     return (
         <div className="container">
-            <h1> Welcome, { this.props.userName } </h1>
+            <h1 style={styles.titleStyle} > Welcome, { this.props.userName } </h1>
             <hr />
             <section id="profile-overview" className="tab-pane fade in active">
-                <h3> Account Overview </h3>
-                
+
                 <div className="overview-graph col-md-9" >
                   <ul className="nav nav-tabs">
-                    <li className="active" ><a data-toggle="tab" href="#graph1">Portfolio</a></li>
-                    <li><a data-toggle="tab" href="#graph2">Recent Trends</a></li>
-                    <li><a data-toggle="tab" href="#graph3">Future Projections</a></li>
+                    <li className="active" ><a data-toggle="tab" href="#graph1"> <i className="fa fa-pie-chart" /> Portfolio</a></li>
+                    <li><a data-toggle="tab" href="#graph2"> <i className="fa fa-line-chart" /> Recent Trends</a></li>
+                    <li><a data-toggle="tab" href="#graph3"> <i className="fa fa-bar-chart" /> Analytics</a></li>
                   </ul>
 
                   <div className="tab-content">
@@ -58,7 +67,7 @@ class ProfileView extends React.Component {
                       <TrendGraph />
                     </div>
                     <div id="graph3" className="graph-div tab-pane fade">
-                      <h4> Coming Soon... </h4>
+                      <AnalyticsGraph />
                     </div>
                   </div>
 

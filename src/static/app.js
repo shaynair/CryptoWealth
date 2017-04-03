@@ -5,7 +5,7 @@ import { push } from 'react-router-redux';
 import classNames from 'classnames';
 
 import { authLogoutAndRedirect } from './actions/auth';
-import Logo from "./images/logo2.png";
+import Logo from "./images/newlogo.png";
 import './style.scss';
 
 class App extends React.Component {
@@ -56,21 +56,17 @@ class App extends React.Component {
 
     const styles = {
       propStyle: {
-        padding: '10px',
         height: '100%',
         width: '100%'
       },
       navStyle: {
-        backgroundColor: '#5C6F68',
+        backgroundColor: '#696969',
         height: '50px'
       },
       logoStyle: {
         height: '41px',
         width: '41x',
         paddingLeft: '5px'
-      },
-      navStyleTwo: {
-        height: '100px'
       }
     }
 
@@ -87,15 +83,10 @@ class App extends React.Component {
             <div  className="collapse navbar-collapse" id="top-navbar">
               {
                 this.props.isAuthenticated ?
-                <ul style={styles.navStyleTwo} className="nav navbar-nav navbar-right">
+                <ul className="nav navbar-nav navbar-right">
                   <li className={homeClass}>
                     <a className="js-go-to-index-button" tabIndex="0" onClick={this.goToIndex}>
                       <i className="fa fa-home" /> Home
-                    </a>
-                  </li>
-                  <li className={analyticsClass}>
-                    <a className="" tabIndex="0" onClick={this.goToAnalytics}>
-                      <i className="fa fa-bar-chart" /> Analytics
                     </a>
                   </li>
                   <li className={activityLogClass}>
@@ -108,7 +99,7 @@ class App extends React.Component {
                   </li>
                 </ul>
                                 :
-                <ul style={styles.navStyleTwo} className="nav navbar-nav navbar-right">
+                <ul className="nav navbar-nav navbar-right">
                   <li className={homeClass}>
                     <Link to="/">Home</Link>
                   </li>

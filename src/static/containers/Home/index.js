@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import LineGraph from './chart';
 
 import './style.scss';
+import Hero from '../../images/hero.jpg';
+import Logo from '../../images/newlogo.png';
+
 
 class HomeView extends React.Component {
 
@@ -23,18 +26,30 @@ class HomeView extends React.Component {
         color: '#5C6F68'
       },
       titleStyle: {
-        color: '#8AA39B',
+        color: 'white',
         fontSize: '90px'
+      },
+      imageStyle: {
+        paddingLeft: '7px',
+        width: '100px',
+        height: '100px'
       }
     };
 
     return (
       <div >
         <div className="hero-unit" >
-
           <div className="overview-graph col-md-7">
             <div className="row">
-              <h1 style={styles.titleStyle}> CryptoWealth </h1>
+              <h1 style={styles.titleStyle}>
+              CryptoWealth
+                <img
+                  style={styles.imageStyle}
+                  role="presentation"
+                  src={Logo}
+                />
+              </h1>
+
             </div>
           </div>
 

@@ -8,9 +8,15 @@ from .generator import *
 from .models import Currency
 import ssl
 
+import calendar
+import time
+
 DAY_S = 24 * 60 * 60
 YEAR_S = DAY_S * 365
 BTC = 'BTC'
+
+def current_time():
+	return int(calendar.timegm(time.gmtime()))
 
 class Market(object):
 	base_url = 'https://api.coinmarketcap.com/v1/'

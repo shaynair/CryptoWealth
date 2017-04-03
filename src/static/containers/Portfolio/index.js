@@ -40,18 +40,48 @@ class PortfolioView extends React.Component {
       portfolioTypeName = "Error";
     }
 
-    return (<div className="mainBody col-md-6 col-md-offset-3">
-      <h3 className="table-header col-md">
-        Your Personalized Portfolio
-      </h3>
+    const styles = {
+      chartStlye: {
+        height: '250px'
+      },
+      titleStyle: {
+        textAlign: 'center',
+        fontSize: '46px',
+        paddingBottom: '13px',
+        paddingTop: '0px'
+      }
+    };
 
-      <PortfolioType ptype={portfolioTypeName} />
-      <PortfolioTable portfolio={this.props.data} />
-      <div className="portfolioChartWrapper">
-        <PortfolioChart portfolio={this.props.data} />
+    return (
+      <div className="container">
+        <div className="col-md-12">
+          <div className="row" >
+            <h1 style={styles.titleStyle} > Your Sample Portfolio! </h1>
+          </div>
+        </div>
+        <div className="col-md-6">
+
+          <div className="row" >
+
+            <div className="portfolioChartWrapper">
+              <PortfolioChart portfolio={this.props.data} />
+            </div>
+
+            <PortfolioTable portfolio={this.props.data} />
+
+          </div>
+        </div>
+        <div className="col-md-offset-1 col-md-5">
+          <div className="row">
+            <br />
+            <br />
+            <br />
+            <PortfolioType ptype={portfolioTypeName} />
+            <SignUpForm />
+          </div>
+        </div>
       </div>
-      <SignUpForm />
-    </div>);
+    );
   }
 }
 
