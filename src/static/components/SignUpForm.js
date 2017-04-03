@@ -89,7 +89,8 @@ class SignUpForm extends React.Component {
 
         return(
             <div className="login">
-                <h1 className="text-center">Join us to start investing now!</h1>
+                <h1 className="text-center">Only 1 step away!</h1>
+                <h1 className="text-center">Join us to start investing now:</h1>
                 <div className="login-container margin-top-medium">
                 {statusText}
 
