@@ -42,12 +42,14 @@ class PortfolioView extends React.Component {
 
     return (<div className="mainBody col-md-6 col-md-offset-3">
       <h3 className="table-header col-md">
-        Here is your personalized portfolio:
+        Your Personalized Portfolio
       </h3>
 
       <PortfolioType ptype={portfolioTypeName} />
       <PortfolioTable portfolio={this.props.data} />
-      <PortfolioChart portfolio={this.props.data}/>
+      <div className="portfolioChartWrapper">
+        <PortfolioChart portfolio={this.props.data} />
+      </div>
       <SignUpForm />
     </div>);
   }

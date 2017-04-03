@@ -1,6 +1,15 @@
-from .models import Currency, Portfolio
+from .models import *
 from .market import Market
 from accounts.models import User
+
+import calendar
+import time
+
+historical =  {}
+BTC = 'BTC'
+
+def current_time():
+    return int(calendar.timegm(time.gmtime()))
 
 def create_portfolio(risk_level=0, portfolio_value=0):
     ''' Create new portfolio object
@@ -16,7 +25,7 @@ def create_portfolio(risk_level=0, portfolio_value=0):
     Algorithm Description: Loop through every crypto-currency and assign it a portfolio suitability value based on
     portfolio risk and cash value.  Select top 10 ranking currencies for portfolio
     '''
-    bitcoin_market_cap = (Currency.objects.filter(symbol='BTC')).first().market_cap
+    bitcoin_market_cap = (Currency.objects.filter(symbol=BTC)).first().market_cap
     ranked_currencies = []
     for currency in Currency.objects.all():
 
@@ -37,21 +46,90 @@ def create_portfolio(risk_level=0, portfolio_value=0):
         p['alloc'] = (portfolio_value / len(portfolio)) / p['price']
     return portfolio
 
-def rebalance_all():
+def rebalance_all(scheduled):
     ''' Re-balance portfolio considering current market conditions '''
-    Market().update_market_data()
+    market = Market()
+    try:
+        market.update_market_data(scheduled)
+        print('Updated market data')
+    except:
+        print('Got an error when updating market')
+
+    if scheduled or HistoricalCurrency.objects.all().count() == 0:
+        print('Updating historical data')
+        HistoricalCurrency.objects.all().delete()
+        to_delete = []
+        calibrate = market.get_historical(BTC)
+        calibrated = {}
+        for day in calibrate:
+            calibrated[day['date']] = day
+
+        to_add = []
+
+        for currency in Currency.objects.all():
+            construct = []
+            if currency == BTC:
+                for day in calibrate:
+                    construct.append({'date': day['date'], 'volume': day['volume'], 'currency': currency,
+                                      'price': day['weightedAverage']})
+            else:
+                daily = market.get_historical(currency.symbol)
+                if 'error' in daily:
+                    to_delete.append(currency.symbol)
+                    continue
+
+                for day in daily:
+                    construct.append({'date': day['date'], 'volume': day['volume'], 'currency': currency,
+                                      'price': day['weightedAverage'] * calibrated[day['date']]['weightedAverage']})
+            to_add.append(construct)
+
+        print('Constructed historical data; adding...')
+
+        for add in to_add:
+            for day in add:
+                HistoricalCurrency.objects.create(currency=day['currency'], price=day['price'],
+                                                  volume=day['volume'], date=day['date'])
+
+        for delete in to_delete:
+            Currency.objects.filter(symbol=delete).delete()
+
+        print('Updated historical data')
+
+    print('Updating user portfolios')
 
     for user in User.objects.all():
+        history = UserHistory.objects.create(user=user)
+
+        last_alloc = {}
         portfolio_value = 0
         for portfolio in Portfolio.objects.filter(user=user.id):
+            last_alloc[portfolio.currency.symbol] = portfolio.allocation
             portfolio_value += portfolio.allocation * portfolio.currency.price
             portfolio.delete()
 
+        found = False
+
         new_portfolio = create_portfolio(user.risk, portfolio_value)
         for portfolio_data in new_portfolio:
+            currency = Currency.objects.filter(symbol=portfolio_data['symbol']).first()
+
+            if portfolio_data['symbol'] not in last_alloc.keys() or last_alloc[portfolio_data['symbol']] != portfolio_data['alloc']:
+                AllocationHistory.objects.create(
+                    user=history,
+                    currency=currency,
+                    last_allocation=last_alloc.get(portfolio_data['symbol'], 0),
+                    new_allocation=portfolio_data['alloc']
+                )
+                found = True
+
             portfolio_object = Portfolio.objects.create(
                 user=user,
-                currency=Currency.objects.filter(symbol=portfolio_data['symbol']).first(),
+                currency=currency,
                 allocation=portfolio_data['alloc'],
             )
             portfolio_object.save()
+
+        if not found:
+            history.delete()
+
+    print('Done!')

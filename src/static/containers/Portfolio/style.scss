@@ -2,14 +2,54 @@
     background-color: #f2f2f2;
 }
 
-.theader {
-    font-weight: bold;
-}
-
 .portfolioTypeWrapper {
     background-color: #e6f3ff;
     padding: 5px;
     margin-bottom: 10px;
 }
 
+.portfolioTypeWrapper:hover {
+    background-color: #f8f8f8;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #d9d9d9;
+}
+
+.theader {
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.4em;
+}
+
+.assetRow:nth-child(even) {
+  background-color: #f8f8f8;
+}
+
+.assetRow:hover {
+  background-color: #e6f3ff;
+
+  .assetSymbolContainer {
+    border-style: solid;
+    border-width: 2px;
+    border-color: red;
+  }
+}
+
+.assetSymbol, .assetName, .assetAlloc {
+  text-align: center;
+}
+
 .portfolio-table {}
+
+.portfolioChartWrapper {
+  background-color: #e6f3ff;
+  padding: 5px;
+  margin-bottom: 10px;
+}
+
+.portfolioChartWrapper:hover {
+    background-color: #f8f8f8;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #d9d9d9;
+}

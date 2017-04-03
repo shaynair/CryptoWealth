@@ -47,7 +47,7 @@ class SignUpForm extends React.Component {
             React.PropTypes.string,
             React.PropTypes.number,
         ]),
- 
+
         riskLevel: React.PropTypes.number.isRequired
     };
 
@@ -89,7 +89,7 @@ class SignUpForm extends React.Component {
 
         return(
             <div className="login">
-                <h1 className="text-center">Sign Up For A Free Account!</h1>
+                <h1 className="text-center">Join us to start investing now!</h1>
                 <div className="login-container margin-top-medium">
                 {statusText}
 
@@ -104,7 +104,7 @@ class SignUpForm extends React.Component {
                             disabled={this.props.isAuthenticating}
                             type="submit"
 
-                            className="btn btn-default btn-block"> Submit
+                            className="btn btn-default btn-block"> Start investing
                         </button>
                     </form>
                 </div>
