@@ -105,7 +105,10 @@ class SignUpForm extends React.Component {
                             disabled={this.props.isAuthenticating}
                             type="submit"
 
-                            className="btn btn-default btn-block"> Start investing
+                            className="btn btn-default btn-block hero-button">
+                              <span className="registerText">
+                                Start Investing
+                              </span>
                         </button>
                     </form>
                 </div>
