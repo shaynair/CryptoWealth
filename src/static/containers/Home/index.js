@@ -23,7 +23,9 @@ class HomeView extends React.Component {
         height: '100%'
       },
       btnStyle: {
-        color: '#5C6F68'
+        backgroundColor: '#FF9F00',
+        borderColor: '#FF9F00',
+        color: 'white'
       },
       titleStyle: {
         color: 'white',
