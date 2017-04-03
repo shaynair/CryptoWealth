@@ -9,7 +9,7 @@ from rest_framework.response import Response
 
 from .generator import *
 from .serializers import PortfolioSerializer, CurrencySerializer
-from .models import Portfolio, Currency
+from .models import *
 from accounts.models import User
 
 import math
@@ -57,6 +57,25 @@ class UserPortfolioView(GenericAPIView):
         total_cash = math.ceil(total_cash * 100) / 100
 
         return Response({ 'portfolio': portfolios, 'value': total_cash, 'total': total_change, 'returns': returns})
+
+class UserHistoricalView(GenericAPIView):
+    queryset = Portfolio.objects.all()
+    serializer_class = PortfolioSerializer
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request):
+        portfolios = self.serializer_class(self.get_queryset().filter(user=request.user.id), many=True).data
+
+        ret = {}
+
+        for p in portfolios:
+            historical = HistoricalCurrency.objects.filter(currency=Currency.objects.filter(symbol=p['currency']).first())
+            construct = []
+            for data in historical:
+                construct.append({'date': data.date, 'price': data.price, 'volume': data.volume})
+            ret[p['currency']] = construct
+        return Response(ret)
 
 class CurrencyView(ListAPIView):
     queryset = Portfolio.objects.all()
