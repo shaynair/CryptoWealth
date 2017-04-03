@@ -2,7 +2,6 @@ import React from 'react';
 import './style.scss';
 import AllocationGraph from  "./graphs/AllocationGraph";
 import TrendGraph from "./graphs/TrendGraph";
-import AnalyticsGraph from "./graphs/AnalyticsGraph";
 
 import { SERVER_URL } from '../../utils/config';
 import { checkHttpStatus, parseJSON } from '../../utils';
@@ -55,7 +54,7 @@ class ProfileView extends React.Component {
                   <ul className="nav nav-tabs">
                     <li className="active" ><a data-toggle="tab" href="#graph1"> <i className="fa fa-pie-chart" /> Portfolio</a></li>
                     <li><a data-toggle="tab" href="#graph2"> <i className="fa fa-line-chart" /> Recent Trends</a></li>
-                    <li><a data-toggle="tab" href="#graph3"> <i className="fa fa-bar-chart" /> Analytics</a></li>
+                    <li><a data-toggle="tab" href="#graph3"> <i className="fa fa-bar-chart" /> Future Projections</a></li>
                   </ul>
 
                   <div className="tab-content">
@@ -63,10 +62,10 @@ class ProfileView extends React.Component {
                       <AllocationGraph portfolios={this.props.portfolios}/>
                     </div>
                     <div id="graph2" className="graph-div tab-pane fade">
-                      <TrendGraph />
+                      <TrendGraph projections={false}/>
                     </div>
                     <div id="graph3" className="graph-div tab-pane fade">
-                      <AnalyticsGraph />
+                      <TrendGraph projections={true}/>
                     </div>
                   </div>
 

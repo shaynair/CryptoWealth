@@ -42,7 +42,6 @@ function formatDate(date) {
 var TrendGraph = React.createClass({
   displayName: 'TrendGraph',
   componentWillMount() {
-    console.log('stuff');
     this.props.dispatch(fetchHistoryData(this.props.token));
   },
   render() {
@@ -57,15 +56,29 @@ var TrendGraph = React.createClass({
 
 		if(keys.length != 0) {
 			keys.forEach(function(value, index) {
-        var values = t.props.history[value].map((element) => {
+        var historical = t.props.history[value].historical;
+        var values = historical.map((element) => {
             return element.price;
         });
+        if (!!t.props.projections) {
+          var slope = t.props.history[value].slope;
+          var lastValue = historical[historical.length - 1].price;
+          for (var i = 0; i < historical.length; i++) {
+            values.push(lastValue + (i + 1) * slope);
+          }
+        }
 
         if(!times) {
-          times = t.props.history[value].map((element) => {
+          times = historical.map((element) => {
             var dateObj = new Date(element.date*1000);
             return formatDate(dateObj);
           });
+          if (!!t.props.projections) {
+            var lastTime = historical[historical.length - 1].date;
+            for (var i = 0; i < historical.length; i++) {
+              times.push(formatDate(new Date((lastTime + (i * 86400)) * 1000)));
+            }
+          }
         }
 				dataset.push(createDataset(value, values, colourWheel[index]));
 			});
@@ -105,7 +118,8 @@ const mapDispatchToProps = (dispatch) => {
 TrendGraph.propTypes = {
     dispatch: React.PropTypes.func.isRequired,
     token: React.PropTypes.string,
-    history: React.PropTypes.object
+    history: React.PropTypes.object,
+    projections: React.PropTypes.bool
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(TrendGraph);
