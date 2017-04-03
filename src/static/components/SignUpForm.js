@@ -106,7 +106,7 @@ class SignUpForm extends React.Component {
                             type="submit"
 
                             className="btn btn-default btn-block hero-button">
-                              <span className="registerText">
+                              <span className="heroButtonText">
                                 Start Investing
                               </span>
                         </button>

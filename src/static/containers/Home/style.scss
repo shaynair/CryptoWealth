@@ -13,6 +13,11 @@
     border-color: $theme-color1 !important;
 }
 
+.heroButtonText {
+  font-weight: bold;
+  color: #FFFFFF;
+}
+
 .hero-unit h1 {
     color: #FFFFFF;
     font-size: 65px;
@@ -43,9 +48,4 @@
     font-weight: lighter;
     color: #FFFFFF;
     margin-bottom: 25px;
-}
-
-.registerText {
-  font-weight: bold;
-  color: #FFFFFF;
 }
