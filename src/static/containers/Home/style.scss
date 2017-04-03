@@ -9,17 +9,18 @@
 }
 
 .hero-button {
-    background-color: $theme-orange !important;
-    border-color: $theme-orange !important;
+    background-color: $theme-color1 !important;
+    border-color: $theme-color1 !important;
 }
 
 .hero-unit h1 {
-    color: #FFFFFF;
-    font-size: 60px;
+
+    font-size: 65px;
     letter-spacing: -1px;
     line-height: 1;
     margin-bottom: 0;
     margin-top: 0;
+    text-shadow: 1px 1px 2px $theme-black;
 }
 
 .hero-unit h2 {
@@ -30,4 +31,26 @@
 
 html {
     background-color: #222;
+    margin-bottom: 10px;
+    text-shadow: 1px 1px 2px $theme-black;
+}
+
+.hero-unit h4 {
+    font-size: 20px;
+    color: #CCCCCC;
+    margin-bottom: 30px;
+    width: 70%;
+    text-shadow: 1px 1px 2px $theme-black;
+}
+
+.hero-unit h4 {
+    font-size: 18px;
+    font-weight: lighter;
+    color: #FFFFFF;
+    margin-bottom: 25px;
+}
+
+.registerText {
+  font-weight: bold;
+  color: #FFFFFF;
 }

@@ -59,7 +59,6 @@ class HomeView extends React.Component {
               Start Questionnaire </Link>
             </p>
           </div>
-
         </div>
       </div>
     );

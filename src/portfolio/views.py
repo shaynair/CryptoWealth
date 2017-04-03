@@ -8,7 +8,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 
 from .generator import *
-from .serializers import *
+from .serializers import PortfolioSerializer, CurrencySerializer
 from .models import *
 from accounts.models import User
 
@@ -60,21 +60,21 @@ class UserPortfolioView(GenericAPIView):
 
 class UserHistoricalView(GenericAPIView):
     queryset = Portfolio.objects.all()
-    serializer_class = PortfolioSerializer
     authentication_classes = (TokenAuthentication,)
     permission_classes = (IsAuthenticated,)
 
     def get(self, request):
-        portfolios = self.serializer_class(self.get_queryset().filter(user=request.user.id), many=True).data
-
+        portfolios = self.get_queryset().filter(user=request.user.id)
+        slopes = get_slopes(portfolios, request.user.risk)
         ret = {}
 
         for p in portfolios:
-            historical = HistoricalCurrency.objects.filter(currency=Currency.objects.filter(symbol=p['currency']).first())
+            historical = HistoricalCurrency.objects.filter(currency=p.currency)
             construct = []
             for data in historical:
                 construct.append({'date': data.date, 'price': data.price, 'volume': data.volume})
-            ret[p['currency']] = construct
+            ret[p.currency.symbol] = {'historical': construct, 'slope': slopes[p.currency.symbol]}
+
         return Response(ret)
 
 class UserActivityView(GenericAPIView):

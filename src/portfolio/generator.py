@@ -1,7 +1,6 @@
-from .models import *
+from .models import Currency, Portfolio, UserHistory, HistoricalCurrency
 from .market import Market
 from accounts.models import User
-
 
 historical =  {}
 BTC = 'BTC'
@@ -12,27 +11,39 @@ def create_portfolio(risk_level=0, portfolio_value=0):
          cash_value: integer (0]
     '''
     # Set class variables, error check
-    if (risk_level < 0 | risk_level > 10):
-        raise ValueError("Risk level must be within 0 - 10")
-    if (portfolio_value < 0):
-        raise ValueError("Portfolio value must be greater than 0")
+    if risk_level < 1:
+        risk_level = 1
+    if risk_level > 10:
+        risk_level = 10
+    if portfolio_value <= 0:
+        portfolio_value = 1
     '''
     Algorithm Description: Loop through every crypto-currency and assign it a portfolio suitability value based on
     portfolio risk and cash value.  Select top 10 ranking currencies for portfolio
     '''
-    bitcoin_market_cap = (Currency.objects.filter(symbol=BTC)).first().market_cap
+    total_market_cap = 0
+    for currency in Currency.objects.all():
+        total_market_cap += currency.market_cap
     ranked_currencies = []
     for currency in Currency.objects.all():
+        histories = HistoricalCurrency.objects.filter(currency=currency).order_by('date')
+        if histories.count() == 0:
+            currency.delete()
+            continue
+        prices = []
+        volume = 0
+        for h in histories:
+            prices.append(h.price)
+            volume += h.volume / h.price
 
-        seven_day_change = currency.percent_change_7d / 100
-        market_cap = currency.market_cap / bitcoin_market_cap
+        prices = prices[-int(((11 - risk_level) / 10) * len(prices)):]
 
-        factor1 = ((10 - risk_level) * 10 * market_cap)
-        factor2 = risk_level * 10 * seven_day_change
+        slope = (prices[-1] - prices[0]) / (prices[0])
 
-        value = factor1 + factor2
-
-        ranked_currencies.append({'symbol': currency.symbol, 'rank': value, 'price': currency.price, 'name': currency.name})
+        factor1 = ((11 - risk_level) * (slope))# + (volume / currency.supply)))
+        factor2 = (risk_level * ((currency.market_cap / total_market_cap)))
+        ranked_currencies.append({'symbol': currency.symbol, 'rank': factor1 + factor2, 'price': currency.price,
+                                  'name': currency.name, 'slope': slope})
 
     portfolio = sorted(ranked_currencies, key=lambda x: -x['rank'])[:10]
 
@@ -40,6 +51,25 @@ def create_portfolio(risk_level=0, portfolio_value=0):
     for p in portfolio:
         p['alloc'] = (portfolio_value / len(portfolio)) / p['price']
     return portfolio
+
+
+def get_slopes(portfolios, risk_level):
+    slopes = {}
+    for portfolio in portfolios:
+        histories = HistoricalCurrency.objects.filter(currency=portfolio.currency).order_by('date')
+        if histories.count() == 0:
+            portfolio.currency.delete()
+            continue
+        prices = []
+        for h in histories:
+            prices.append(h.price)
+
+        prices = prices[-int(((11 - risk_level) / 10) * len(prices)):]
+
+        slope = (prices[-1] - prices[0]) / (prices[0])
+        slopes[portfolio.currency.symbol] = slope
+
+    return slopes
 
 def rebalance_all(scheduled):
     ''' Re-balance portfolio considering current market conditions '''
@@ -63,7 +93,7 @@ def rebalance_all(scheduled):
 
         for currency in Currency.objects.all():
             construct = []
-            if currency == BTC:
+            if currency.symbol == BTC:
                 for day in calibrate:
                     construct.append({'date': day['date'], 'volume': day['volume'], 'currency': currency,
                                       'price': day['weightedAverage']})
@@ -91,40 +121,19 @@ def rebalance_all(scheduled):
         print('Updated historical data')
 
     print('Updating user portfolios')
-
     for user in User.objects.all():
-        history = UserHistory.objects.create(user=user)
-
-        last_alloc = {}
         portfolio_value = 0
         for portfolio in Portfolio.objects.filter(user=user.id):
-            last_alloc[portfolio.currency.symbol] = portfolio.allocation
             portfolio_value += portfolio.allocation * portfolio.currency.price
             portfolio.delete()
 
-        found = False
-
         new_portfolio = create_portfolio(user.risk, portfolio_value)
         for portfolio_data in new_portfolio:
-            currency = Currency.objects.filter(symbol=portfolio_data['symbol']).first()
-
-            if portfolio_data['symbol'] not in last_alloc.keys() or last_alloc[portfolio_data['symbol']] != portfolio_data['alloc']:
-                AllocationHistory.objects.create(
-                    user=history,
-                    currency=currency,
-                    last_allocation=last_alloc.get(portfolio_data['symbol'], 0),
-                    new_allocation=portfolio_data['alloc']
-                )
-                found = True
-
             portfolio_object = Portfolio.objects.create(
                 user=user,
-                currency=currency,
+                currency=Currency.objects.filter(symbol=portfolio_data['symbol']).first(),
                 allocation=portfolio_data['alloc'],
             )
             portfolio_object.save()
-
-        if not found:
-            history.delete()
 
     print('Done!')
