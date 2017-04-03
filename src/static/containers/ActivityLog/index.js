@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 import * as actionCreators from '../../actions/profile';
-import { bindActionCreators } from 'redux';
 import Activity from '../../components/Activity';
 
 class ActivityLogView extends React.Component {
@@ -23,7 +23,7 @@ class ActivityLogView extends React.Component {
 
             logData = activityLog.map((activity, index) => {
                 return (
-                        <Activity time={activity.time} currencies={activity.currencies} key={index}/>
+                        <Activity time={activity.time} currencies={activity.currencies} key={index} />
                 );
             });
         }

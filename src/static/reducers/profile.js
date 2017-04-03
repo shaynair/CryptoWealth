@@ -35,7 +35,7 @@ export default createReducer(initialState, {
         return Object.assign({}, state, {
             activityLog: payload.activityLog
         });
-    },
+      },
     [HISTORY_FETCH_REQUEST]: (state) => {
         return Object.assign({}, state, {
         });
