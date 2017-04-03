@@ -1,4 +1,4 @@
-from .models import Currency, Portfolio, UserHistory, HistoricalCurrency
+from .models import *
 from .market import Market
 from accounts.models import User
 
@@ -122,18 +122,50 @@ def rebalance_all(scheduled):
 
     print('Updating user portfolios')
     for user in User.objects.all():
+        history = UserHistory.objects.create(user=user)
+
+        last_alloc = {}
+        added = {}
         portfolio_value = 0
         for portfolio in Portfolio.objects.filter(user=user.id):
+            last_alloc[portfolio.currency.symbol] = portfolio.allocation
+            added[portfolio.currency.symbol] = False
             portfolio_value += portfolio.allocation * portfolio.currency.price
             portfolio.delete()
 
+        found = False
         new_portfolio = create_portfolio(user.risk, portfolio_value)
         for portfolio_data in new_portfolio:
+            currency = Currency.objects.filter(symbol=portfolio_data['symbol']).first()
+            if portfolio_data['symbol'] not in last_alloc.keys() \
+                    or last_alloc[portfolio_data['symbol']] != portfolio_data['alloc']:
+                AllocationHistory.objects.create(
+                    user=history,
+                    currency=currency,
+                    last_allocation=last_alloc.get(portfolio_data['symbol'], 0),
+                    new_allocation=portfolio_data['alloc']
+                )
+                added[portfolio_data['symbol']] = True
+                found = True
+
             portfolio_object = Portfolio.objects.create(
                 user=user,
-                currency=Currency.objects.filter(symbol=portfolio_data['symbol']).first(),
+                currency=currency,
                 allocation=portfolio_data['alloc'],
             )
             portfolio_object.save()
+
+        for k, v in added.items():
+            if not v:
+                AllocationHistory.objects.create(
+                    user=history,
+                    currency=Currency.objects.filter(symbol=k).first(),
+                    last_allocation=last_alloc.get(k, 0),
+                    new_allocation= 0
+                )
+                found = True
+
+        if not found:
+            history.delete()
 
     print('Done!')
