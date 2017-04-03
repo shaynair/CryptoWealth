@@ -11,7 +11,6 @@ import ProgressBar from '../../components/ProgressBar';
 import Investment from '../../components/Investment';
 import Button from '../../components/Button';
 
-// TODO [ian]: update style for next and prev buttons
 class QuestionnaireView extends Component {
     static propTypes = {
         currentQuestion: React.PropTypes.number.isRequired,
@@ -144,7 +143,7 @@ class QuestionnaireView extends Component {
         } else {
             nextBtn = (<Button classes="nextBtn"
                                handleClick={this.nextQuestion}
-                               text="Next Question"
+                               text="NEXT"
                                arrowClass="arrow right"
                         />);
             options = this.props.question.options.map(
@@ -166,11 +165,10 @@ class QuestionnaireView extends Component {
         if ((this.props.currentQuestion) !== 0) {
             prevBtn = (<Button classes="prevBtn"
                                handleClick={this.prevQuestion}
-                               text="Go Back"
+                               text="BACK"
                                arrowClass="arrow left"
             />);
         }
-
 
         return (<div className="wrapper">
                 <ProgressBar percent={ this.props.percent } color={ this.props.color }/>

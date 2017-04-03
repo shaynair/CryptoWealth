@@ -31,20 +31,20 @@ input[radio] {
 .nextBtn label {
     text-align: right;
     margin-right: 15px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     display: block;
     font-weight: bold;
     margin-top: 6px;
-    color: #55BD5A;
+    color: $theme-color1;
 }
 
 .prevBtn label {
     margin-left: 15px;
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: bold;
     display: block;
     margin-top: 6px;
-    color: crimson;
+    color: orangered;
 }
 
 .arrow {

@@ -36,7 +36,7 @@ class Options extends Component {
 
         if (this.props.selectedOption === this.props.value) {
             labelStyle = Object.assign({}, labelStyle, {
-                background: '#ED7957',
+                background: '#FAB131',
                 color: 'white'
             });
         } else {
