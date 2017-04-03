@@ -81,7 +81,6 @@ class App extends React.Component {
                 <img className="nav-logo" src= { Logo } />
               </a>
               <a className="brand-text navbar-brand" tabIndex="0" onClick={this.goToIndex}>
-                CryptoWealth
               </a>
             </div>
             <div className="collapse navbar-collapse" id="top-navbar">
