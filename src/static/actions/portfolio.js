@@ -48,3 +48,32 @@ export function dataFetchProtectedData(risk, cash) {
             });
   };
 }
+
+export function dataFetchActivityLog() {
+    return (dispatch, state) => {
+        dispatch(dataFetchProtectedDataRequest());
+        return fetch(`${SERVER_URL}/api/v1/portfolios/activity`, {
+            credentials: 'include',
+            headers: {
+                Accept: 'application/json',
+            }
+        })
+            .then(checkHttpStatus)
+            .then(parseJSON)
+            .then((response) => {
+                dispatch(dataReceiveProtectedData(response));
+            })
+            .catch((error) => {
+                if (error && typeof error.response !== 'undefined' && error.response.status === 401) {
+                    // Invalid authentication credentials
+                    console.log('invalid auth credentials');
+                } else if (error && typeof error.response !== 'undefined' && error.response.status >= 500) {
+                    // Server side error
+                    console.log('server side error');
+                } else {
+                    // Most likely connection issues
+                    console.log('connection issues');
+                }
+            });
+    };
+}
