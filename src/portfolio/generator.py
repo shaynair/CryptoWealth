@@ -1,9 +1,15 @@
-from .models import Currency, Portfolio, UserHistory, HistoricalCurrency
+from .models import *
 from .market import Market
 from accounts.models import User
 
+import calendar
+import time
+
 historical =  {}
 BTC = 'BTC'
+
+def current_time():
+    return int(calendar.timegm(time.gmtime()))
 
 def create_portfolio(risk_level=0, portfolio_value=0):
     ''' Create new portfolio object
@@ -90,19 +96,40 @@ def rebalance_all(scheduled):
         print('Updated historical data')
 
     print('Updating user portfolios')
+
     for user in User.objects.all():
+        history = UserHistory.objects.create(user=user)
+
+        last_alloc = {}
         portfolio_value = 0
         for portfolio in Portfolio.objects.filter(user=user.id):
+            last_alloc[portfolio.currency.symbol] = portfolio.allocation
             portfolio_value += portfolio.allocation * portfolio.currency.price
             portfolio.delete()
 
+        found = False
+
         new_portfolio = create_portfolio(user.risk, portfolio_value)
         for portfolio_data in new_portfolio:
+            currency = Currency.objects.filter(symbol=portfolio_data['symbol']).first()
+
+            if portfolio_data['symbol'] not in last_alloc.keys() or last_alloc[portfolio_data['symbol']] != portfolio_data['alloc']:
+                AllocationHistory.objects.create(
+                    user=history,
+                    currency=currency,
+                    last_allocation=last_alloc.get(portfolio_data['symbol'], 0),
+                    new_allocation=portfolio_data['alloc']
+                )
+                found = True
+
             portfolio_object = Portfolio.objects.create(
                 user=user,
-                currency=Currency.objects.filter(symbol=portfolio_data['symbol']).first(),
+                currency=currency,
                 allocation=portfolio_data['alloc'],
             )
             portfolio_object.save()
+
+        if not found:
+            history.delete()
 
     print('Done!')
